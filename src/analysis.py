@@ -73,6 +73,8 @@ def verdict(u95, u90, v95, cfg):
     m = cfg["equivalence_margin"]
     if u95["ci"][1] < 0:
         return "works" if v95["ci"][0] > cfg["verified_guardrail"] else "works by citing less"
+    if u95["ci"][0] > 0:
+        return "increases unmatched titles"
     if u90["ci"] and -m < u90["ci"][0] and u90["ci"][1] < m:
         return "no meaningful effect"
     return "inconclusive"

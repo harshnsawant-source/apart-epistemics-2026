@@ -303,6 +303,11 @@ check("analysis: fewer unresolved but fewer real papers -> 'works by citing less
 rows_same = [dict(r, titles=["Real 1", "Fake", "Fake2"]) if r["condition"] == "A10" else r for r in rows]
 check("analysis: identical cells -> 'no meaningful effect'",
       analysis.analyse(cfg2, {"gptoss": rows_same}, lo)["arms"]["gptoss"]["verdict"] == "no meaningful effect")
+rows_worse = [dict(r, titles=["Fake", "Fake2", "Real 1"]) if r["condition"] == "P10" else
+              (dict(r, titles=["Fake", "Fake2", "Fake3"]) if r["condition"] == "A10" else r) for r in rows]
+labels["Fake3"] = ("unresolved", None)
+check("analysis: more unresolved titles under the audit notice -> 'increases unmatched titles'",
+      analysis.analyse(cfg2, {"gptoss": rows_worse}, lo)["arms"]["gptoss"]["verdict"] == "increases unmatched titles")
 check("analysis: one topic only -> 'not enough data'",
       analysis.analyse(cfg2, {"gptoss": [r for r in rows if r["topic"] == "t0"]}, lo)["arms"]["gptoss"]["verdict"] == "not enough data")
 half = [r for r in rows if not (r["pair"] == "2" and r["condition"] == "A10")]
