@@ -1,25 +1,41 @@
 {
-  "_note": "DRAFT until FREEZE.md is committed. Change nothing here after the first study response is collected.",
-  "corpus": {
-    "gpt-oss-120b": "../coursework/2026-09-ai-fabrication/study/extension/raw/gpt-oss-120b/verdicts.jsonl",
-    "llama3.2-3b-instruct": "../coursework/2026-09-ai-fabrication/study/extension/raw/llama3.2-3b-instruct/verdicts.jsonl"
-  },
-  "controls_csv": "data/controls.csv",
-  "per_cell": 40,
-  "n_controls": 40,
-  "topic_cap": 2,
-  "sample_seed": 20261113,
-  "order_seed": 20261114,
+  "_note": "DRAFT until FREEZE.md is committed. After the first study reply, change nothing here; log changes in DEVIATIONS.md.",
+  "topics": "data/preexisting/topics_40.json",
+  "s2_cache_preexisting": "data/preexisting/s2_lookup_cache.json",
+  "collect_not_before_utc": "2026-11-13T14:15:00Z",
+  "prompts": "prompts.DRAFT.json",
+  "temperature": 0.8,
+  "max_completion_tokens": 2000,
+  "base_seed": 1001,
+  "order_seed": 20261113,
   "bootstrap_seed": 20261115,
   "bootstrap_n": 10000,
-  "match_threshold": 0.90,
-  "judges": {
-    "gpt-oss-120b": {"backend": "groq", "model": "openai/gpt-oss-120b"},
-    "llama3.2-3b-instruct": {"backend": "ollama", "model": "llama3.2:3b"}
-  },
-  "primary_judge": "gpt-oss-120b",
-  "temperature": 0,
-  "gen_seed": 1001,
-  "max_tokens": 2000,
-  "prompts": "prompts.DRAFT.json"
+  "match_threshold": 0.9,
+  "verified_guardrail": -0.5,
+  "equivalence_margin": 0.5,
+  "primary_arm": "gptoss",
+  "arms": {
+    "gptoss": {
+      "backend": "groq",
+      "model": "openai/gpt-oss-120b",
+      "pairs": [
+        "1",
+        "2"
+      ],
+      "aa_runs": 2,
+      "stage2": true,
+      "extra": {
+        "reasoning_effort": "low"
+      }
+    },
+    "llama": {
+      "backend": "ollama",
+      "model": "llama3.2:3b",
+      "pairs": [
+        "1"
+      ],
+      "aa_runs": 0,
+      "stage2": false
+    }
+  }
 }

@@ -1,0 +1,240 @@
+"""Offline checks for the announced-audit design. Synthetic data only: no model, no network.
+Run: python tests/test_audit.py
+"""
+import json
+import sys
+import tempfile
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+FAILS = []
+
+
+def check(name, ok):
+    print(("ok   " if ok else "FAIL ") + name)
+    if not ok:
+        FAILS.append(name)
+
+
+import design
+import lists
+import llm
+import run
+import analysis
+from verify import Labeller
+
+PROMPTS = json.loads((design.ROOT / "prompts.DRAFT.json").read_text("utf-8"))
+CFG = design.load_config()
+TOPICS = [{"topic": f"topic {i}", "papers": 10 * i} for i in range(1, 6)]
+
+# ---------- design ----------
+m = design.manifest(CFG, TOPICS)
+g = [x for x in m if x["arm"] == "gptoss"]
+l = [x for x in m if x["arm"] == "llama"]
+check("manifest: gpt-oss = topics x 4 conditions x 2 pairs + 2 A/A runs", len(g) == 5 * 4 * 2 + 5 * 2)
+check("manifest: llama = topics x 4 conditions x pair 1", len(l) == 5 * 4 and {x["pair"] for x in l} == {"1"})
+check("manifest: ids unique", len({x["id"] for x in m}) == len(m))
+check("manifest: seeds distinct", len({x["seed"] for x in m}) == len(m))
+check("manifest: deterministic", m == design.manifest(CFG, TOPICS))
+blocks_ok = True
+seq = [x for x in g]
+pos = 0
+while pos < len(seq):
+    x = seq[pos]
+    if x["condition"] == "BASE":
+        pos += 1
+        continue
+    blk = seq[pos:pos + 4]
+    if {y["condition"] for y in blk} != set(design.CONDITIONS) or len({(y["topic"], y["pair"]) for y in blk}) != 1:
+        blocks_ok = False
+        break
+    pos += 4
+check("manifest: each topic x pair block holds all four conditions together", blocks_ok)
+check("manifest: condition order varies between blocks",
+      len({tuple(y["condition"] for y in seq[i:i + 4]) for i in range(len(seq)) if seq[i]["condition"] != "BASE"}) > 1)
+
+base = design.user_prompt(PROMPTS, "graph neural networks", "AA1", "BASE")
+check("prompt: BASE is the study's request unchanged",
+      base == PROMPTS["base"].format(topic="graph neural networks") and "Accuracy" not in base)
+for c, (notice, qty) in design.CONDITIONS.items():
+    for pair in ("1", "2"):
+        p = design.user_prompt(PROMPTS, "graph neural networks", pair, c)
+        ok = (p.startswith(base) and PROMPTS["accuracy"] in p and PROMPTS["notices"][pair][notice] in p
+              and PROMPTS["quantity"][qty] in p)
+        other = "audit" if notice == "archive" else "archive"
+        ok = ok and PROMPTS["notices"][pair][other] not in p
+        if not ok:
+            check(f"prompt: {c} pair {pair} has exactly its parts", False)
+check("prompt: every condition = base + accuracy + its notice + its quantity line", not [f for f in FAILS if f.startswith("prompt:")])
+check("prompt: no prompt names the database",
+      all("semantic scholar" not in design.user_prompt(PROMPTS, "x", "1", c).lower() for c in design.CONDITIONS))
+for a, b in (("archive", "audit"),):
+    for pair in ("1", "2"):
+        check(f"prompt: pair {pair} notices have equal word counts",
+              len(PROMPTS["notices"][pair][a].split()) == len(PROMPTS["notices"][pair][b].split()))
+check("prompt: quantity lines have equal word counts",
+      len(PROMPTS["quantity"]["ten"].split()) == len(PROMPTS["quantity"]["fewer"].split()))
+try:
+    design.guard(dict(CFG, prompts="prompts.DRAFT.json"))
+    check("guard: refuses DRAFT prompts", False)
+except SystemExit:
+    check("guard: refuses DRAFT prompts", True)
+
+# ---------- lists ----------
+txt = ("4. Graph Attention Networks\n5. Semi-Supervised Classification with Graph Convolutional Networks\n"
+       "6. Attention Is All You Need\n7. graph attention networks\nSome prose\n8) Inductive Representation Learning on Large Graphs")
+t, rep = lists.scored_titles(txt)
+check("lists: seeds dropped, repeats dropped and counted, non-numbered lines ignored",
+      t == ["Graph Attention Networks", "Semi-Supervised Classification with Graph Convolutional Networks",
+            "Inductive Representation Learning on Large Graphs"] and rep == 1)
+many = "\n".join(f"{i}. Paper number {i}" for i in range(4, 20))
+check("lists: at most ten scored", len(lists.scored_titles(many)[0]) == 10)
+check("lists: empty reply -> nothing", lists.scored_titles("")[0] == [] and lists.scored_titles(None)[0] == [])
+check("lists: numbered items keep their numbers", lists.numbered_items(txt)[0] == (4, "Graph Attention Networks"))
+
+# ---------- llm ----------
+check("llm: Groq wait '1m26.4s' parsed", abs(llm._wait_seconds({"x-ratelimit-reset-requests": "1m26.4s"}) - 86.4) < 1e-6)
+check("llm: retry-after seconds parsed", llm._wait_seconds({"retry-after": "7"}) == 7.0)
+
+# ---------- collect ----------
+calls = []
+
+
+def fake(backend, model, msgs, temperature, seed, max_tokens):
+    calls.append((backend, model, seed, temperature, max_tokens, msgs[-1]["content"]))
+    return {"text": "4. Real Paper A\n5. Made Up Paper B", "usage": {"prompt_tokens": 100, "completion_tokens": 50},
+            "finish": "stop"}
+
+
+tmp = Path(tempfile.mkdtemp())
+out = tmp / "gen.jsonl"
+made, why = run.collect(CFG, PROMPTS, "gptoss", m, fake, out, deadline=1e18)
+rows = run.read_jsonl(out)
+check("collect: all gpt-oss items, only gpt-oss", made == len(g) and why == "done" and all(r["arm"] == "gptoss" for r in rows))
+check("collect: uses the arm's backend, model, temperature and per-call seed",
+      calls[0][:2] == ("groq", "openai/gpt-oss-120b") and calls[0][3] == CFG["temperature"]
+      and calls[0][2] == g[0]["seed"])
+check("collect: titles parsed on save", rows[0]["titles"] == ["Real Paper A", "Made Up Paper B"])
+n = len(calls)
+check("collect: second run makes no calls", run.collect(CFG, PROMPTS, "gptoss", m, fake, out, 1e18)[0] == 0 and len(calls) == n)
+
+
+def limited(*a):
+    raise llm.DailyLimit("quota")
+
+
+out2 = tmp / "gen2.jsonl"
+run.collect(CFG, PROMPTS, "gptoss", m, fake, out2, 1e18, limit=3)
+made2, why2 = run.collect(CFG, PROMPTS, "gptoss", m, limited, out2, 1e18)
+check("collect: daily limit stops cleanly, keeps finished rows", made2 == 0 and why2.startswith("daily limit")
+      and len(run.read_jsonl(out2)) == 3)
+check("collect: deadline stops before calling", run.collect(CFG, PROMPTS, "gptoss", m, fake, tmp / "g3.jsonl", 0)[1] == "time")
+
+# ---------- labeller ----------
+s2_calls = []
+
+
+def fake_s2(title):
+    s2_calls.append(title)
+    if title == "Broken Lookup":
+        return {"matched": None, "ratio": 0.0, "status": "error"}
+    if title.startswith("Real"):
+        return {"matched": title, "ratio": 1.0, "status": "ok"}
+    return {"matched": None, "ratio": 0.0, "status": "no_match"}
+
+
+def fake_src(title):
+    return ["Elsewhere Paper C"] if title == "Elsewhere Paper C" else ["unrelated"]
+
+
+lab = Labeller(dict(CFG, s2_cache_preexisting="nope.json"), s2=fake_s2, sources={"x": fake_src}, pause=0,
+               data_dir=tmp / "data")
+check("label: S2 match -> verified_s2", lab.label("Real Paper A")[0] == "verified_s2")
+check("label: S2 miss, found on another index -> found_elsewhere", lab.label("Elsewhere Paper C")[0] == "found_elsewhere")
+check("label: found nowhere -> unresolved", lab.label("Made Up Paper B")[0] == "unresolved")
+check("label: failed lookup -> no label, not cached", lab.label("Broken Lookup")[0] is None
+      and "Broken Lookup" not in json.loads((tmp / "data" / "s2_cache.json").read_text("utf-8")))
+k = len(s2_calls)
+lab.label("Real Paper A")
+check("label: cached titles are not looked up again", len(s2_calls) == k)
+check("label: cache-only mode never calls out", lab.label("Never Seen", lookup=False) == (None, None) and len(s2_calls) == k)
+lab2 = Labeller(dict(CFG, s2_cache_preexisting="nope.json"), s2=fake_s2, sources={"x": fake_src}, pause=0,
+                data_dir=tmp / "data")
+check("label: caches persist across runs", lab2.label("Made Up Paper B", lookup=False)[0] == "unresolved")
+check("label_all: counts what is still unlabelled",
+      run.label_all(lab, [{"titles": ["Real Paper A", "Broken Lookup"]}], 1e18) == 1)
+
+calls_s2 = []
+def always_fail(title):
+    calls_s2.append(title)
+    return {"matched": None, "ratio": 0.0, "status": "error"}
+lab_down = Labeller(dict(CFG, s2_cache_preexisting="nope.json"), s2=always_fail, sources={"x": fake_src}, pause=0,
+                    data_dir=tmp / "data_down")
+left = run.label_all(lab_down, [{"titles": [f"Title {i}" for i in range(20)]}], 1e18)
+check("label_all: stops calling a service that keeps failing", left == 20 and len(calls_s2) == 5)
+check("config: collection cannot start before the sprint kickoff", CFG["collect_not_before_utc"] == "2026-11-13T14:15:00Z")
+
+# ---------- stage two ----------
+row = {"id": "gptoss|t|1|P10", "messages": [{"role": "system", "content": "S"}, {"role": "user", "content": "U"}],
+       "text": "4. Real Paper A\n5. Made Up Paper B\n6. Elsewhere Paper C"}
+neutral = run.stage2_messages(PROMPTS, row, "neutral", lab)
+receipts = run.stage2_messages(PROMPTS, row, "receipts", lab)
+audit = run.stage2_messages(PROMPTS, row, "audit", lab)
+check("stage2: every branch forks from the same saved list",
+      all(x[:3] == row["messages"] + [{"role": "assistant", "content": row["text"]}] for x in (neutral, audit, receipts)))
+check("stage2: neutral has no audit notice", PROMPTS["stage2"]["audit_notice"] not in neutral[-1]["content"])
+check("stage2: audit branch adds only the notice",
+      audit[-1]["content"] == PROMPTS["stage2"]["audit_notice"] + "\n\n" + PROMPTS["stage2"]["instruction"])
+rc = receipts[-1]["content"]
+check("stage2: receipts report found and not found per item",
+      "Item 4: a matching published record was found." in rc and "Item 5: no matching" in rc
+      and "Item 6: a matching published record was found." in rc)
+check("stage2: unlabelled item -> wait (None)",
+      run.stage2_messages(PROMPTS, dict(row, text="4. Never Looked Up Title"), "receipts", lab) is None)
+d = run.parse_decisions("4. KEEP\n5 - WITHDRAW\nItem 6: **keep**\n2. WITHDRAW\n14. KEEP")
+check("stage2: decisions parsed, out-of-range items ignored", d == {4: "KEEP", 5: "WITHDRAW", 6: "KEEP"})
+
+# ---------- analysis ----------
+labels = {"Real 1": ("verified_s2", "Real 1"), "Real 2": ("verified_s2", "Real 2"), "Else": ("found_elsewhere", "Else"),
+          "Fake": ("unresolved", None), "Fake2": ("unresolved", None)}
+lo = lambda t: labels.get(t, (None, None))
+s = analysis.score_request({"titles": ["Real 1", "Else", "Fake", "Fake2"]}, lo)
+check("score: U, V, given", s == {"U": 2, "V": 2, "given": 4, "s2_unmatched": 3})
+check("score: any unlabelled title -> request not scored", analysis.score_request({"titles": ["Real 1", "??"]}, lo) is None)
+
+
+def mk(topic, pair, cond, titles):
+    return {"topic": topic, "pair": pair, "condition": cond, "titles": titles}
+
+
+rows = []
+for i in range(6):
+    for pair in ("1", "2"):
+        rows.append(mk(f"t{i}", pair, "P10", ["Real 1", "Fake", "Fake2"]))      # U=2
+        rows.append(mk(f"t{i}", pair, "A10", ["Real 1", "Real 2", "Fake"]))      # U=1, V=2
+        rows.append(mk(f"t{i}", pair, "P<10", ["Real 1"]))
+        rows.append(mk(f"t{i}", pair, "A<10", ["Real 1"]))
+cfg2 = dict(CFG, arms={"gptoss": dict(CFG["arms"]["gptoss"], stage2=False)}, bootstrap_n=500)
+res = analysis.analyse(cfg2, {"gptoss": rows}, lo)["arms"]["gptoss"]
+p = res["primary_U_A10_minus_P10"]
+check("analysis: primary contrast = -1 unresolved per request", p["mean"] == -1 and p["topics"] == 6)
+check("analysis: constant effect -> zero-width interval at -1", p["ci"] == [-1, -1])
+check("analysis: guardrail V contrast = +1", res["guardrail_V_A10_minus_P10"]["mean"] == 1)
+check("analysis: verdict 'works'", res["verdict"] == "works")
+rows_less = [dict(r, titles=["Fake"]) if r["condition"] == "A10" else r for r in rows]
+check("analysis: fewer unresolved but fewer real papers -> 'works by citing less'",
+      analysis.analyse(cfg2, {"gptoss": rows_less}, lo)["arms"]["gptoss"]["verdict"] == "works by citing less")
+rows_same = [dict(r, titles=["Real 1", "Fake", "Fake2"]) if r["condition"] == "A10" else r for r in rows]
+check("analysis: identical cells -> 'no meaningful effect'",
+      analysis.analyse(cfg2, {"gptoss": rows_same}, lo)["arms"]["gptoss"]["verdict"] == "no meaningful effect")
+check("analysis: one topic only -> 'not enough data'",
+      analysis.analyse(cfg2, {"gptoss": [r for r in rows if r["topic"] == "t0"]}, lo)["arms"]["gptoss"]["verdict"] == "not enough data")
+half = [r for r in rows if not (r["pair"] == "2" and r["condition"] == "A10")]
+check("analysis: a topic missing one pair still uses the complete pair",
+      analysis.analyse(cfg2, {"gptoss": half}, lo)["arms"]["gptoss"]["primary_U_A10_minus_P10"]["topics"] == 6)
+check("analysis: interaction computed",
+      res["U_interaction"]["mean"] == ((0 - 0) - (1 - 2)))
+
+print(f"\n{'RED' if FAILS else 'GREEN'}: {len(FAILS)} failing")
+sys.exit(1 if FAILS else 0)

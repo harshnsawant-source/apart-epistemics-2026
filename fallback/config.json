@@ -1,0 +1,25 @@
+{
+  "_note": "DRAFT until FREEZE.md is committed. Change nothing here after the first study response is collected.",
+  "corpus": {
+    "gpt-oss-120b": "../coursework/2026-09-ai-fabrication/study/extension/raw/gpt-oss-120b/verdicts.jsonl",
+    "llama3.2-3b-instruct": "../coursework/2026-09-ai-fabrication/study/extension/raw/llama3.2-3b-instruct/verdicts.jsonl"
+  },
+  "controls_csv": "data/controls.csv",
+  "per_cell": 40,
+  "n_controls": 40,
+  "topic_cap": 2,
+  "sample_seed": 20261113,
+  "order_seed": 20261114,
+  "bootstrap_seed": 20261115,
+  "bootstrap_n": 10000,
+  "match_threshold": 0.90,
+  "judges": {
+    "gpt-oss-120b": {"backend": "groq", "model": "openai/gpt-oss-120b"},
+    "llama3.2-3b-instruct": {"backend": "ollama", "model": "llama3.2:3b"}
+  },
+  "primary_judge": "gpt-oss-120b",
+  "temperature": 0,
+  "gen_seed": 1001,
+  "max_tokens": 2000,
+  "prompts": "prompts.DRAFT.json"
+}

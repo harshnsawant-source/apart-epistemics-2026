@@ -1,0 +1,209 @@
+{
+ "measured_at_utc": "2026-10-08T15:47:31+00:00",
+ "source": "Semantic Scholar Academic Graph, /paper/search/bulk",
+ "selection_rule": "balanced across decades of log10(papers); sparse decades kept whole, crowded decades thinned by even spacing in log-coverage",
+ "selected_from": 58,
+ "count": 40,
+ "topics": [
+  {
+   "topic": "monosemanticity in neural networks",
+   "papers": 28,
+   "median_citations": 3.0
+  },
+  {
+   "topic": "hypernetworks for weight generation",
+   "papers": 69,
+   "median_citations": 1
+  },
+  {
+   "topic": "circuit discovery in transformers",
+   "papers": 94,
+   "median_citations": 1.0
+  },
+  {
+   "topic": "grokking in neural networks",
+   "papers": 128,
+   "median_citations": 5.0
+  },
+  {
+   "topic": "equivariant message passing networks",
+   "papers": 254,
+   "median_citations": 31.0
+  },
+  {
+   "topic": "representation engineering control vectors",
+   "papers": 300,
+   "median_citations": 15.0
+  },
+  {
+   "topic": "weight agnostic neural networks",
+   "papers": 362,
+   "median_citations": 38.0
+  },
+  {
+   "topic": "lottery ticket hypothesis",
+   "papers": 398,
+   "median_citations": 53.0
+  },
+  {
+   "topic": "conformal prediction for language models",
+   "papers": 398,
+   "median_citations": 27.0
+  },
+  {
+   "topic": "retrieval head attention",
+   "papers": 697,
+   "median_citations": 46.0
+  },
+  {
+   "topic": "sharpness aware minimization",
+   "papers": 777,
+   "median_citations": 50.5
+  },
+  {
+   "topic": "hyperdimensional computing",
+   "papers": 945,
+   "median_citations": 65.0
+  },
+  {
+   "topic": "sparse autoencoders for interpretability",
+   "papers": 1037,
+   "median_citations": 62.0
+  },
+  {
+   "topic": "neural tangent kernel",
+   "papers": 1086,
+   "median_citations": 132.5
+  },
+  {
+   "topic": "speculative decoding",
+   "papers": 1182,
+   "median_citations": 71.5
+  },
+  {
+   "topic": "neural cellular automata",
+   "papers": 1715,
+   "median_citations": 114.5
+  },
+  {
+   "topic": "quantization aware training",
+   "papers": 2215,
+   "median_citations": 90.0
+  },
+  {
+   "topic": "test-time training transformers",
+   "papers": 2851,
+   "median_citations": 119.0
+  },
+  {
+   "topic": "chain of thought prompting",
+   "papers": 4701,
+   "median_citations": 402.0
+  },
+  {
+   "topic": "activation steering",
+   "papers": 4930,
+   "median_citations": 252.0
+  },
+  {
+   "topic": "influence functions for language models",
+   "papers": 5604,
+   "median_citations": 248.5
+  },
+  {
+   "topic": "liquid neural networks",
+   "papers": 8187,
+   "median_citations": 208.5
+  },
+  {
+   "topic": "mechanistic interpretability",
+   "papers": 10633,
+   "median_citations": 402.0
+  },
+  {
+   "topic": "neural architecture search",
+   "papers": 13013,
+   "median_citations": 829.5
+  },
+  {
+   "topic": "mixture of experts",
+   "papers": 14085,
+   "median_citations": 623.0
+  },
+  {
+   "topic": "retrieval augmented generation",
+   "papers": 17627,
+   "median_citations": 317.0
+  },
+  {
+   "topic": "differential privacy",
+   "papers": 19376,
+   "median_citations": 616.0
+  },
+  {
+   "topic": "spiking neural networks",
+   "papers": 22999,
+   "median_citations": 774.5
+  },
+  {
+   "topic": "computer graphics",
+   "papers": 44042,
+   "median_citations": 1262.0
+  },
+  {
+   "topic": "semantic segmentation",
+   "papers": 53285,
+   "median_citations": 2813.5
+  },
+  {
+   "topic": "graph neural networks",
+   "papers": 73872,
+   "median_citations": 2135.0
+  },
+  {
+   "topic": "speech recognition",
+   "papers": 110775,
+   "median_citations": 2597.0
+  },
+  {
+   "topic": "contrastive learning",
+   "papers": 166067,
+   "median_citations": 2920.0
+  },
+  {
+   "topic": "model compression",
+   "papers": 178118,
+   "median_citations": 1571.5
+  },
+  {
+   "topic": "transfer learning",
+   "papers": 214589,
+   "median_citations": 3397.5
+  },
+  {
+   "topic": "recommender systems",
+   "papers": 379434,
+   "median_citations": 2994.5
+  },
+  {
+   "topic": "database systems",
+   "papers": 566766,
+   "median_citations": 4361.5
+  },
+  {
+   "topic": "deep learning",
+   "papers": 884724,
+   "median_citations": 11267.0
+  },
+  {
+   "topic": "machine learning",
+   "papers": 1137412,
+   "median_citations": 9970.0
+  },
+  {
+   "topic": "neural networks",
+   "papers": 1353466,
+   "median_citations": 14718.5
+  }
+ ]
+}
