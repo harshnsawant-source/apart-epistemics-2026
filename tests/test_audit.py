@@ -308,6 +308,15 @@ rows_worse = [dict(r, titles=["Fake", "Fake2", "Real 1"]) if r["condition"] == "
 labels["Fake3"] = ("unresolved", None)
 check("analysis: more unresolved titles under the audit notice -> 'increases unmatched titles'",
       analysis.analyse(cfg2, {"gptoss": rows_worse}, lo)["arms"]["gptoss"]["verdict"] == "increases unmatched titles")
+u = lambda lo_, hi: {"ci": [lo_, hi], "topics": 40, "mean": (lo_ + hi) / 2}
+check("verdict (b): clear but small decrease inside +/-0.5 -> 'real but small (decrease)'",
+      analysis.verdict(u(-0.3, -0.1), u(-0.28, -0.12), u(-0.1, 0.2), CFG) == "real but small (decrease)")
+check("verdict (b): clear but small increase inside +/-0.5 -> 'real but small (increase)'",
+      analysis.verdict(u(0.1, 0.3), u(0.12, 0.28), u(-0.1, 0.2), CFG) == "real but small (increase)")
+check("verdict: a large clear decrease is still 'works'",
+      analysis.verdict(u(-1.5, -0.6), u(-1.4, -0.7), u(-0.2, 0.3), CFG) == "works")
+check("verdict: interval crossing zero and wider than the margin -> 'inconclusive'",
+      analysis.verdict(u(-0.9, 0.4), u(-0.8, 0.3), u(-0.2, 0.3), CFG) == "inconclusive")
 check("analysis: one topic only -> 'not enough data'",
       analysis.analyse(cfg2, {"gptoss": [r for r in rows if r["topic"] == "t0"]}, lo)["arms"]["gptoss"]["verdict"] == "not enough data")
 half = [r for r in rows if not (r["pair"] == "2" and r["condition"] == "A10")]

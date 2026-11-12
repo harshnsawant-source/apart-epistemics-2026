@@ -92,6 +92,12 @@ def verdict(u95, u90, v95, cfg):
     if u95["ci"] is None or v95["ci"] is None:
         return "not enough data"
     m = cfg["equivalence_margin"]
+    inside = u90["ci"] is not None and -m < u90["ci"][0] and u90["ci"][1] < m
+    # FREEZE section 8, option (b): clearly non-zero but inside the margin is its own outcome.
+    if inside and u95["ci"][1] < 0:
+        return "real but small (decrease)"
+    if inside and u95["ci"][0] > 0:
+        return "real but small (increase)"
     if u95["ci"][1] < 0:
         return "works" if v95["ci"][0] > cfg["verified_guardrail"] else "works by citing less"
     if u95["ci"][0] > 0:
