@@ -95,6 +95,18 @@ Write new, test-first:
   the verifier missed (web-published interpretability papers and shortened titles). Unmatched is not fabricated.
 - Rules: pre-existing code and data must be marked in the README and the report.
 
+## Rules from the organisers' email (13 Nov 2026)
+- AI tools are allowed, but the team is responsible for everything in the report. **Made-up results or references
+  can disqualify a project.** Every reference in the report must be opened and checked against its real record
+  (title, authors, year, venue). The prior-work list above came from GPT-6-Astra's search: check each one.
+- Mark all pre-sprint code as preexisting in the README and the report.
+- Report: 4 to 8 pages (8 is a hard cap), official template from the Guidelines tab, required Limitations and
+  Dual-Use / Ethical Considerations appendix. Resubmit with the exact same title to replace.
+- Projects are hidden on the website until after judging, so check the submission carefully before sending.
+- Deadline: Mon 16 Nov, 11:59 UTC = 17:29 IST.
+- Talks (IST): Fri 19:45 logistics, 20:45 Navaie, 22:45 Adaption, 23:45 Issacharoff; Sat 02:15 keynote
+  Cotton-Barratt, 19:45 Stray, 23:45 Suro; Sun 20:45 Palermos. All recorded. RSVP on Luma for links.
+
 ## Order of work
 1. Harsh confirms the design and writes FREEZE.md (his words) and approves the prompts.
 2. Build items 1 to 6 above with tests on synthetic data. Commit.
