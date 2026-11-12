@@ -1,4 +1,5 @@
 name: collect
+# Registered for the AI x Epistemics sprint, 13-16 Nov 2026.
 
 # Every hour: continue the gpt-oss collection where it stopped, label new titles, run stage two when ready,
 # and commit the results back. Does nothing until FREEZE.md exists; the script itself also refuses to
