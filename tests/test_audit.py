@@ -316,5 +316,30 @@ check("analysis: a topic missing one pair still uses the complete pair",
 check("analysis: interaction computed",
       res["U_interaction"]["mean"] == ((0 - 0) - (1 - 2)))
 
+# ---------- audit correction (FREEZE section 12) ----------
+counts = {"A10": {"unres_n": 25, "unres_real": 5, "match_n": 30, "match_fake": 3},
+          "P10": {"unres_n": 25, "unres_real": 0, "match_n": 30, "match_fake": 0},
+          "A<10": {"unres_n": 10, "unres_real": 5, "match_n": 10, "match_fake": 0}}
+rates = analysis.audit_rates(counts, min_n=20)
+check("audit: p and q per condition", rates["A10"] == {"p": 0.2, "q": 0.1} and rates["P10"] == {"p": 0.0, "q": 0.0})
+pooled_p = (5 + 0 + 5) / (25 + 25 + 10)
+pooled_q = (3 + 0 + 0) / (30 + 30 + 10)
+check("audit: fewer than 20 audited titles in a label -> pooled rate",
+      abs(rates["A<10"]["p"] - pooled_p) < 1e-12 and abs(rates["A<10"]["q"] - pooled_q) < 1e-12)
+check("audit: a condition with no audit at all uses pooled rates",
+      abs(analysis.audit_rates(counts, min_n=20, conditions=["P<10"])["P<10"]["p"] - pooled_p) < 1e-12)
+check("audit: corrected U = U(1-p) + M q",
+      abs(analysis.corrected_U({"U": 4, "given": 10}, {"p": 0.25, "q": 0.1}) - (4 * 0.75 + 6 * 0.1)) < 1e-12)
+res_c = analysis.analyse(cfg2, {"gptoss": rows}, lo,
+                         audit_counts={"P10": {"unres_n": 30, "unres_real": 0, "match_n": 30, "match_fake": 0},
+                                       "A10": {"unres_n": 30, "unres_real": 0, "match_n": 30, "match_fake": 0},
+                                       "P<10": {"unres_n": 30, "unres_real": 0, "match_n": 30, "match_fake": 0},
+                                       "A<10": {"unres_n": 30, "unres_real": 0, "match_n": 30, "match_fake": 0}})
+pc = res_c["arms"]["gptoss"]["primary_U_corrected"]
+check("audit: a perfect audit leaves the primary result unchanged", pc["mean"] == -1)
+res_n = analysis.analyse(cfg2, {"gptoss": rows}, lo)
+check("audit: without audit data the corrected result is absent, not invented",
+      res_n["arms"]["gptoss"]["primary_U_corrected"] is None)
+
 print(f"\n{'RED' if FAILS else 'GREEN'}: {len(FAILS)} failing")
 sys.exit(1 if FAILS else 0)

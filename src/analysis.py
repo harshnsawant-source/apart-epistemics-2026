@@ -67,6 +67,27 @@ def summary(per_topic, cfg, level=0.95):
             "ci": bootstrap(per_topic, cfg["bootstrap_n"], cfg["bootstrap_seed"], level)}
 
 
+def audit_rates(counts, min_n=20, conditions=None):
+    """FREEZE section 12. counts: {condition: {unres_n, unres_real, match_n, match_fake}} from the blind audit.
+    p = share of audited unmatched titles that are real papers; q = share of audited matched titles that are not.
+    A label with fewer than min_n audited titles in a condition uses the rate pooled over all conditions."""
+    tot = {k: sum(c.get(k, 0) for c in counts.values()) for k in ("unres_n", "unres_real", "match_n", "match_fake")}
+    pooled_p = tot["unres_real"] / tot["unres_n"] if tot["unres_n"] else 0.0
+    pooled_q = tot["match_fake"] / tot["match_n"] if tot["match_n"] else 0.0
+    out = {}
+    for cond in (conditions or counts):
+        c = counts.get(cond, {})
+        p = c["unres_real"] / c["unres_n"] if c.get("unres_n", 0) >= min_n else pooled_p
+        q = c["match_fake"] / c["match_n"] if c.get("match_n", 0) >= min_n else pooled_q
+        out[cond] = {"p": p, "q": q}
+    return out
+
+
+def corrected_U(score, rate):
+    """U x (1 - p) + M x q, where M = matched titles in the request (given - U)."""
+    return score["U"] * (1 - rate["p"]) + (score["given"] - score["U"]) * rate["q"]
+
+
 def verdict(u95, u90, v95, cfg):
     if u95["ci"] is None or v95["ci"] is None:
         return "not enough data"
@@ -110,7 +131,7 @@ def stage2_summary(arm, label_of):
     return out
 
 
-def analyse(cfg, rows_by_arm, label_of):
+def analyse(cfg, rows_by_arm, label_of, audit_counts=None):
     scores, counts = {}, {}
     for arm, rows in rows_by_arm.items():
         counts[arm] = {"collected": len(rows), "scored": 0}
@@ -129,8 +150,14 @@ def analyse(cfg, rows_by_arm, label_of):
             if ar == arm and cond == "BASE":
                 aa.setdefault(topic, {})[pair] = s["U"]
         aa_diff = {t: abs(v["AA1"] - v["AA2"]) for t, v in aa.items() if "AA1" in v and "AA2" in v}
+        corrected = None
+        if audit_counts:
+            rates = audit_rates(audit_counts, conditions=list(design.CONDITIONS) + ["BASE"])
+            cscores = {k: dict(s, Uc=corrected_U(s, rates[k[3]])) for k, s in scores.items() if k[0] == arm}
+            corrected = summary(topic_contrast(cscores, arm, "A10", "P10", "Uc"), cfg)
         res["arms"][arm] = {
             "primary_U_A10_minus_P10": u95, "primary_U_90": u90, "guardrail_V_A10_minus_P10": v95,
+            "primary_U_corrected": corrected,
             "verdict": verdict(u95, u90, v95, cfg),
             "U_Afewer_minus_Pfewer": summary(topic_contrast(scores, arm, "A<10", "P<10", "U"), cfg),
             "V_Afewer_minus_Pfewer": summary(topic_contrast(scores, arm, "A<10", "P<10", "V"), cfg),
@@ -151,7 +178,10 @@ def main():
     sys.stdout.reconfigure(encoding="utf-8")
     cfg = design.load_config()
     lab = Labeller(cfg)
-    res = analyse(cfg, {arm: read_jsonl(gen_path(arm)) for arm in cfg["arms"]}, lambda t: lab.label(t, lookup=False))
+    ap = ROOT / "data" / "audit_counts.json"        # written from the blind audit sheet on Sunday
+    audit = json.loads(ap.read_text("utf-8")) if ap.exists() else None
+    res = analyse(cfg, {arm: read_jsonl(gen_path(arm)) for arm in cfg["arms"]}, lambda t: lab.label(t, lookup=False),
+                  audit_counts=audit)
     (ROOT / "results").mkdir(exist_ok=True)
     (ROOT / "results" / "results.json").write_text(json.dumps(res, indent=1), "utf-8")
     print(json.dumps(res, indent=1))
