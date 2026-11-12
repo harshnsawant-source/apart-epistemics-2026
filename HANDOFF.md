@@ -5,7 +5,7 @@ Sprint: Apart AI x Epistemics, 13 to 15 Nov 2026. Report due Mon 16 Nov 17:29 IS
 The report prose and FREEZE.md must be in Harsh's own words. Never push, deploy or submit without his OK.
 
 ## Decision state
-- Chosen by Claude and GPT-6-Astra (not yet confirmed by Harsh): **"Announced audits, actual evidence"**.
+- CONFIRMED by Harsh on 12 Nov 2026: **"Announced audits, actual evidence"**.
   Full reasoning: `MyMemoryVault/reviews/2026-11-12-gpt6-astra/13-round7-top1-reply.md`.
 - Fallback, already built in this folder: "Cited, then disowned?" (pushback versus neutral re-check).
 - Honest scoring estimate from Astra: 4 / 4-5 / 4-5 on the three criteria. Not a promised win.
@@ -66,7 +66,8 @@ Harsh should read these himself; the summaries came from Astra's search and were
 ## What exists in this folder (commit c649be2, local only)
 - `src/common.py`, `src/parse.py`, `src/collect.py`, `src/recheck.py`, `src/analyze.py`, `src/sample.py`,
   `tests/test_all.py` (56 checks, synthetic data, green). Built for the FALLBACK design.
-- `FREEZE-outline.md` and `prompts.DRAFT.json`: also for the fallback design.
+- `FREEZE-outline.fallback-pushback.md` and `prompts.DRAFT.json`: for the fallback design.
+- `FREEZE-outline.md`: the outline for the confirmed design.
 - `collect.py` refuses to call a model until `FREEZE.md` exists and the prompts file is not a DRAFT. Keep that.
 
 ## What to reuse and what to write
@@ -82,7 +83,7 @@ Write new, test-first:
    failed lookups never cached), then `recheck.py` on misses. Count each distinct paper once.
 5. Stage two: three branches from the same saved P10 list, returning keep/withdraw per citation ID.
 6. Analysis: new endpoints, guardrail, equivalence test, factorial contrasts, random-deletion reference.
-7. A new FREEZE outline for this design, for Harsh to fill in.
+7. (Done 12 Nov) `FREEZE-outline.md` is the outline for this design; Harsh fills it in.
 
 ## Known constraints (checked 12 Nov)
 - Groq free tier, gpt-oss-120b: 1,000 requests/day, 8,000 tokens/min (headers), 200,000 tokens/day (Groq docs,

@@ -17,7 +17,9 @@ Scaffold only. No study response has been collected. Nothing here is a result.
 ## Layout
 | Path | What |
 |---|---|
+| `HANDOFF.md` | The confirmed design (announced audits) and the build order. |
 | `FREEZE-outline.md` | The plan to fill in and commit as `FREEZE.md` before any data. |
+| `FREEZE-outline.fallback-pushback.md` | Outline for the fallback design the current scripts were built for. |
 | `config.json`, `prompts.DRAFT.json` | Draft settings and draft prompts. |
 | `src/sample.py` | Seeded sample of titles: matched and unmatched per generator, plus external real controls. |
 | `src/recheck.py` | Second lookup (Crossref, OpenAlex) for unmatched titles. No hit means unresolved, not fake. |
