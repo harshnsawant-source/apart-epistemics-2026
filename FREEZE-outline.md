@@ -39,7 +39,13 @@ anything that has to change goes in `DEVIATIONS.md` with the time and the reason
 - FACT: `openai/gpt-oss-120b` on Groq (primary). `llama3.2:3b`, Q4_K_M, in Ollama (replication).
 - PROPOSED: Claude Sonnet through the CLI as an exploratory arm, only if tools, browsing, memory and file
   access can be switched off by configuration. Otherwise drop it or label it a different deployment.
-- DECIDE and WRITE: which arms run; temperature, seeds, output limit, reasoning setting for each.
+- PROPOSED (measured 13 Nov on non-study topics): gpt-oss-120b at reasoning_effort "low". At the default
+  setting a call used about 1,440 tokens, so the design (~850,000 tokens) would not finish by Monday under
+  Groq's 200,000 tokens/day cap. At "low" a call used about 530 tokens (~350,000 for the design, about two
+  days). The MSc baseline used the default setting, so it is context only, not a comparison.
+- PROPOSED: temperature 0.8 (same as the baseline), a different seed per call, up to 2,000 output tokens.
+- PROPOSED: Claude Sonnet arm dropped (cannot run unattended while you travel).
+- DECIDE and WRITE: keep or change each of these, and why.
 - WRITE: the rule if a quota runs out (drop exploratory arms first; never thin the primary paired design).
 
 ## 6. Collection rules
