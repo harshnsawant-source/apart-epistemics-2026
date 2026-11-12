@@ -19,7 +19,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import design  # noqa: E402
 import lists  # noqa: E402
-from llm import BACKENDS, DailyLimit  # noqa: E402
+from llm import BACKENDS, DailyLimit, Transient  # noqa: E402
 from verify import Labeller  # noqa: E402
 
 ROOT = design.ROOT
@@ -53,11 +53,39 @@ def messages_for(prompts, topic, pair, condition):
             {"role": "user", "content": design.user_prompt(prompts, topic, pair, condition)}]
 
 
-def collect(cfg, prompts, arm, items, call, out, deadline, limit=None):
+RETRIES = 3                  # FREEZE section 6: up to 3 retries for transport errors
+BACKOFF = (10, 30, 60)       # seconds before retry 1, 2, 3 when the server gives no wait
+
+
+def attempt(call, args, call_id, log, sleep=time.sleep):
+    """Call with up to RETRIES retries on transport errors. Every attempt goes to `log`.
+    Returns the reply, or None after the last retry fails. DailyLimit and other errors propagate (logged)."""
+    for n in range(1, RETRIES + 2):
+        try:
+            res = call(*args)
+        except Transient as e:
+            append_jsonl(log, {"id": call_id, "attempt": n, "utc": now(), "outcome": str(e)})
+            if n <= RETRIES:
+                sleep(e.wait if e.wait is not None else BACKOFF[n - 1])
+                continue
+            append_jsonl(log, {"id": call_id, "attempt": n, "utc": now(), "outcome": "failed"})
+            return None
+        except DailyLimit as e:
+            append_jsonl(log, {"id": call_id, "attempt": n, "utc": now(), "outcome": f"daily limit: {e}"})
+            raise
+        except Exception as e:
+            append_jsonl(log, {"id": call_id, "attempt": n, "utc": now(), "outcome": f"error: {e!r}"[:300]})
+            raise
+        append_jsonl(log, {"id": call_id, "attempt": n, "utc": now(), "outcome": "ok"})
+        return res
+
+
+def collect(cfg, prompts, arm, items, call, out, deadline, limit=None, sleep=time.sleep, attempts_log=None):
     """call(backend, model, messages, temperature, seed, max_tokens) -> dict. Returns (made, stopped_reason)."""
     spec = cfg["arms"][arm]
+    log = attempts_log or Path(out).with_name(Path(out).stem + "_attempts.jsonl")
     done = {r["id"] for r in read_jsonl(out)}
-    made = 0
+    made, failed_in_row = 0, 0
     for it in items:
         if it["arm"] != arm or it["id"] in done:
             continue
@@ -67,9 +95,16 @@ def collect(cfg, prompts, arm, items, call, out, deadline, limit=None):
             return made, "limit"
         msgs = messages_for(prompts, it["topic"], it["pair"], it["condition"])
         try:
-            res = call(spec["backend"], spec["model"], msgs, cfg["temperature"], it["seed"], cfg["max_completion_tokens"])
+            res = attempt(call, (spec["backend"], spec["model"], msgs, cfg["temperature"], it["seed"],
+                                 cfg["max_completion_tokens"]), it["id"], log, sleep)
         except DailyLimit as e:
             return made, f"daily limit: {e}"
+        if res is None:
+            failed_in_row += 1
+            if failed_in_row >= 3:
+                return made, "stopped: 3 failed calls in a row"
+            continue
+        failed_in_row = 0
         titles, repeats = lists.scored_titles(res["text"])
         append_jsonl(out, dict(it, messages=msgs, text=res["text"], titles=titles, repeats=repeats,
                                usage=res.get("usage"), reasoning_chars=res.get("reasoning_chars"),
@@ -145,15 +180,30 @@ def stage2(cfg, prompts, arm, labeller, call, deadline):
             if msgs is None:
                 continue
             try:
-                res = call(spec["backend"], spec["model"], msgs, cfg["temperature"],
-                           design.call_seed(cfg["base_seed"], sid), cfg["max_completion_tokens"])
+                res = attempt(call, (spec["backend"], spec["model"], msgs, cfg["temperature"],
+                                     design.call_seed(cfg["base_seed"], sid), cfg["max_completion_tokens"]),
+                              sid, ROOT / "raw" / f"stage2_{arm}_attempts.jsonl")
             except DailyLimit as e:
                 return made, f"daily limit: {e}"
+            if res is None:
+                continue
             append_jsonl(out, {"id": sid, "list_id": r["id"], "topic": r["topic"], "branch": b, "messages": msgs,
                                "text": res["text"], "decisions": parse_decisions(res["text"]),
                                "usage": res.get("usage"), "utc": now()})
             made += 1
     return made, "done"
+
+
+def plan_order(cfg, arm, main_done, stage2_done):
+    """FREEZE section 5: main conditions, then stage two, then A/A repeats (dropped first if quota runs short)."""
+    spec = cfg["arms"][arm]
+    if not main_done:
+        return ["main"]
+    if spec.get("stage2") and not stage2_done:
+        return ["stage2"]
+    if spec.get("aa_runs"):
+        return ["aa"]
+    return []
 
 
 def make_call(spec):
@@ -195,20 +245,38 @@ def main():
     if datetime.now(timezone.utc) < start:
         raise SystemExit(f"Refusing to run: study collection starts after {cfg['collect_not_before_utc']} (sprint kickoff).")
     topics = design.load_json(cfg["topics"])["topics"]
-    items = design.manifest(cfg, topics)
-    made, why = collect(cfg, prompts, a.arm, items, make_call(cfg['arms'][a.arm]), gen_path(a.arm), deadline, a.limit)
-    total = sum(1 for it in items if it["arm"] == a.arm)
-    have = len(read_jsonl(gen_path(a.arm)))
-    print(f"{a.arm}: {made} new generation calls ({why}); {have}/{total} collected")
-    if a.no_verify:
-        return
-    labeller = Labeller(cfg)
-    rows = [r for arm in cfg["arms"] for r in read_jsonl(gen_path(arm))]
-    left = label_all(labeller, rows, deadline)
-    print(f"labels: {left} titles still unlabelled")
-    if cfg["arms"][a.arm].get("stage2") and "daily limit" not in why:
-        m2, why2 = stage2(cfg, prompts, a.arm, labeller, make_call(cfg['arms'][a.arm]), deadline)
-        print(f"stage two: {m2} new calls ({why2}); {len(read_jsonl(ROOT / 'raw' / f'stage2_{a.arm}.jsonl'))}/120")
+    items = [it for it in design.manifest(cfg, topics) if it["arm"] == a.arm]
+    main_items = [it for it in items if it["condition"] != "BASE"]
+    aa_items = [it for it in items if it["condition"] == "BASE"]
+    call = make_call(cfg["arms"][a.arm])
+    labeller = None if a.no_verify else Labeller(cfg)
+    n_lists = len(topics)                      # pair-1 P10 lists that get stage two
+    for _ in range(4):
+        have = {r["id"] for r in read_jsonl(gen_path(a.arm))}
+        main_done = all(it["id"] in have for it in main_items)
+        s2_have = len(read_jsonl(ROOT / "raw" / f"stage2_{a.arm}.jsonl"))
+        phases = plan_order(cfg, a.arm, main_done, s2_have >= 3 * n_lists)
+        if not phases:
+            print(f"{a.arm}: all phases complete")
+            break
+        phase = phases[0]
+        if phase == "main":
+            made, why = collect(cfg, prompts, a.arm, main_items, call, gen_path(a.arm), deadline, a.limit)
+        elif phase == "stage2":
+            if labeller is None:
+                print("stage two needs labels; run without --no-verify")
+                break
+            made, why = stage2(cfg, prompts, a.arm, labeller, call, deadline)
+        else:
+            made, why = collect(cfg, prompts, a.arm, aa_items, call, gen_path(a.arm), deadline, a.limit)
+        have = len(read_jsonl(gen_path(a.arm)))
+        print(f"{a.arm} [{phase}]: {made} new calls ({why}); generations {have}/{len(items)}, "
+              f"stage two {len(read_jsonl(ROOT / 'raw' / f'stage2_{a.arm}.jsonl'))}")
+        if labeller is not None:
+            rows = [r for arm in cfg["arms"] for r in read_jsonl(gen_path(arm))]
+            print(f"labels: {label_all(labeller, rows, deadline)} titles still unlabelled")
+        if why != "done" or made == 0:
+            break
 
 
 if __name__ == "__main__":

@@ -36,6 +36,7 @@ Progress is committed to the repo each hour (see the Actions tab or `git pull`).
 
 ## If something goes wrong
 - Runner keeps failing: the Actions log says why. Collection resumes from the last saved call.
-- Groq quota tighter than expected: drop notice pair 2 first (edit config, log it in DEVIATIONS.md with the
-  time). Never thin the primary pair-1 comparison.
+- Groq quota tighter than expected: the run already collects in priority order (FREEZE section 5): both
+  notice wordings of the main conditions first, then stage two, then the A/A repeats. So a shortfall drops the
+  repeats first, then stage two. Both notice wordings are part of the primary endpoint and are never dropped.
 - Disable the hourly runner after collection: repo Actions tab > collect > Disable workflow.

@@ -54,6 +54,23 @@ check("manifest: each topic x pair block holds all four conditions together", bl
 check("manifest: condition order varies between blocks",
       len({tuple(y["condition"] for y in seq[i:i + 4]) for i in range(len(seq)) if seq[i]["condition"] != "BASE"}) > 1)
 
+# ---------- collection priority (FREEZE section 5) ----------
+for arm in ("gptoss", "llama"):
+    seq_arm = [x for x in m if x["arm"] == arm]
+    first_base = next((i for i, x in enumerate(seq_arm) if x["condition"] == "BASE"), len(seq_arm))
+    check(f"priority: {arm} collects every main condition before any A/A repeat",
+          all(x["condition"] == "BASE" for x in seq_arm[first_base:]))
+check("priority: both notice wordings are main items (never in the droppable tail)",
+      {x["pair"] for x in g if x["condition"] != "BASE"} == {"1", "2"})
+order = run.plan_order(CFG, "gptoss", main_done=False, stage2_done=False)
+check("priority: main conditions first", order == ["main"])
+check("priority: then stage two, before the A/A repeats",
+      run.plan_order(CFG, "gptoss", main_done=True, stage2_done=False) == ["stage2"])
+check("priority: A/A repeats only after stage two is complete",
+      run.plan_order(CFG, "gptoss", main_done=True, stage2_done=True) == ["aa"])
+check("priority: an arm without stage two or repeats stops after the main conditions",
+      run.plan_order(CFG, "llama", main_done=True, stage2_done=True) == [])
+
 base = design.user_prompt(PROMPTS, "graph neural networks", "AA1", "BASE")
 check("prompt: BASE is the study's request unchanged",
       base == PROMPTS["base"].format(topic="graph neural networks") and "Accuracy" not in base)
@@ -130,6 +147,64 @@ made2, why2 = run.collect(CFG, PROMPTS, "gptoss", m, limited, out2, 1e18)
 check("collect: daily limit stops cleanly, keeps finished rows", made2 == 0 and why2.startswith("daily limit")
       and len(run.read_jsonl(out2)) == 3)
 check("collect: deadline stops before calling", run.collect(CFG, PROMPTS, "gptoss", m, fake, tmp / "g3.jsonl", 0)[1] == "time")
+
+# ---------- retries and attempt log (FREEZE section 6) ----------
+class Seq:
+    """Returns or raises the given outcomes in order."""
+    def __init__(self, outcomes):
+        self.outcomes, self.n = list(outcomes), 0
+    def __call__(self, *a):
+        o = self.outcomes[min(self.n, len(self.outcomes) - 1)]
+        self.n += 1
+        if isinstance(o, Exception):
+            raise o
+        return o
+
+OK = {"text": "4. Real Paper A", "usage": {}, "finish": "stop"}
+one = [x for x in m if x["arm"] == "gptoss"][:1]
+three = [x for x in m if x["arm"] == "gptoss"][:5]
+nosleep = lambda s: None
+
+out_r = tmp / "retry.jsonl"; log_r = tmp / "retry_attempts.jsonl"
+made_r, _ = run.collect(CFG, PROMPTS, "gptoss", one, Seq([llm.Transient("timeout"), llm.Transient("HTTP 503"), OK]),
+                        out_r, 1e18, sleep=nosleep, attempts_log=log_r)
+att = run.read_jsonl(log_r)
+check("retry: transient errors retried, then the reply is saved", made_r == 1 and len(run.read_jsonl(out_r)) == 1)
+check("retry: every attempt logged with time and outcome",
+      [a["outcome"] for a in att] == ["timeout", "HTTP 503", "ok"] and all(a.get("utc") and a["id"] == one[0]["id"] for a in att))
+
+out_f = tmp / "fail.jsonl"; log_f = tmp / "fail_attempts.jsonl"
+seq = Seq([llm.Transient("timeout")] * 4 + [OK] * 10)
+made_f, why_f = run.collect(CFG, PROMPTS, "gptoss", three[:2], seq, out_f, 1e18, sleep=nosleep, attempts_log=log_f)
+att = run.read_jsonl(log_f)
+check("retry: at most 3 retries (4 attempts), then logged as failed and skipped",
+      [a["outcome"] for a in att][:5] == ["timeout"] * 4 + ["failed"] and seq.n == 5)
+check("retry: a failed call is not saved as data; the next item still runs",
+      [r["id"] for r in run.read_jsonl(out_f)] == [three[1]["id"]] and made_f == 1)
+made_again, _ = run.collect(CFG, PROMPTS, "gptoss", three[:2], Seq([OK]), out_f, 1e18, sleep=nosleep, attempts_log=log_f)
+check("retry: the failed call is picked up by the next run", made_again == 1 and len(run.read_jsonl(out_f)) == 2)
+
+out_s = tmp / "stop.jsonl"
+made_s, why_s = run.collect(CFG, PROMPTS, "gptoss", three, Seq([llm.Transient("HTTP 502")]), out_s, 1e18,
+                            sleep=nosleep, attempts_log=tmp / "stop_attempts.jsonl")
+check("retry: three failed calls in a row stop the run (service down)", made_s == 0 and why_s.startswith("stopped"))
+
+waits = []
+run.collect(CFG, PROMPTS, "gptoss", one, Seq([llm.Transient("HTTP 429", wait=7.0), OK]), tmp / "w.jsonl", 1e18,
+            sleep=waits.append, attempts_log=tmp / "w_attempts.jsonl")
+check("retry: a short rate-limit waits as long as Groq asks", waits == [7.0])
+
+made_d, why_d = run.collect(CFG, PROMPTS, "gptoss", one, Seq([llm.DailyLimit("quota")]), tmp / "d.jsonl", 1e18,
+                            sleep=nosleep, attempts_log=tmp / "d_attempts.jsonl")
+check("retry: daily quota is not retried; it stops the run and is logged",
+      why_d.startswith("daily limit") and run.read_jsonl(tmp / "d_attempts.jsonl")[0]["outcome"].startswith("daily limit"))
+try:
+    run.collect(CFG, PROMPTS, "gptoss", one, Seq([ValueError("HTTP 401 bad key")]), tmp / "x.jsonl", 1e18,
+                sleep=nosleep, attempts_log=tmp / "x_attempts.jsonl")
+    check("retry: other errors (bad key, bad request) are not retried and stop the run", False)
+except ValueError:
+    check("retry: other errors (bad key, bad request) are not retried and stop the run",
+          run.read_jsonl(tmp / "x_attempts.jsonl")[0]["outcome"].startswith("error"))
 
 # ---------- labeller ----------
 s2_calls = []

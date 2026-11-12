@@ -5,7 +5,9 @@ Conditions (every one includes the accuracy line):
   P<10 archival notice + "fewer if unsure"  A<10 audit notice + "fewer if unsure"
   BASE the MSc study's prompt with nothing added (fresh A/A repeatability runs)
 Order: topic x notice-pair blocks are shuffled; inside a block the four conditions are shuffled. So any day's
-collection holds complete blocks, never one condition per day.
+collection holds complete blocks, never one condition per day. Both notice wordings are main items.
+Priority (FREEZE section 5): all main blocks first; the A/A repeats come last, so a quota shortfall drops them
+first. Stage two runs between the two (see run.plan_order).
 """
 import hashlib
 import json
@@ -36,9 +38,11 @@ def manifest(cfg, topics):
     out = []
     for arm in sorted(cfg["arms"]):
         spec = cfg["arms"][arm]
-        blocks = [(t["topic"], p) for t in topics for p in spec["pairs"]]
-        blocks += [(t["topic"], f"AA{k}") for t in topics for k in range(1, spec["aa_runs"] + 1)]
-        rng.shuffle(blocks)
+        main = [(t["topic"], p) for t in topics for p in spec["pairs"]]
+        repeats = [(t["topic"], f"AA{k}") for t in topics for k in range(1, spec["aa_runs"] + 1)]
+        rng.shuffle(main)
+        rng.shuffle(repeats)
+        blocks = main + repeats
         for topic, pair in blocks:
             if pair.startswith("AA"):
                 conds = ["BASE"]
