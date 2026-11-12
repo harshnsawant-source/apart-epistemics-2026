@@ -61,7 +61,7 @@ Labels: audit about 200 outputs blind to condition, stratified by condition, mat
 - Knecht et al. 2026 (arXiv 2605.05835); Mehta 2026 (arXiv 2601.00830); Zhao et al. 2026 (arXiv 2603.07287);
   Agrawal et al. 2024 (EACL Findings); Goyal, WASP 2026.
 Do not call it "the Hawthorne effect in LLMs" as a claim. It measures a response to an instruction.
-Harsh should read these himself; the summaries came from Astra's search and were not checked against full text.
+All six were checked against their real records and text on 13 Nov 2026: see REFERENCES-verified.md. Harsh should still read Ahmed (sections 4.4 and 7.2.2) and Agrawal himself.
 
 ## What exists in this folder (commit c649be2, local only)
 - `src/common.py`, `src/parse.py`, `src/collect.py`, `src/recheck.py`, `src/analyze.py`, `src/sample.py`,
