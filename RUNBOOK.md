@@ -12,8 +12,9 @@ going while you travel on Saturday. Llama runs on the laptop on Friday night.
    `prompts.json` and set `"prompts": "prompts.json"` in `config.json`.
 
 ## Friday after the 19:45 logistics talk
-4. Commit and push FREEZE.md, prompts.json and config.json. This is the plan's timestamp.
-5. Start the first cloud run now instead of waiting for the hour:  `gh workflow run collect`
+4. (Done 13 Nov, 03:15 IST) FREEZE.md, prompts.json and config.json committed and pushed before kickoff.
+   The runner cannot collect before 19:45 IST; the first hourly run after that (20:37 IST) starts by itself.
+5. To start sooner, right after the talk:  `gh workflow run collect`
    Check it in the repo's Actions tab: the log should show new generation calls and "labels: N titles still
    unlabelled". If Semantic Scholar blocks GitHub's servers, labels stay unlabelled; the laptop can label on Sunday.
 6. On the laptop (Ollama running):  `python src/run.py --arm llama --minutes 240 --no-verify`  (about 1 hour,

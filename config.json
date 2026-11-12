@@ -1,9 +1,10 @@
 {
-  "_note": "DRAFT until FREEZE.md is committed. After the first study reply, change nothing here; log changes in DEVIATIONS.md.",
+  "_note": "FROZEN 13 Nov 2026 with FREEZE.md. Change nothing here after the first study reply; log changes in DEVIATIONS.md.",
   "topics": "data/preexisting/topics_40.json",
   "s2_cache_preexisting": "data/preexisting/s2_lookup_cache.json",
   "collect_not_before_utc": "2026-11-13T14:15:00Z",
-  "prompts": "prompts.DRAFT.json",
+  "collect_cutoff_utc": "2026-11-15T12:30:00Z",
+  "prompts": "prompts.json",
   "temperature": 0.8,
   "max_completion_tokens": 2000,
   "base_seed": 1001,

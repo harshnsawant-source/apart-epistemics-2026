@@ -350,5 +350,14 @@ res_n = analysis.analyse(cfg2, {"gptoss": rows}, lo)
 check("audit: without audit data the corrected result is absent, not invented",
       res_n["arms"]["gptoss"]["primary_U_corrected"] is None)
 
+# ---------- collection window (FREEZE section 6) ----------
+from datetime import datetime, timezone
+at = lambda iso: datetime.fromisoformat(iso).replace(tzinfo=timezone.utc)
+check("window: closed before the sprint kickoff", run.collection_open(CFG, at("2026-11-13T14:14:59"))[0] is False)
+check("window: open after kickoff", run.collection_open(CFG, at("2026-11-13T14:15:00"))[0] is True)
+check("window: closed after the cutoff, Sunday 18:00 IST", CFG["collect_cutoff_utc"] == "2026-11-15T12:30:00Z"
+      and run.collection_open(CFG, at("2026-11-15T12:30:00"))[0] is False
+      and run.collection_open(CFG, at("2026-11-15T12:29:59"))[0] is True)
+
 print(f"\n{'RED' if FAILS else 'GREEN'}: {len(FAILS)} failing")
 sys.exit(1 if FAILS else 0)

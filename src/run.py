@@ -194,6 +194,18 @@ def stage2(cfg, prompts, arm, labeller, call, deadline):
     return made, "done"
 
 
+def collection_open(cfg, when):
+    """FREEZE section 6: collect only between the sprint kickoff and the cutoff (Sunday 18:00 IST).
+    Labelling and analysis may continue after the cutoff; new model calls may not."""
+    start = datetime.fromisoformat(cfg["collect_not_before_utc"].replace("Z", "+00:00"))
+    end = datetime.fromisoformat(cfg["collect_cutoff_utc"].replace("Z", "+00:00"))
+    if when < start:
+        return False, f"before the sprint kickoff ({cfg['collect_not_before_utc']})"
+    if when >= end:
+        return False, f"after the collection cutoff ({cfg['collect_cutoff_utc']}); remaining calls are reported as missing"
+    return True, ""
+
+
 def plan_order(cfg, arm, main_done, stage2_done):
     """FREEZE section 5: main conditions, then stage two, then A/A repeats (dropped first if quota runs short)."""
     spec = cfg["arms"][arm]
@@ -241,9 +253,7 @@ def main():
         return
 
     design.guard(cfg)
-    start = datetime.fromisoformat(cfg["collect_not_before_utc"].replace("Z", "+00:00"))
-    if datetime.now(timezone.utc) < start:
-        raise SystemExit(f"Refusing to run: study collection starts after {cfg['collect_not_before_utc']} (sprint kickoff).")
+    is_open, why_closed = collection_open(cfg, datetime.now(timezone.utc))
     topics = design.load_json(cfg["topics"])["topics"]
     items = [it for it in design.manifest(cfg, topics) if it["arm"] == a.arm]
     main_items = [it for it in items if it["condition"] != "BASE"]
@@ -260,6 +270,12 @@ def main():
             print(f"{a.arm}: all phases complete")
             break
         phase = phases[0]
+        if not is_open:
+            print(f"collection closed: {why_closed}")
+            if labeller is not None:
+                rows = [r for arm in cfg["arms"] for r in read_jsonl(gen_path(arm))]
+                print(f"labels: {label_all(labeller, rows, deadline)} titles still unlabelled")
+            break
         if phase == "main":
             made, why = collect(cfg, prompts, a.arm, main_items, call, gen_path(a.arm), deadline, a.limit)
         elif phase == "stage2":
