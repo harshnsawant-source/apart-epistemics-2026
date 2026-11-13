@@ -62,3 +62,19 @@ They used most of the day's gpt-oss quota.
 Fix: each model's results are now saved (git add -A) and pushed as soon as it finishes, and again if a run is
 cancelled or times out; a failed save is reported. The same calls are collected again with the same seeds and order.
 Verified on run 3: gpt-oss 12, Qwen 64 and Nemotron 81 replies saved and pushed.
+
+## 3b. Second-look sources changed to Crossref and arXiv (Sat 14 Nov 2026, about 00:20 IST)
+
+What: titles are checked on Crossref and arXiv (arXiv's own search API, at most one request every 3.1 s, as arXiv
+asks). OpenAlex is dropped. The 41 titles labelled earlier with Crossref and OpenAlex were cleared and are checked
+again with the new sources, so every title is labelled the same way.
+
+Why: OpenAlex now prices each search (its response headers show 1,000 credits per day without a paid key and 10
+credits per search, so about 100 searches a day); from about 23:00 IST it returned "429 too many requests", so no
+title could be labelled. DBLP was tested next, but its API sits behind a bot check and cannot be used by a script.
+arXiv was tested on 8 titles: it found real arXiv papers that Crossref misses (for example Grokking and Toy Models
+of Superposition) and did not match an invented title. Decided by Claude under Harsh's standing instruction to take
+the best option when he is away, and reported to him.
+
+Effect: same as deviation 3. Known blind spot: papers published only on the web (for example Anthropic's
+Transformer Circuits posts) are found by none of the sources; the hand audit measures this.

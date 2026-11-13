@@ -404,5 +404,28 @@ rows_dup = [{"id": "x", "utc": "2026-11-13T17:05:00", "v": 2}, {"id": "x", "utc"
 kept = sorted(run._first_per_id(rows_dup), key=lambda r: r["id"])
 check("dedupe: a call collected twice keeps the earlier reply", [r["v"] for r in kept] == [1, 3])
 
+import recheck as _rc
+check("dev3b: the second look uses Crossref and arXiv", set(_rc.SOURCES) == {"crossref", "arxiv"})
+_waits = []
+_rc._ARXIV_LAST[0] = 99.0
+_orig = _rc.urllib.request.urlopen
+
+
+class _R:
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        return False
+
+    def read(self):
+        return b'<feed xmlns="http://www.w3.org/2005/Atom"><entry><title>Graph  Attention Networks</title></entry></feed>'
+
+
+_rc.urllib.request.urlopen = lambda *a, **k: _R()
+got = _rc.arxiv("Graph Attention Networks", _sleep=_waits.append, _now=lambda: 100.0)
+_rc.urllib.request.urlopen = _orig
+check("dev3b: arXiv calls are spaced at least 3.1 s apart", abs(_waits[0] - 2.1) < 1e-9 and got == ["Graph Attention Networks"])
+
 print(f"\n{'RED' if FAILS else 'GREEN'}: {len(FAILS)} failing")
 sys.exit(1 if FAILS else 0)

@@ -1,11 +1,14 @@
-"""Second look at sampled titles the study's verifier did not match: search Crossref and OpenAlex.
+"""Second look at titles: search Crossref and arXiv (deviation 3; OpenAlex dropped, see DEVIATIONS.md).
 
 A hit (similarity >= threshold) means a similar title is indexed elsewhere. No hit means UNRESOLVED,
 never "does not exist". Run during the sprint: python src/recheck.py -> data/recheck.json
 """
 import json
+import re
 import sys
+import threading
 import time
+import xml.etree.ElementTree as ET
 import urllib.parse
 import urllib.request
 from collections import Counter
@@ -45,7 +48,27 @@ def openalex(title):
     return [w.get("display_name") for w in d["results"]]
 
 
-SOURCES = {"crossref": crossref, "openalex": openalex}
+_ARXIV_LOCK = threading.Lock()
+_ARXIV_LAST = [0.0]
+ARXIV_GAP = 3.1          # arXiv asks for at most one request every 3 seconds; enforced across all threads
+
+
+def arxiv(title, _sleep=time.sleep, _now=time.monotonic):
+    with _ARXIV_LOCK:
+        wait = ARXIV_GAP - (_now() - _ARXIV_LAST[0])
+        if wait > 0:
+            _sleep(wait)
+        _ARXIV_LAST[0] = _now()
+        phrase = " ".join(re.findall(r"[A-Za-z0-9]+", title))
+        url = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode(
+            {"search_query": f'ti:"{phrase}"', "max_results": 10})
+        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+            root = ET.fromstring(r.read())
+    ns = "{http://www.w3.org/2005/Atom}"
+    return [" ".join((e.findtext(ns + "title") or "").split()) for e in root.findall(ns + "entry")]
+
+
+SOURCES = {"crossref": crossref, "arxiv": arxiv}
 
 
 def classify(per_source, threshold):
