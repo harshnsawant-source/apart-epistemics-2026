@@ -46,6 +46,26 @@
       ],
       "aa_runs": 0,
       "stage2": false
+    },
+    "nemotron": {
+      "backend": "nim",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "pairs": [
+        "1"
+      ],
+      "aa_runs": 0,
+      "stage2": false,
+      "extra": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      }
     }
-  }
+  },
+  "arm_order": [
+    "gptoss",
+    "llama",
+    "qwen",
+    "nemotron"
+  ]
 }

@@ -23,18 +23,26 @@ class Transient(Exception):
         self.wait = wait
 
 
-def _groq_key():
-    key = os.environ.get("GROQ_API_KEY")
+def _key(name="GROQ_API_KEY"):
+    key = os.environ.get(name)
     if not key and os.name == "nt":
         import winreg
         try:
             with winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Environment") as k:
-                key = winreg.QueryValueEx(k, "GROQ_API_KEY")[0]
+                key = winreg.QueryValueEx(k, name)[0]
         except OSError:
             key = None
     if not key:
-        raise RuntimeError("GROQ_API_KEY not set")
+        raise RuntimeError(f"{name} not set")
     return key
+
+
+def _groq_key():
+    return _key("GROQ_API_KEY")
+
+
+ENDPOINTS = {"groq": ("https://api.groq.com/openai/v1/chat/completions", "GROQ_API_KEY"),
+             "nim": ("https://integrate.api.nvidia.com/v1/chat/completions", "NVIDIA_API_KEY")}
 
 
 def _wait_seconds(headers):
@@ -56,12 +64,22 @@ def _wait_seconds(headers):
 
 
 def groq(model, messages, temperature, seed, max_tokens, **extra):
+    return _openai_compatible("groq", model, messages, temperature, seed, max_tokens, **extra)
+
+
+def nim(model, messages, temperature, seed, max_tokens, **extra):
+    return _openai_compatible("nim", model, messages, temperature, seed, max_tokens, **extra)
+
+
+def _openai_compatible(service, model, messages, temperature, seed, max_tokens, **extra):
+    url, key_name = ENDPOINTS[service]
+    limit_key = "max_completion_tokens" if service == "groq" else "max_tokens"
     body = json.dumps(dict({"model": model, "messages": messages, "temperature": temperature, "seed": seed,
-                            "max_completion_tokens": max_tokens}, **extra)).encode()
+                            limit_key: max_tokens}, **extra)).encode()
     # One attempt only. Retrying is done by run.attempt, so every attempt can be logged.
-    req = urllib.request.Request("https://api.groq.com/openai/v1/chat/completions", data=body,
+    req = urllib.request.Request(url, data=body,
                                  headers={"Content-Type": "application/json", "User-Agent": "audit-study/1.0",
-                                          "Authorization": f"Bearer {_groq_key()}"})
+                                          "Authorization": f"Bearer {_key(key_name)}"})
     try:
         with urllib.request.urlopen(req, timeout=300) as r:
             d = json.load(r)
@@ -77,7 +95,7 @@ def groq(model, messages, temperature, seed, max_tokens, **extra):
     except (urllib.error.URLError, TimeoutError, ConnectionError, OSError) as e:
         raise Transient(type(e).__name__)
     m = d["choices"][0]["message"]
-    return {"text": m.get("content") or "", "reasoning_chars": len(m.get("reasoning") or ""),
+    return {"text": m.get("content") or "", "reasoning_chars": len(m.get("reasoning") or m.get("reasoning_content") or ""),
             "usage": d.get("usage") or {}, "model_used": d.get("model"),
             "finish": d["choices"][0].get("finish_reason")}
 
@@ -101,4 +119,4 @@ def ollama(model, messages, temperature, seed, max_tokens, **extra):
             "model_used": d.get("model"), "finish": d.get("done_reason")}
 
 
-BACKENDS = {"groq": groq, "ollama": ollama}
+BACKENDS = {"groq": groq, "nim": nim, "ollama": ollama}

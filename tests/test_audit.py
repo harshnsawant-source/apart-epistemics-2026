@@ -111,6 +111,9 @@ check("lists: empty reply -> nothing", lists.scored_titles("")[0] == [] and list
 check("lists: numbered items keep their numbers", lists.numbered_items(txt)[0] == (4, "Graph Attention Networks"))
 
 # ---------- llm ----------
+check("llm: NVIDIA endpoint uses its own key name",
+      llm.ENDPOINTS["nim"] == ("https://integrate.api.nvidia.com/v1/chat/completions", "NVIDIA_API_KEY")
+      and "nim" in llm.BACKENDS)
 check("llm: Groq wait '1m26.4s' parsed", abs(llm._wait_seconds({"x-ratelimit-reset-requests": "1m26.4s"}) - 86.4) < 1e-6)
 check("llm: retry-after seconds parsed", llm._wait_seconds({"retry-after": "7"}) == 7.0)
 

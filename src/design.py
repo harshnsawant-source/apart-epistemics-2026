@@ -36,7 +36,9 @@ def call_seed(base_seed, *parts):
 def manifest(cfg, topics):
     rng = random.Random(cfg["order_seed"])
     out = []
-    for arm in sorted(cfg["arms"]):
+    # Arms added after the freeze go last, so the frozen arms keep their exact call order.
+    order = cfg.get("arm_order") or sorted(cfg["arms"])
+    for arm in order:
         spec = cfg["arms"][arm]
         main = [(t["topic"], p) for t in topics for p in spec["pairs"]]
         repeats = [(t["topic"], f"AA{k}") for t in topics for k in range(1, spec["aa_runs"] + 1)]

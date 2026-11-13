@@ -1,0 +1,5 @@
+{"id": "smoke|nemotron|protein structure prediction|P10", "attempt": 1, "utc": "2026-11-13T14:25:02+00:00", "outcome": "ok"}
+{"id": "smoke|nemotron|protein structure prediction|A10", "attempt": 1, "utc": "2026-11-13T14:25:44+00:00", "outcome": "ok"}
+{"id": "smoke|nemotron|protein structure prediction|P<10", "attempt": 1, "utc": "2026-11-13T14:26:38+00:00", "outcome": "ok"}
+{"id": "smoke|nemotron|protein structure prediction|A<10", "attempt": 1, "utc": "2026-11-13T14:27:46+00:00", "outcome": "ok"}
+{"id": "smoke|nemotron|protein structure prediction|BASE", "attempt": 1, "utc": "2026-11-13T14:27:56+00:00", "outcome": "ok"}
