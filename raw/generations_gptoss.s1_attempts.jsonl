@@ -194,3 +194,37 @@
 {"id": "gptoss|retrieval head attention|1|P<10", "attempt": 2, "utc": "2026-11-13T21:26:24+00:00", "outcome": "ok"}
 {"id": "gptoss|speech recognition|1|P<10", "attempt": 1, "utc": "2026-11-13T21:26:24+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|speech recognition|1|P<10", "attempt": 2, "utc": "2026-11-13T21:30:27+00:00", "outcome": "ok"}
+{"id": "gptoss|speech recognition|1|A<10", "attempt": 1, "utc": "2026-11-13T21:30:47+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speech recognition|1|A<10", "attempt": 2, "utc": "2026-11-13T21:31:56+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speech recognition|1|A<10", "attempt": 3, "utc": "2026-11-13T21:33:09+00:00", "outcome": "ok"}
+{"id": "gptoss|sharpness aware minimization|2|A10", "attempt": 1, "utc": "2026-11-13T21:33:09+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|sharpness aware minimization|2|A10", "attempt": 2, "utc": "2026-11-13T21:35:12+00:00", "outcome": "ok"}
+{"id": "gptoss|sharpness aware minimization|2|P<10", "attempt": 1, "utc": "2026-11-13T21:35:12+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|sharpness aware minimization|2|P<10", "attempt": 2, "utc": "2026-11-13T21:38:05+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|sharpness aware minimization|2|P<10", "attempt": 3, "utc": "2026-11-13T21:39:11+00:00", "outcome": "ok"}
+{"id": "gptoss|sparse autoencoders for interpretability|2|P10", "attempt": 1, "utc": "2026-11-13T21:39:11+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|sparse autoencoders for interpretability|2|P10", "attempt": 2, "utc": "2026-11-13T21:41:21+00:00", "outcome": "ok"}
+{"id": "gptoss|sparse autoencoders for interpretability|2|P<10", "attempt": 1, "utc": "2026-11-13T21:41:21+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|sparse autoencoders for interpretability|2|P<10", "attempt": 2, "utc": "2026-11-13T21:45:56+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|sparse autoencoders for interpretability|2|P<10", "attempt": 3, "utc": "2026-11-13T21:45:59+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|sparse autoencoders for interpretability|2|P<10", "attempt": 4, "utc": "2026-11-13T21:46:16+00:00", "outcome": "ok"}
+{"id": "gptoss|graph neural networks|2|P10", "attempt": 1, "utc": "2026-11-13T21:46:16+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|graph neural networks|2|P10", "attempt": 2, "utc": "2026-11-13T21:49:24+00:00", "outcome": "ok"}
+{"id": "gptoss|graph neural networks|2|A<10", "attempt": 1, "utc": "2026-11-13T21:49:24+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|graph neural networks|2|A<10", "attempt": 2, "utc": "2026-11-13T21:53:00+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|graph neural networks|2|A<10", "attempt": 3, "utc": "2026-11-13T21:53:08+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|graph neural networks|2|A<10", "attempt": 4, "utc": "2026-11-13T21:53:21+00:00", "outcome": "ok"}
+{"id": "gptoss|contrastive learning|1|P10", "attempt": 1, "utc": "2026-11-13T21:53:21+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|contrastive learning|1|P10", "attempt": 2, "utc": "2026-11-13T21:56:58+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|contrastive learning|1|P10", "attempt": 3, "utc": "2026-11-13T21:58:52+00:00", "outcome": "ok"}
+{"id": "gptoss|contrastive learning|1|P<10", "attempt": 1, "utc": "2026-11-13T21:58:53+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|contrastive learning|1|P<10", "attempt": 2, "utc": "2026-11-13T22:01:00+00:00", "outcome": "ok"}
+{"id": "gptoss|recommender systems|2|A10", "attempt": 1, "utc": "2026-11-13T22:01:00+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|recommender systems|2|A10", "attempt": 2, "utc": "2026-11-13T22:06:06+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|recommender systems|2|A10", "attempt": 3, "utc": "2026-11-13T22:06:12+00:00", "outcome": "ok"}
+{"id": "gptoss|recommender systems|2|P10", "attempt": 1, "utc": "2026-11-13T22:06:12+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|recommender systems|2|P10", "attempt": 2, "utc": "2026-11-13T22:07:31+00:00", "outcome": "ok"}
+{"id": "gptoss|neural tangent kernel|2|A10", "attempt": 1, "utc": "2026-11-13T22:07:31+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural tangent kernel|2|A10", "attempt": 2, "utc": "2026-11-13T22:20:07+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural tangent kernel|2|A10", "attempt": 3, "utc": "2026-11-13T22:20:16+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural tangent kernel|2|A10", "attempt": 4, "utc": "2026-11-13T22:22:55+00:00", "outcome": "ok"}
