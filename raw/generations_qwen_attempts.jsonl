@@ -180,3 +180,49 @@
 {"id": "qwen|lottery ticket hypothesis|1|P10", "attempt": 1, "utc": "2026-11-13T16:36:54+00:00", "outcome": "HTTP 429"}
 {"id": "qwen|lottery ticket hypothesis|1|P10", "attempt": 2, "utc": "2026-11-13T16:37:39+00:00", "outcome": "HTTP 429"}
 {"id": "qwen|lottery ticket hypothesis|1|P10", "attempt": 3, "utc": "2026-11-13T16:38:41+00:00", "outcome": "ok"}
+{"id": "qwen|lottery ticket hypothesis|1|A<10", "attempt": 1, "utc": "2026-11-13T17:02:57+00:00", "outcome": "ok"}
+{"id": "qwen|neural tangent kernel|1|A10", "attempt": 1, "utc": "2026-11-13T17:02:58+00:00", "outcome": "ok"}
+{"id": "qwen|neural tangent kernel|1|A<10", "attempt": 1, "utc": "2026-11-13T17:02:59+00:00", "outcome": "ok"}
+{"id": "qwen|neural tangent kernel|1|P<10", "attempt": 1, "utc": "2026-11-13T17:02:59+00:00", "outcome": "ok"}
+{"id": "qwen|neural tangent kernel|1|P10", "attempt": 1, "utc": "2026-11-13T17:03:00+00:00", "outcome": "ok"}
+{"id": "qwen|sharpness aware minimization|1|A<10", "attempt": 1, "utc": "2026-11-13T17:03:00+00:00", "outcome": "ok"}
+{"id": "qwen|sharpness aware minimization|1|P<10", "attempt": 1, "utc": "2026-11-13T17:03:00+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|sharpness aware minimization|1|P<10", "attempt": 2, "utc": "2026-11-13T17:03:29+00:00", "outcome": "ok"}
+{"id": "qwen|sharpness aware minimization|1|A10", "attempt": 1, "utc": "2026-11-13T17:03:30+00:00", "outcome": "ok"}
+{"id": "qwen|sharpness aware minimization|1|P10", "attempt": 1, "utc": "2026-11-13T17:03:30+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|sharpness aware minimization|1|P10", "attempt": 2, "utc": "2026-11-13T17:04:01+00:00", "outcome": "ok"}
+{"id": "qwen|quantization aware training|1|A<10", "attempt": 1, "utc": "2026-11-13T17:04:02+00:00", "outcome": "ok"}
+{"id": "qwen|quantization aware training|1|P10", "attempt": 1, "utc": "2026-11-13T17:04:05+00:00", "outcome": "ok"}
+{"id": "qwen|quantization aware training|1|P<10", "attempt": 1, "utc": "2026-11-13T17:04:06+00:00", "outcome": "ok"}
+{"id": "qwen|quantization aware training|1|A10", "attempt": 1, "utc": "2026-11-13T17:04:07+00:00", "outcome": "ok"}
+{"id": "qwen|speculative decoding|1|A10", "attempt": 1, "utc": "2026-11-13T17:04:07+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|speculative decoding|1|A10", "attempt": 2, "utc": "2026-11-13T17:04:19+00:00", "outcome": "ok"}
+{"id": "qwen|speculative decoding|1|A<10", "attempt": 1, "utc": "2026-11-13T17:04:19+00:00", "outcome": "ok"}
+{"id": "qwen|speculative decoding|1|P10", "attempt": 1, "utc": "2026-11-13T17:04:20+00:00", "outcome": "ok"}
+{"id": "qwen|speculative decoding|1|P<10", "attempt": 1, "utc": "2026-11-13T17:04:23+00:00", "outcome": "ok"}
+{"id": "qwen|circuit discovery in transformers|1|A<10", "attempt": 1, "utc": "2026-11-13T17:04:23+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|circuit discovery in transformers|1|A<10", "attempt": 2, "utc": "2026-11-13T17:04:31+00:00", "outcome": "ok"}
+{"id": "qwen|circuit discovery in transformers|1|P10", "attempt": 1, "utc": "2026-11-13T17:04:31+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|circuit discovery in transformers|1|P10", "attempt": 2, "utc": "2026-11-13T17:05:22+00:00", "outcome": "ok"}
+{"id": "qwen|circuit discovery in transformers|1|P<10", "attempt": 1, "utc": "2026-11-13T17:05:23+00:00", "outcome": "ok"}
+{"id": "qwen|circuit discovery in transformers|1|A10", "attempt": 1, "utc": "2026-11-13T17:05:26+00:00", "outcome": "ok"}
+{"id": "qwen|influence functions for language models|1|A10", "attempt": 1, "utc": "2026-11-13T17:05:26+00:00", "outcome": "ok"}
+{"id": "qwen|influence functions for language models|1|P10", "attempt": 1, "utc": "2026-11-13T17:05:34+00:00", "outcome": "ok"}
+{"id": "qwen|influence functions for language models|1|P<10", "attempt": 1, "utc": "2026-11-13T17:05:34+00:00", "outcome": "ok"}
+{"id": "qwen|influence functions for language models|1|A<10", "attempt": 1, "utc": "2026-11-13T17:05:35+00:00", "outcome": "ok"}
+{"id": "qwen|differential privacy|1|A10", "attempt": 1, "utc": "2026-11-13T17:05:37+00:00", "outcome": "ok"}
+{"id": "qwen|differential privacy|1|P<10", "attempt": 1, "utc": "2026-11-13T17:05:37+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|differential privacy|1|P<10", "attempt": 2, "utc": "2026-11-13T17:05:45+00:00", "outcome": "ok"}
+{"id": "qwen|differential privacy|1|P10", "attempt": 1, "utc": "2026-11-13T17:05:46+00:00", "outcome": "ok"}
+{"id": "qwen|differential privacy|1|A<10", "attempt": 1, "utc": "2026-11-13T17:05:46+00:00", "outcome": "ok"}
+{"id": "qwen|weight agnostic neural networks|1|P<10", "attempt": 1, "utc": "2026-11-13T17:05:46+00:00", "outcome": "ok"}
+{"id": "qwen|weight agnostic neural networks|1|P10", "attempt": 1, "utc": "2026-11-13T17:05:47+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|weight agnostic neural networks|1|P10", "attempt": 2, "utc": "2026-11-13T17:06:05+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|weight agnostic neural networks|1|P10", "attempt": 3, "utc": "2026-11-13T17:06:30+00:00", "outcome": "ok"}
+{"id": "qwen|weight agnostic neural networks|1|A10", "attempt": 1, "utc": "2026-11-13T17:06:31+00:00", "outcome": "ok"}
+{"id": "qwen|weight agnostic neural networks|1|A<10", "attempt": 1, "utc": "2026-11-13T17:06:32+00:00", "outcome": "ok"}
+{"id": "qwen|mixture of experts|1|A<10", "attempt": 1, "utc": "2026-11-13T17:06:32+00:00", "outcome": "ok"}
+{"id": "qwen|mixture of experts|1|A10", "attempt": 1, "utc": "2026-11-13T17:06:33+00:00", "outcome": "ok"}
+{"id": "qwen|mixture of experts|1|P<10", "attempt": 1, "utc": "2026-11-13T17:06:33+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|mixture of experts|1|P<10", "attempt": 2, "utc": "2026-11-13T17:07:07+00:00", "outcome": "ok"}
+{"id": "qwen|mixture of experts|1|P10", "attempt": 1, "utc": "2026-11-13T17:07:07+00:00", "outcome": "ok"}
