@@ -133,6 +133,36 @@ def label_all(labeller, rows, deadline, max_failures_in_row=5):
     return left
 
 
+def label_parallel(labeller, rows, deadline, workers=4):
+    """Deviation 3: label every unlabelled title, Crossref and OpenAlex looked up in parallel threads.
+    Results are stored by the main thread only. Returns how many titles are still unlabelled."""
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    from verify import second_look
+    todo = list(dict.fromkeys(t for r in rows for t in r["titles"] if labeller.label(t, lookup=False)[0] is None))
+    done = 0
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futures = {}
+        it = iter(todo)
+        for t in it:
+            if len(futures) >= workers * 2:
+                break
+            futures[ex.submit(second_look, t, labeller.sources)] = t
+        while futures:
+            for f in as_completed(list(futures)):
+                t = futures.pop(f)
+                if labeller.store_second_look(t, f.result(), save=False):
+                    done += 1
+                if done % 25 == 0:
+                    labeller._save()
+                if time.time() < deadline:
+                    nxt = next(it, None)
+                    if nxt is not None:
+                        futures[ex.submit(second_look, nxt, labeller.sources)] = nxt
+                break
+    labeller._save()
+    return sum(1 for t in todo if labeller.label(t, lookup=False)[0] is None)
+
+
 def stage2_messages(prompts, row, branch, labeller):
     """None if any item 4-13 is not labelled yet."""
     s = prompts["stage2"]
@@ -233,6 +263,7 @@ def main():
     ap.add_argument("--minutes", type=float, default=45)
     ap.add_argument("--limit", type=int)
     ap.add_argument("--no-verify", action="store_true")
+    ap.add_argument("--label", action="store_true", help="only label titles (Crossref and OpenAlex, in parallel)")
     ap.add_argument("--no-lookup", action="store_true",
                     help="use cached labels only (stage two still runs on titles already labelled)")
     ap.add_argument("--smoke", type=int, help="N calls per condition on non-study topics; writes raw/smoke_<arm>.jsonl")
@@ -255,6 +286,11 @@ def main():
         return
 
     design.guard(cfg)
+    if a.label:
+        lab = Labeller(cfg)
+        rows = [r for arm in cfg["arms"] for r in read_jsonl(gen_path(arm))]
+        print(f"labels: {label_parallel(lab, rows, deadline)} titles still unlabelled")
+        return
     is_open, why_closed = collection_open(cfg, datetime.now(timezone.utc))
     topics = design.load_json(cfg["topics"])["topics"]
     items = [it for it in design.manifest(cfg, topics) if it["arm"] == a.arm]

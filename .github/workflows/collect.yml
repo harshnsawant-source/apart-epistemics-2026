@@ -15,6 +15,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   run:
@@ -46,12 +47,14 @@ jobs:
             done
             echo "SAVE FAILED ($1)"; return 1
           }
-          python src/run.py --arm gptoss --minutes 26 --no-lookup || true
+          python src/run.py --arm gptoss --minutes 22 --no-lookup || true
           save gptoss
           python src/run.py --arm qwen --minutes 8 --no-lookup || true
           save qwen
           if [ -n "$NVIDIA_API_KEY" ]; then python src/run.py --arm nemotron --minutes 8 --no-lookup || true; fi
           save nemotron
+          python src/run.py --label --minutes 9 || true
+          save labels
       - name: Save anything left (also runs if the job is cancelled or times out)
         if: always()
         run: |
@@ -62,3 +65,11 @@ jobs:
           git commit -q -m "collect: final save $(date -u +%Y-%m-%dT%H:%MZ)"
           for i in 1 2 3 4 5; do git pull -q --rebase && git push -q && echo "SAVE: pushed" && exit 0; sleep 10; done
           echo "SAVE FAILED"; exit 1
+      - name: Start the next run while collection is unfinished
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          state=$(python tools/status.py | tail -1)
+          python tools/status.py | head -1
+          if [ "$state" = "MORE" ]; then gh workflow run collect.yml --ref master && echo "NEXT RUN QUEUED"; else echo "COLLECTION COMPLETE OR CLOSED"; fi

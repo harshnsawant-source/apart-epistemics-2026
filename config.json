@@ -67,5 +67,6 @@
     "llama",
     "qwen",
     "nemotron"
-  ]
+  ],
+  "s2_live": false
 }

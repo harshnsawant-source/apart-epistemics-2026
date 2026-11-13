@@ -51,12 +51,26 @@ def s2_lookup(title):
     return {"matched": None, "ratio": 0.0, "status": "error"}
 
 
+def second_look(title, sources, pause=0.0):
+    """Crossref and OpenAlex results for one title. Pure: safe to run in parallel threads."""
+    per = {}
+    for name, fn in sources.items():
+        try:
+            per[name] = recheck.best(title, fn(title))
+        except Exception as e:
+            per[name] = {"error": type(e).__name__}
+        if pause:
+            time.sleep(pause)
+    return per
+
+
 class Labeller:
     """Caches: data/s2_cache.json (new lookups, merged over the pre-existing cache) and
     data/recheck_cache.json. Errors are never cached."""
 
     def __init__(self, cfg, s2=s2_lookup, sources=None, pause=1.1, data_dir=None):
         self.threshold = cfg["match_threshold"]
+        self.s2_live = cfg.get("s2_live", True)       # deviation 3: False = Semantic Scholar from cache only
         self.s2 = s2
         self.sources = sources if sources is not None else recheck.SOURCES
         self.pause = pause
@@ -75,9 +89,21 @@ class Labeller:
         self.s2_path.write_text(json.dumps(self.new_s2, ensure_ascii=False), "utf-8")
         self.rc_path.write_text(json.dumps(self.rc_cache, ensure_ascii=False), "utf-8")
 
+    def store_second_look(self, title, per, save=True):
+        """Store a second-look result. Returns False (nothing stored) if a source failed without a match."""
+        status = recheck.classify(per, self.threshold)
+        if status == "lookup_error":
+            return False
+        self.rc_cache[title] = {"status": status, "sources": per}
+        if save:
+            self._save()
+        return True
+
     def label(self, title, lookup=True):
         """Return (label or None, matched_record or None). With lookup=False, use caches only."""
         s2 = self.s2_cache.get(title)
+        if s2 is None and not self.s2_live:
+            s2 = {"status": "not_checked", "ratio": 0.0}       # go straight to Crossref and OpenAlex
         if s2 is None:
             if not lookup:
                 return None, None
@@ -93,19 +119,10 @@ class Labeller:
         if rc is None:
             if not lookup:
                 return None, None
-            per = {}
-            for name, fn in self.sources.items():
-                try:
-                    per[name] = recheck.best(title, fn(title))
-                except Exception as e:
-                    per[name] = {"error": type(e).__name__}
-                time.sleep(self.pause)
-            status = recheck.classify(per, self.threshold)
-            if status == "lookup_error":
+            per = second_look(title, self.sources, self.pause)
+            if not self.store_second_look(title, per):
                 return None, None
-            rc = {"status": status, "sources": per}
-            self.rc_cache[title] = rc
-            self._save()
+            rc = self.rc_cache[title]
         if rc["status"] == "found_elsewhere":
             hit = max((v for v in rc["sources"].values() if "ratio" in v), key=lambda v: v["ratio"])
             return "found_elsewhere", hit.get("matched")

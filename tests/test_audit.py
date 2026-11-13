@@ -226,7 +226,7 @@ def fake_src(title):
     return ["Elsewhere Paper C"] if title == "Elsewhere Paper C" else ["unrelated"]
 
 
-lab = Labeller(dict(CFG, s2_cache_preexisting="nope.json"), s2=fake_s2, sources={"x": fake_src}, pause=0,
+lab = Labeller(dict(CFG, s2_cache_preexisting="nope.json", s2_live=True), s2=fake_s2, sources={"x": fake_src}, pause=0,
                data_dir=tmp / "data")
 check("label: S2 match -> verified_s2", lab.label("Real Paper A")[0] == "verified_s2")
 check("label: S2 miss, found on another index -> found_elsewhere", lab.label("Elsewhere Paper C")[0] == "found_elsewhere")
@@ -237,7 +237,7 @@ k = len(s2_calls)
 lab.label("Real Paper A")
 check("label: cached titles are not looked up again", len(s2_calls) == k)
 check("label: cache-only mode never calls out", lab.label("Never Seen", lookup=False) == (None, None) and len(s2_calls) == k)
-lab2 = Labeller(dict(CFG, s2_cache_preexisting="nope.json"), s2=fake_s2, sources={"x": fake_src}, pause=0,
+lab2 = Labeller(dict(CFG, s2_cache_preexisting="nope.json", s2_live=True), s2=fake_s2, sources={"x": fake_src}, pause=0,
                 data_dir=tmp / "data")
 check("label: caches persist across runs", lab2.label("Made Up Paper B", lookup=False)[0] == "unresolved")
 check("label_all: counts what is still unlabelled",
@@ -247,11 +247,32 @@ calls_s2 = []
 def always_fail(title):
     calls_s2.append(title)
     return {"matched": None, "ratio": 0.0, "status": "error"}
-lab_down = Labeller(dict(CFG, s2_cache_preexisting="nope.json"), s2=always_fail, sources={"x": fake_src}, pause=0,
+lab_down = Labeller(dict(CFG, s2_cache_preexisting="nope.json", s2_live=True), s2=always_fail, sources={"x": fake_src}, pause=0,
                     data_dir=tmp / "data_down")
 left = run.label_all(lab_down, [{"titles": [f"Title {i}" for i in range(20)]}], 1e18)
 check("label_all: stops calling a service that keeps failing", left == 20 and len(calls_s2) == 5)
 check("config: collection cannot start before the sprint kickoff", CFG["collect_not_before_utc"] == "2026-11-13T14:15:00Z")
+
+# ---------- deviation 3: Crossref and OpenAlex, Semantic Scholar from cache only ----------
+s2_calls3 = []
+def s2_should_not_run(t):
+    s2_calls3.append(t)
+    return {"matched": t, "ratio": 1.0, "status": "ok"}
+lab3 = Labeller(dict(CFG, s2_cache_preexisting="nope.json", s2_live=False), s2=s2_should_not_run,
+                sources={"x": fake_src}, pause=0, data_dir=tmp / "data3")
+check("dev3: no live Semantic Scholar lookups", lab3.label("Real Paper Z")[0] == "unresolved" and s2_calls3 == [])
+check("dev3: found on Crossref/OpenAlex -> found_elsewhere", lab3.label("Elsewhere Paper C")[0] == "found_elsewhere")
+lab3.s2_cache["Cached Real"] = {"matched": "Cached Real", "ratio": 1.0, "status": "ok"}
+check("dev3: a cached Semantic Scholar match is still used", lab3.label("Cached Real")[0] == "verified_s2")
+lab4 = Labeller(dict(CFG, s2_cache_preexisting="nope.json", s2_live=False), s2=s2_should_not_run,
+                sources={"x": fake_src}, pause=0, data_dir=tmp / "data4")
+par_rows = [{"titles": ["Elsewhere Paper C", "Made Up Paper B", "Another Fake", "Elsewhere Paper C"]}]
+left = run.label_parallel(lab4, par_rows, 1e18, workers=3)
+check("dev3: parallel labelling labels every title once", left == 0 and
+      [lab4.label(t, lookup=False)[0] for t in ("Elsewhere Paper C", "Made Up Paper B", "Another Fake")]
+      == ["found_elsewhere", "unresolved", "unresolved"])
+check("dev3: parallel labels persist", Labeller(dict(CFG, s2_cache_preexisting="nope.json", s2_live=False),
+      sources={"x": fake_src}, pause=0, data_dir=tmp / "data4").label("Another Fake", lookup=False)[0] == "unresolved")
 
 # ---------- stage two ----------
 row = {"id": "gptoss|t|1|P10", "messages": [{"role": "system", "content": "S"}, {"role": "user", "content": "U"}],
