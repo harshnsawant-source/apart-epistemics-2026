@@ -37,6 +37,15 @@
       ],
       "aa_runs": 0,
       "stage2": false
+    },
+    "qwen": {
+      "backend": "groq",
+      "model": "qwen/qwen3.8-27b",
+      "pairs": [
+        "1"
+      ],
+      "aa_runs": 0,
+      "stage2": false
     }
   }
 }

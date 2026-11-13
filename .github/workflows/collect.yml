@@ -33,7 +33,8 @@ jobs:
           PYTHONIOENCODING: utf-8
         run: |
           if [ ! -f FREEZE.md ]; then echo "Plan not frozen yet; nothing to do."; exit 0; fi
-          python src/run.py --arm gptoss --minutes 45
+          python src/run.py --arm gptoss --minutes 30
+          python src/run.py --arm qwen --minutes 12
       - name: Save progress
         if: always()
         run: |
