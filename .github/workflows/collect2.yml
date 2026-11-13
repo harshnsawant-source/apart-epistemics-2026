@@ -31,6 +31,7 @@ jobs:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           PYTHONIOENCODING: utf-8
         run: |
+          date +%s > /tmp/run_start
           if [ ! -f FREEZE.md ]; then echo "Plan not frozen yet; nothing to do."; exit 0; fi
           if [ -z "$GROQ_API_KEY" ]; then echo "Secret GROQ_API_KEY_2 not set yet; nothing to do."; exit 0; fi
           git config user.name "collect-bot"
@@ -65,6 +66,8 @@ jobs:
         run: |
           if [ "$HAS_KEY" != "true" ]; then echo "No key; not restarting."; exit 0; fi
           git pull -q --rebase || true
+          elapsed=$(( $(date +%s) - $(cat /tmp/run_start 2>/dev/null || date +%s) ))
+          if [ "$elapsed" -lt 600 ]; then echo "Short run ($elapsed s): waiting 15 minutes before the next"; sleep 900; fi
           python tools/status.py gptoss 2/2 | head -1
           state=$(python tools/status.py gptoss 2/2 | tail -1)
           if [ "$state" = "WAIT" ]; then echo "Waiting 15 minutes for the other runner"; sleep 900; state=MORE; fi
