@@ -233,6 +233,8 @@ def main():
     ap.add_argument("--minutes", type=float, default=45)
     ap.add_argument("--limit", type=int)
     ap.add_argument("--no-verify", action="store_true")
+    ap.add_argument("--no-lookup", action="store_true",
+                    help="use cached labels only (stage two still runs on titles already labelled)")
     ap.add_argument("--smoke", type=int, help="N calls per condition on non-study topics; writes raw/smoke_<arm>.jsonl")
     a = ap.parse_args()
     cfg = design.load_config()
@@ -272,7 +274,7 @@ def main():
         phase = phases[0]
         if not is_open:
             print(f"collection closed: {why_closed}")
-            if labeller is not None:
+            if labeller is not None and not a.no_lookup:
                 rows = [r for arm in cfg["arms"] for r in read_jsonl(gen_path(arm))]
                 print(f"labels: {label_all(labeller, rows, deadline)} titles still unlabelled")
             break
@@ -288,7 +290,7 @@ def main():
         have = len(read_jsonl(gen_path(a.arm)))
         print(f"{a.arm} [{phase}]: {made} new calls ({why}); generations {have}/{len(items)}, "
               f"stage two {len(read_jsonl(ROOT / 'raw' / f'stage2_{a.arm}.jsonl'))}")
-        if labeller is not None:
+        if labeller is not None and not a.no_lookup:
             rows = [r for arm in cfg["arms"] for r in read_jsonl(gen_path(arm))]
             print(f"labels: {label_all(labeller, rows, deadline)} titles still unlabelled")
         if why != "done" or made == 0:

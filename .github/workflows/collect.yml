@@ -27,23 +27,38 @@ jobs:
           python-version: "3.12"
       - name: Offline checks
         run: python tests/test_audit.py
-      - name: Collect, label, stage two
+      - name: Collect and stage two (labelling runs on the laptop)
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           PYTHONIOENCODING: utf-8
         run: |
           if [ ! -f FREEZE.md ]; then echo "Plan not frozen yet; nothing to do."; exit 0; fi
-          python src/run.py --arm gptoss --minutes 28
-          python src/run.py --arm qwen --minutes 8
-          if [ -n "$NVIDIA_API_KEY" ]; then python src/run.py --arm nemotron --minutes 8; else echo "NVIDIA_API_KEY secret not set; skipping nemotron"; fi
-      - name: Save progress
+          git config user.name "collect-bot"
+          git config user.email "actions@users.noreply.github.com"
+          save() {
+            git add -A
+            if git diff --cached --quiet; then echo "SAVE: nothing new"; return 0; fi
+            git commit -q -m "collect: progress $(date -u +%Y-%m-%dT%H:%MZ) ($1)"
+            for i in 1 2 3 4 5; do
+              if git pull -q --rebase && git push -q; then echo "SAVE: pushed ($1)"; return 0; fi
+              sleep 10
+            done
+            echo "SAVE FAILED ($1)"; return 1
+          }
+          python src/run.py --arm gptoss --minutes 26 --no-lookup || true
+          save gptoss
+          python src/run.py --arm qwen --minutes 8 --no-lookup || true
+          save qwen
+          if [ -n "$NVIDIA_API_KEY" ]; then python src/run.py --arm nemotron --minutes 8 --no-lookup || true; fi
+          save nemotron
+      - name: Save anything left (also runs if the job is cancelled or times out)
         if: always()
         run: |
           git config user.name "collect-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add raw data results 2>/dev/null || true
-          if git diff --cached --quiet; then echo "No new data."; exit 0; fi
-          git commit -m "collect: progress $(date -u +%Y-%m-%dT%H:%MZ)"
-          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done
-          exit 1
+          git add -A
+          if git diff --cached --quiet; then echo "SAVE: nothing new"; exit 0; fi
+          git commit -q -m "collect: final save $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3 4 5; do git pull -q --rebase && git push -q && echo "SAVE: pushed" && exit 0; sleep 10; done
+          echo "SAVE FAILED"; exit 1
