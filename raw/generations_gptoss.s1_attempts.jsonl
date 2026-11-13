@@ -44,3 +44,39 @@
 {"id": "gptoss|test-time training transformers|2|P<10", "attempt": 3, "utc": "2026-11-13T17:56:58+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|test-time training transformers|2|P<10", "attempt": 4, "utc": "2026-11-13T17:57:09+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|test-time training transformers|2|P<10", "attempt": 4, "utc": "2026-11-13T17:57:09+00:00", "outcome": "failed"}
+{"id": "gptoss|test-time training transformers|2|P<10", "attempt": 1, "utc": "2026-11-13T17:57:26+00:00", "outcome": "ok"}
+{"id": "gptoss|test-time training transformers|2|A10", "attempt": 1, "utc": "2026-11-13T17:57:27+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|test-time training transformers|2|A10", "attempt": 2, "utc": "2026-11-13T18:00:51+00:00", "outcome": "ok"}
+{"id": "gptoss|database systems|1|P<10", "attempt": 1, "utc": "2026-11-13T18:00:51+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|1|P<10", "attempt": 2, "utc": "2026-11-13T18:04:27+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|1|P<10", "attempt": 3, "utc": "2026-11-13T18:04:34+00:00", "outcome": "ok"}
+{"id": "gptoss|database systems|1|A<10", "attempt": 1, "utc": "2026-11-13T18:04:34+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|1|A<10", "attempt": 2, "utc": "2026-11-13T18:09:16+00:00", "outcome": "ok"}
+{"id": "gptoss|lottery ticket hypothesis|2|A10", "attempt": 1, "utc": "2026-11-13T18:09:16+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|lottery ticket hypothesis|2|A10", "attempt": 2, "utc": "2026-11-13T18:11:53+00:00", "outcome": "ok"}
+{"id": "gptoss|lottery ticket hypothesis|2|P<10", "attempt": 1, "utc": "2026-11-13T18:11:53+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|lottery ticket hypothesis|2|P<10", "attempt": 2, "utc": "2026-11-13T18:15:50+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|lottery ticket hypothesis|2|P<10", "attempt": 3, "utc": "2026-11-13T18:15:57+00:00", "outcome": "ok"}
+{"id": "gptoss|neural networks|1|P<10", "attempt": 1, "utc": "2026-11-13T18:15:57+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural networks|1|P<10", "attempt": 2, "utc": "2026-11-13T18:18:05+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural networks|1|P<10", "attempt": 3, "utc": "2026-11-13T18:18:45+00:00", "outcome": "ok"}
+{"id": "gptoss|neural networks|1|A<10", "attempt": 1, "utc": "2026-11-13T18:18:45+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural networks|1|A<10", "attempt": 2, "utc": "2026-11-13T18:22:29+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural networks|1|A<10", "attempt": 3, "utc": "2026-11-13T18:22:40+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural networks|1|A<10", "attempt": 4, "utc": "2026-11-13T18:23:39+00:00", "outcome": "ok"}
+{"id": "gptoss|semantic segmentation|2|P<10", "attempt": 1, "utc": "2026-11-13T18:23:39+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|semantic segmentation|2|P<10", "attempt": 2, "utc": "2026-11-13T18:27:46+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|semantic segmentation|2|P<10", "attempt": 3, "utc": "2026-11-13T18:28:05+00:00", "outcome": "ok"}
+{"id": "gptoss|semantic segmentation|2|A<10", "attempt": 1, "utc": "2026-11-13T18:28:05+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|semantic segmentation|2|A<10", "attempt": 2, "utc": "2026-11-13T18:30:15+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|semantic segmentation|2|A<10", "attempt": 3, "utc": "2026-11-13T18:31:50+00:00", "outcome": "ok"}
+{"id": "gptoss|influence functions for language models|1|A10", "attempt": 1, "utc": "2026-11-13T18:31:51+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|influence functions for language models|1|A10", "attempt": 2, "utc": "2026-11-13T18:35:21+00:00", "outcome": "ok"}
+{"id": "gptoss|influence functions for language models|1|A<10", "attempt": 1, "utc": "2026-11-13T18:35:21+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|influence functions for language models|1|A<10", "attempt": 2, "utc": "2026-11-13T18:39:31+00:00", "outcome": "ok"}
+{"id": "gptoss|circuit discovery in transformers|2|A10", "attempt": 1, "utc": "2026-11-13T18:39:31+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|circuit discovery in transformers|2|A10", "attempt": 2, "utc": "2026-11-13T18:43:34+00:00", "outcome": "ok"}
+{"id": "gptoss|circuit discovery in transformers|2|P10", "attempt": 1, "utc": "2026-11-13T18:43:35+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|circuit discovery in transformers|2|P10", "attempt": 2, "utc": "2026-11-13T18:47:29+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|circuit discovery in transformers|2|P10", "attempt": 3, "utc": "2026-11-13T18:47:31+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|circuit discovery in transformers|2|P10", "attempt": 4, "utc": "2026-11-13T18:48:36+00:00", "outcome": "ok"}
