@@ -13,7 +13,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import design  # noqa: E402
-from run import gen_path, read_jsonl  # noqa: E402
+from run import arm_rows, read_jsonl, stage2_rows  # noqa: E402
 from verify import Labeller  # noqa: E402
 from common import norm  # noqa: E402
 
@@ -109,8 +109,9 @@ def verdict(u95, u90, v95, cfg):
 
 def stage2_summary(arm, label_of):
     out = {}
-    for r in read_jsonl(ROOT / "raw" / f"stage2_{arm}.jsonl"):
-        gen = next((g for g in read_jsonl(gen_path(arm)) if g["id"] == r["list_id"]), None)
+    gens = {g["id"]: g for g in arm_rows(arm)}
+    for r in stage2_rows(arm):
+        gen = gens.get(r["list_id"])
         if gen is None:
             continue
         import lists
@@ -186,7 +187,7 @@ def main():
     lab = Labeller(cfg)
     ap = ROOT / "data" / "audit_counts.json"        # written from the blind audit sheet on Sunday
     audit = json.loads(ap.read_text("utf-8")) if ap.exists() else None
-    res = analyse(cfg, {arm: read_jsonl(gen_path(arm)) for arm in cfg["arms"]}, lambda t: lab.label(t, lookup=False),
+    res = analyse(cfg, {arm: arm_rows(arm) for arm in cfg["arms"]}, lambda t: lab.label(t, lookup=False),
                   audit_counts=audit)
     (ROOT / "results").mkdir(exist_ok=True)
     (ROOT / "results" / "results.json").write_text(json.dumps(res, indent=1), "utf-8")

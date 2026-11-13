@@ -1,0 +1,71 @@
+name: collect2
+# Self-restarting runner for the AI x Epistemics sprint, 13-16 Nov 2026. Does nothing until FREEZE.md exists;
+# collection is limited to the frozen window in code (config.json).
+on:
+  schedule:
+    - cron: "22 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: gptoss2
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 58
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Offline checks
+        run: python tests/test_audit.py
+      - name: Work
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY_2 }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          PYTHONIOENCODING: utf-8
+        run: |
+          if [ ! -f FREEZE.md ]; then echo "Plan not frozen yet; nothing to do."; exit 0; fi
+          if [ -z "$GROQ_API_KEY" ]; then echo "Secret GROQ_API_KEY_2 not set yet; nothing to do."; exit 0; fi
+          git config user.name "collect-bot"
+          git config user.email "actions@users.noreply.github.com"
+          save() {
+            git add -A
+            if git diff --cached --quiet; then echo "SAVE: nothing new"; return 0; fi
+            git commit -q -m "collect: progress $(date -u +%Y-%m-%dT%H:%MZ) ($1)"
+            for i in 1 2 3 4 5; do
+              if git pull -q --rebase && git push -q; then echo "SAVE: pushed ($1)"; return 0; fi
+              sleep 10
+            done
+            echo "SAVE FAILED ($1)"; return 1
+          }
+          python src/run.py --arm gptoss --minutes 50 --no-lookup --shard 2/2 || true
+          save "gptoss share 2"
+      - name: Save anything left (also runs if the job is cancelled or times out)
+        if: always()
+        run: |
+          git config user.name "collect-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "SAVE: nothing new"; exit 0; fi
+          git commit -q -m "collect: final save $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3 4 5; do git pull -q --rebase && git push -q && echo "SAVE: pushed" && exit 0; sleep 10; done
+          echo "SAVE FAILED"; exit 1
+      - name: Start the next run while work is unfinished
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HAS_KEY: ${{ secrets.GROQ_API_KEY_2 != '' }}
+        run: |
+          if [ "$HAS_KEY" != "true" ]; then echo "No key; not restarting."; exit 0; fi
+          git pull -q --rebase || true
+          python tools/status.py gptoss 2/2 | head -1
+          state=$(python tools/status.py gptoss 2/2 | tail -1)
+          if [ "$state" = "WAIT" ]; then echo "Waiting 15 minutes for the other runner"; sleep 900; state=MORE; fi
+          if [ "$state" = "MORE" ]; then gh workflow run collect2.yml --ref master && echo "NEXT RUN QUEUED"; else echo "DONE OR CLOSED"; fi

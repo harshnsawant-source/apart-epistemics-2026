@@ -44,8 +44,37 @@ def append_jsonl(path, row):
         f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
+SHARD = ""          # file suffix for this runner's share of the calls, e.g. ".s2" (set by --shard)
+
+
 def gen_path(arm):
-    return ROOT / "raw" / f"generations_{arm}.jsonl"
+    """Where THIS runner writes an arm's replies."""
+    return ROOT / "raw" / f"generations_{arm}{SHARD}.jsonl"
+
+
+def stage2_path(arm):
+    return ROOT / "raw" / f"stage2_{arm}{SHARD}.jsonl"
+
+
+def _all_files(prefix):
+    raw = ROOT / "raw"
+    files = [raw / f"{prefix}.jsonl"] + sorted(raw.glob(f"{prefix}.s*.jsonl"))
+    return [f for f in files if "_attempts" not in f.name]
+
+
+def arm_rows(arm):
+    """Every saved reply for an arm, from all runners' files."""
+    return [r for f in _all_files(f"generations_{arm}") for r in read_jsonl(f)]
+
+
+def stage2_rows(arm):
+    return [r for f in _all_files(f"stage2_{arm}") for r in read_jsonl(f)]
+
+
+def shard_filter(seq, shard):
+    """Runner k of n takes items k-1, k-1+n, ... so the runners never overlap."""
+    k, n = shard
+    return [x for i, x in enumerate(seq) if i % n == k - 1]
 
 
 def messages_for(prompts, topic, pair, condition):
@@ -80,11 +109,13 @@ def attempt(call, args, call_id, log, sleep=time.sleep):
         return res
 
 
-def collect(cfg, prompts, arm, items, call, out, deadline, limit=None, sleep=time.sleep, attempts_log=None):
-    """call(backend, model, messages, temperature, seed, max_tokens) -> dict. Returns (made, stopped_reason)."""
+def collect(cfg, prompts, arm, items, call, out, deadline, limit=None, sleep=time.sleep, attempts_log=None,
+            also_done=()):
+    """call(backend, model, messages, temperature, seed, max_tokens) -> dict. Returns (made, stopped_reason).
+    also_done: ids already collected by any runner (skipped)."""
     spec = cfg["arms"][arm]
     log = attempts_log or Path(out).with_name(Path(out).stem + "_attempts.jsonl")
-    done = {r["id"] for r in read_jsonl(out)}
+    done = {r["id"] for r in read_jsonl(out)} | set(also_done)
     made, failed_in_row = 0, 0
     for it in items:
         if it["arm"] != arm or it["id"] in done:
@@ -138,6 +169,8 @@ def label_parallel(labeller, rows, deadline, workers=4):
     Results are stored by the main thread only. Returns how many titles are still unlabelled."""
     from concurrent.futures import ThreadPoolExecutor, as_completed
     from verify import second_look
+    first = lambda r: not (r.get("arm") == "gptoss" and r.get("pair") == "1" and r.get("condition") == "P10")
+    rows = sorted(rows, key=first)            # stable: stage-two lists first, the rest in collection order
     todo = list(dict.fromkeys(t for r in rows for t in r["titles"] if labeller.label(t, lookup=False)[0] is None))
     done = 0
     with ThreadPoolExecutor(max_workers=workers) as ex:
@@ -193,11 +226,12 @@ def parse_decisions(text):
     return out
 
 
-def stage2(cfg, prompts, arm, labeller, call, deadline):
+def stage2(cfg, prompts, arm, labeller, call, deadline, shard=(1, 1)):
     spec = cfg["arms"][arm]
-    out = ROOT / "raw" / f"stage2_{arm}.jsonl"
-    done = {r["id"] for r in read_jsonl(out)}
-    lists_ = [r for r in read_jsonl(gen_path(arm)) if r["pair"] == "1" and r["condition"] == "P10"]
+    out = stage2_path(arm)
+    done = {r["id"] for r in stage2_rows(arm)}
+    lists_ = sorted((r for r in arm_rows(arm) if r["pair"] == "1" and r["condition"] == "P10"), key=lambda r: r["id"])
+    lists_ = shard_filter(lists_, shard)
     made = 0
     for r in lists_:
         for b in BRANCHES:
@@ -212,7 +246,7 @@ def stage2(cfg, prompts, arm, labeller, call, deadline):
             try:
                 res = attempt(call, (spec["backend"], spec["model"], msgs, cfg["temperature"],
                                      design.call_seed(cfg["base_seed"], sid), cfg["max_completion_tokens"]),
-                              sid, ROOT / "raw" / f"stage2_{arm}_attempts.jsonl")
+                              sid, out.with_name(out.stem + "_attempts.jsonl"))
             except DailyLimit as e:
                 return made, f"daily limit: {e}"
             if res is None:
@@ -264,6 +298,8 @@ def main():
     ap.add_argument("--limit", type=int)
     ap.add_argument("--no-verify", action="store_true")
     ap.add_argument("--label", action="store_true", help="only label titles (Crossref and OpenAlex, in parallel)")
+    ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--shard", default="1/1", help="k/n: this runner does share k of n (separate output files)")
     ap.add_argument("--no-lookup", action="store_true",
                     help="use cached labels only (stage two still runs on titles already labelled)")
     ap.add_argument("--smoke", type=int, help="N calls per condition on non-study topics; writes raw/smoke_<arm>.jsonl")
@@ -271,6 +307,9 @@ def main():
     cfg = design.load_config()
     prompts = design.load_json(cfg["prompts"])
     deadline = time.time() + a.minutes * 60
+    global SHARD
+    shard = tuple(int(x) for x in a.shard.split("/"))
+    SHARD = "" if shard == (1, 1) else f".s{shard[0]}"
 
     if a.smoke:
         items = [{"id": f"smoke|{a.arm}|{t}|{c}", "arm": a.arm, "topic": t, "pair": "1", "condition": c,
@@ -288,21 +327,25 @@ def main():
     design.guard(cfg)
     if a.label:
         lab = Labeller(cfg)
-        rows = [r for arm in cfg["arms"] for r in read_jsonl(gen_path(arm))]
-        print(f"labels: {label_parallel(lab, rows, deadline)} titles still unlabelled")
+        rows = [r for arm in cfg["arms"] for r in arm_rows(arm)]
+        print(f"labels: {label_parallel(lab, rows, deadline, workers=a.workers)} titles still unlabelled")
         return
     is_open, why_closed = collection_open(cfg, datetime.now(timezone.utc))
     topics = design.load_json(cfg["topics"])["topics"]
     items = [it for it in design.manifest(cfg, topics) if it["arm"] == a.arm]
-    main_items = [it for it in items if it["condition"] != "BASE"]
-    aa_items = [it for it in items if it["condition"] == "BASE"]
+    all_main = [it for it in items if it["condition"] != "BASE"]
+    main_items = shard_filter(all_main, shard)
+    aa_items = shard_filter([it for it in items if it["condition"] == "BASE"], shard)
     call = make_call(cfg["arms"][a.arm])
     labeller = None if a.no_verify else Labeller(cfg)
-    n_lists = len(topics)                      # pair-1 P10 lists that get stage two
+    n_lists = len(topics)                      # pair-1 P10 lists that get stage two (all runners)
     for _ in range(4):
-        have = {r["id"] for r in read_jsonl(gen_path(a.arm))}
-        main_done = all(it["id"] in have for it in main_items)
-        s2_have = len(read_jsonl(ROOT / "raw" / f"stage2_{a.arm}.jsonl"))
+        have = {r["id"] for r in arm_rows(a.arm)}
+        main_done = all(it["id"] in have for it in all_main)
+        if not main_done and all(it["id"] in have for it in main_items):
+            print(f"{a.arm}: this runner's main calls are done; waiting for the other runner before stage two")
+            break
+        s2_have = len(stage2_rows(a.arm))
         phases = plan_order(cfg, a.arm, main_done, s2_have >= 3 * n_lists)
         if not phases:
             print(f"{a.arm}: all phases complete")
@@ -311,23 +354,22 @@ def main():
         if not is_open:
             print(f"collection closed: {why_closed}")
             if labeller is not None and not a.no_lookup:
-                rows = [r for arm in cfg["arms"] for r in read_jsonl(gen_path(arm))]
+                rows = [r for arm in cfg["arms"] for r in arm_rows(arm)]
                 print(f"labels: {label_all(labeller, rows, deadline)} titles still unlabelled")
             break
         if phase == "main":
-            made, why = collect(cfg, prompts, a.arm, main_items, call, gen_path(a.arm), deadline, a.limit)
+            made, why = collect(cfg, prompts, a.arm, main_items, call, gen_path(a.arm), deadline, a.limit, also_done=have)
         elif phase == "stage2":
             if labeller is None:
                 print("stage two needs labels; run without --no-verify")
                 break
-            made, why = stage2(cfg, prompts, a.arm, labeller, call, deadline)
+            made, why = stage2(cfg, prompts, a.arm, labeller, call, deadline, shard=shard)
         else:
-            made, why = collect(cfg, prompts, a.arm, aa_items, call, gen_path(a.arm), deadline, a.limit)
-        have = len(read_jsonl(gen_path(a.arm)))
-        print(f"{a.arm} [{phase}]: {made} new calls ({why}); generations {have}/{len(items)}, "
-              f"stage two {len(read_jsonl(ROOT / 'raw' / f'stage2_{a.arm}.jsonl'))}")
+            made, why = collect(cfg, prompts, a.arm, aa_items, call, gen_path(a.arm), deadline, a.limit, also_done=have)
+        print(f"{a.arm} [{phase}] shard {a.shard}: {made} new calls ({why}); generations "
+              f"{len(arm_rows(a.arm))}/{len(items)}, stage two {len(stage2_rows(a.arm))}")
         if labeller is not None and not a.no_lookup:
-            rows = [r for arm in cfg["arms"] for r in read_jsonl(gen_path(arm))]
+            rows = [r for arm in cfg["arms"] for r in arm_rows(arm)]
             print(f"labels: {label_all(labeller, rows, deadline)} titles still unlabelled")
         if why != "done" or made == 0:
             break

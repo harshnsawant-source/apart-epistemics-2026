@@ -1,16 +1,13 @@
 name: collect
-# Registered for the AI x Epistemics sprint, 13-16 Nov 2026.
-
-# Every hour: continue the gpt-oss collection where it stopped, label new titles, run stage two when ready,
-# and commit the results back. Does nothing until FREEZE.md exists; the script itself also refuses to
-# collect before the sprint kickoff (config.json: collect_not_before_utc).
+# Self-restarting runner for the AI x Epistemics sprint, 13-16 Nov 2026. Does nothing until FREEZE.md exists;
+# collection is limited to the frozen window in code (config.json).
 on:
   schedule:
     - cron: "7 * * * *"
   workflow_dispatch:
 
 concurrency:
-  group: collect
+  group: gptoss1
   cancel-in-progress: false
 
 permissions:
@@ -28,13 +25,14 @@ jobs:
           python-version: "3.12"
       - name: Offline checks
         run: python tests/test_audit.py
-      - name: Collect and stage two (labelling runs on the laptop)
+      - name: Work
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           PYTHONIOENCODING: utf-8
         run: |
           if [ ! -f FREEZE.md ]; then echo "Plan not frozen yet; nothing to do."; exit 0; fi
+          if [ -z "$GROQ_API_KEY" ]; then echo "Secret GROQ_API_KEY not set yet; nothing to do."; exit 0; fi
           git config user.name "collect-bot"
           git config user.email "actions@users.noreply.github.com"
           save() {
@@ -47,14 +45,8 @@ jobs:
             done
             echo "SAVE FAILED ($1)"; return 1
           }
-          python src/run.py --arm gptoss --minutes 22 --no-lookup || true
-          save gptoss
-          python src/run.py --arm qwen --minutes 8 --no-lookup || true
-          save qwen
-          if [ -n "$NVIDIA_API_KEY" ]; then python src/run.py --arm nemotron --minutes 8 --no-lookup || true; fi
-          save nemotron
-          python src/run.py --label --minutes 9 || true
-          save labels
+          python src/run.py --arm gptoss --minutes 50 --no-lookup --shard 1/2 || true
+          save "gptoss share 1"
       - name: Save anything left (also runs if the job is cancelled or times out)
         if: always()
         run: |
@@ -65,11 +57,15 @@ jobs:
           git commit -q -m "collect: final save $(date -u +%Y-%m-%dT%H:%MZ)"
           for i in 1 2 3 4 5; do git pull -q --rebase && git push -q && echo "SAVE: pushed" && exit 0; sleep 10; done
           echo "SAVE FAILED"; exit 1
-      - name: Start the next run while collection is unfinished
+      - name: Start the next run while work is unfinished
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
+          HAS_KEY: ${{ secrets.GROQ_API_KEY != '' }}
         run: |
-          state=$(python tools/status.py | tail -1)
-          python tools/status.py | head -1
-          if [ "$state" = "MORE" ]; then gh workflow run collect.yml --ref master && echo "NEXT RUN QUEUED"; else echo "COLLECTION COMPLETE OR CLOSED"; fi
+          if [ "$HAS_KEY" != "true" ]; then echo "No key; not restarting."; exit 0; fi
+          git pull -q --rebase || true
+          python tools/status.py gptoss 1/2 | head -1
+          state=$(python tools/status.py gptoss 1/2 | tail -1)
+          if [ "$state" = "WAIT" ]; then echo "Waiting 15 minutes for the other runner"; sleep 900; state=MORE; fi
+          if [ "$state" = "MORE" ]; then gh workflow run collect.yml --ref master && echo "NEXT RUN QUEUED"; else echo "DONE OR CLOSED"; fi

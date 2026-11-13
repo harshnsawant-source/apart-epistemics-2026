@@ -209,7 +209,23 @@ except ValueError:
     check("retry: other errors (bad key, bad request) are not retried and stop the run",
           run.read_jsonl(tmp / "x_attempts.jsonl")[0]["outcome"].startswith("error"))
 
-# ---------- labeller ----------
+# ---------- two runners sharing the gpt-oss calls ----------
+seq10 = list(range(10))
+check("shard: the two shares are disjoint and cover everything",
+      run.shard_filter(seq10, (1, 2)) == [0, 2, 4, 6, 8] and run.shard_filter(seq10, (2, 2)) == [1, 3, 5, 7, 9])
+check("shard: 1/1 is everything", run.shard_filter(seq10, (1, 1)) == seq10)
+outA, outB = tmp / "gA.jsonl", tmp / "gB.jsonl"
+itemsg = [x for x in m if x["arm"] == "gptoss"][:6]
+run.collect(CFG, PROMPTS, "gptoss", run.shard_filter(itemsg, (1, 2)), fake, outA, 1e18, attempts_log=tmp / "aA.jsonl")
+run.collect(CFG, PROMPTS, "gptoss", run.shard_filter(itemsg, (2, 2)), fake, outB, 1e18, attempts_log=tmp / "aB.jsonl")
+idsA = {r["id"] for r in run.read_jsonl(outA)}
+idsB = {r["id"] for r in run.read_jsonl(outB)}
+check("shard: two runners collect every item exactly once", not (idsA & idsB) and len(idsA | idsB) == 6)
+n_before = len(calls)
+run.collect(CFG, PROMPTS, "gptoss", itemsg, fake, tmp / "gC.jsonl", 1e18, attempts_log=tmp / "aC.jsonl",
+            also_done=idsA | idsB)
+check("shard: ids collected by any runner are skipped", len(calls) == n_before)
+
 s2_calls = []
 
 
