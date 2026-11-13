@@ -79,3 +79,83 @@
 {"id": "nemotron|representation engineering control vectors|1|P<10", "attempt": 1, "utc": "2026-11-13T15:53:26+00:00", "outcome": "ok"}
 {"id": "nemotron|representation engineering control vectors|1|P10", "attempt": 1, "utc": "2026-11-13T15:53:34+00:00", "outcome": "ok"}
 {"id": "nemotron|conformal prediction for language models|1|A10", "attempt": 1, "utc": "2026-11-13T15:53:38+00:00", "outcome": "ok"}
+{"id": "nemotron|conformal prediction for language models|1|P<10", "attempt": 1, "utc": "2026-11-13T16:38:47+00:00", "outcome": "ok"}
+{"id": "nemotron|conformal prediction for language models|1|A<10", "attempt": 1, "utc": "2026-11-13T16:38:50+00:00", "outcome": "ok"}
+{"id": "nemotron|conformal prediction for language models|1|P10", "attempt": 1, "utc": "2026-11-13T16:38:58+00:00", "outcome": "ok"}
+{"id": "nemotron|recommender systems|1|A<10", "attempt": 1, "utc": "2026-11-13T16:39:12+00:00", "outcome": "ok"}
+{"id": "nemotron|recommender systems|1|P10", "attempt": 1, "utc": "2026-11-13T16:39:14+00:00", "outcome": "ok"}
+{"id": "nemotron|recommender systems|1|P<10", "attempt": 1, "utc": "2026-11-13T16:39:19+00:00", "outcome": "ok"}
+{"id": "nemotron|recommender systems|1|A10", "attempt": 1, "utc": "2026-11-13T16:39:21+00:00", "outcome": "ok"}
+{"id": "nemotron|grokking in neural networks|1|P10", "attempt": 1, "utc": "2026-11-13T16:39:21+00:00", "outcome": "HTTP 502"}
+{"id": "nemotron|grokking in neural networks|1|P10", "attempt": 2, "utc": "2026-11-13T16:39:36+00:00", "outcome": "ok"}
+{"id": "nemotron|grokking in neural networks|1|A<10", "attempt": 1, "utc": "2026-11-13T16:39:39+00:00", "outcome": "ok"}
+{"id": "nemotron|grokking in neural networks|1|P<10", "attempt": 1, "utc": "2026-11-13T16:39:43+00:00", "outcome": "ok"}
+{"id": "nemotron|grokking in neural networks|1|A10", "attempt": 1, "utc": "2026-11-13T16:39:47+00:00", "outcome": "ok"}
+{"id": "nemotron|quantization aware training|1|A10", "attempt": 1, "utc": "2026-11-13T16:39:52+00:00", "outcome": "ok"}
+{"id": "nemotron|quantization aware training|1|A<10", "attempt": 1, "utc": "2026-11-13T16:39:55+00:00", "outcome": "ok"}
+{"id": "nemotron|quantization aware training|1|P10", "attempt": 1, "utc": "2026-11-13T16:40:00+00:00", "outcome": "ok"}
+{"id": "nemotron|quantization aware training|1|P<10", "attempt": 1, "utc": "2026-11-13T16:40:03+00:00", "outcome": "ok"}
+{"id": "nemotron|retrieval augmented generation|1|A10", "attempt": 1, "utc": "2026-11-13T16:40:06+00:00", "outcome": "ok"}
+{"id": "nemotron|retrieval augmented generation|1|A<10", "attempt": 1, "utc": "2026-11-13T16:40:10+00:00", "outcome": "ok"}
+{"id": "nemotron|retrieval augmented generation|1|P10", "attempt": 1, "utc": "2026-11-13T16:40:14+00:00", "outcome": "ok"}
+{"id": "nemotron|retrieval augmented generation|1|P<10", "attempt": 1, "utc": "2026-11-13T16:40:18+00:00", "outcome": "ok"}
+{"id": "nemotron|neural cellular automata|1|P<10", "attempt": 1, "utc": "2026-11-13T16:40:22+00:00", "outcome": "ok"}
+{"id": "nemotron|neural cellular automata|1|A<10", "attempt": 1, "utc": "2026-11-13T16:40:25+00:00", "outcome": "ok"}
+{"id": "nemotron|neural cellular automata|1|A10", "attempt": 1, "utc": "2026-11-13T16:40:27+00:00", "outcome": "ok"}
+{"id": "nemotron|neural cellular automata|1|P10", "attempt": 1, "utc": "2026-11-13T16:40:31+00:00", "outcome": "ok"}
+{"id": "nemotron|weight agnostic neural networks|1|A<10", "attempt": 1, "utc": "2026-11-13T16:40:35+00:00", "outcome": "ok"}
+{"id": "nemotron|weight agnostic neural networks|1|A10", "attempt": 1, "utc": "2026-11-13T16:40:38+00:00", "outcome": "ok"}
+{"id": "nemotron|weight agnostic neural networks|1|P10", "attempt": 1, "utc": "2026-11-13T16:40:42+00:00", "outcome": "ok"}
+{"id": "nemotron|weight agnostic neural networks|1|P<10", "attempt": 1, "utc": "2026-11-13T16:40:46+00:00", "outcome": "ok"}
+{"id": "nemotron|chain of thought prompting|1|A<10", "attempt": 1, "utc": "2026-11-13T16:40:51+00:00", "outcome": "ok"}
+{"id": "nemotron|chain of thought prompting|1|P<10", "attempt": 1, "utc": "2026-11-13T16:41:00+00:00", "outcome": "ok"}
+{"id": "nemotron|chain of thought prompting|1|P10", "attempt": 1, "utc": "2026-11-13T16:41:04+00:00", "outcome": "ok"}
+{"id": "nemotron|chain of thought prompting|1|A10", "attempt": 1, "utc": "2026-11-13T16:41:06+00:00", "outcome": "ok"}
+{"id": "nemotron|graph neural networks|1|P<10", "attempt": 1, "utc": "2026-11-13T16:41:09+00:00", "outcome": "ok"}
+{"id": "nemotron|graph neural networks|1|A10", "attempt": 1, "utc": "2026-11-13T16:41:11+00:00", "outcome": "ok"}
+{"id": "nemotron|graph neural networks|1|P10", "attempt": 1, "utc": "2026-11-13T16:41:15+00:00", "outcome": "ok"}
+{"id": "nemotron|graph neural networks|1|A<10", "attempt": 1, "utc": "2026-11-13T16:41:18+00:00", "outcome": "ok"}
+{"id": "nemotron|retrieval head attention|1|A<10", "attempt": 1, "utc": "2026-11-13T16:41:23+00:00", "outcome": "ok"}
+{"id": "nemotron|retrieval head attention|1|P10", "attempt": 1, "utc": "2026-11-13T16:41:27+00:00", "outcome": "ok"}
+{"id": "nemotron|retrieval head attention|1|A10", "attempt": 1, "utc": "2026-11-13T16:41:30+00:00", "outcome": "ok"}
+{"id": "nemotron|retrieval head attention|1|P<10", "attempt": 1, "utc": "2026-11-13T16:41:32+00:00", "outcome": "ok"}
+{"id": "nemotron|mechanistic interpretability|1|P10", "attempt": 1, "utc": "2026-11-13T16:41:40+00:00", "outcome": "ok"}
+{"id": "nemotron|mechanistic interpretability|1|A<10", "attempt": 1, "utc": "2026-11-13T16:41:42+00:00", "outcome": "ok"}
+{"id": "nemotron|mechanistic interpretability|1|P<10", "attempt": 1, "utc": "2026-11-13T16:41:47+00:00", "outcome": "ok"}
+{"id": "nemotron|mechanistic interpretability|1|A10", "attempt": 1, "utc": "2026-11-13T16:41:51+00:00", "outcome": "ok"}
+{"id": "nemotron|transfer learning|1|P<10", "attempt": 1, "utc": "2026-11-13T16:41:57+00:00", "outcome": "ok"}
+{"id": "nemotron|transfer learning|1|A<10", "attempt": 1, "utc": "2026-11-13T16:42:03+00:00", "outcome": "ok"}
+{"id": "nemotron|transfer learning|1|A10", "attempt": 1, "utc": "2026-11-13T16:42:05+00:00", "outcome": "ok"}
+{"id": "nemotron|transfer learning|1|P10", "attempt": 1, "utc": "2026-11-13T16:42:07+00:00", "outcome": "ok"}
+{"id": "nemotron|neural architecture search|1|P10", "attempt": 1, "utc": "2026-11-13T16:42:10+00:00", "outcome": "ok"}
+{"id": "nemotron|neural architecture search|1|P<10", "attempt": 1, "utc": "2026-11-13T16:42:19+00:00", "outcome": "ok"}
+{"id": "nemotron|neural architecture search|1|A10", "attempt": 1, "utc": "2026-11-13T16:42:23+00:00", "outcome": "ok"}
+{"id": "nemotron|neural architecture search|1|A<10", "attempt": 1, "utc": "2026-11-13T16:42:28+00:00", "outcome": "ok"}
+{"id": "nemotron|lottery ticket hypothesis|1|A10", "attempt": 1, "utc": "2026-11-13T16:42:33+00:00", "outcome": "ok"}
+{"id": "nemotron|lottery ticket hypothesis|1|P10", "attempt": 1, "utc": "2026-11-13T16:42:36+00:00", "outcome": "ok"}
+{"id": "nemotron|lottery ticket hypothesis|1|P<10", "attempt": 1, "utc": "2026-11-13T16:42:40+00:00", "outcome": "ok"}
+{"id": "nemotron|lottery ticket hypothesis|1|A<10", "attempt": 1, "utc": "2026-11-13T16:42:44+00:00", "outcome": "ok"}
+{"id": "nemotron|contrastive learning|1|P10", "attempt": 1, "utc": "2026-11-13T16:42:48+00:00", "outcome": "ok"}
+{"id": "nemotron|contrastive learning|1|P<10", "attempt": 1, "utc": "2026-11-13T16:42:52+00:00", "outcome": "ok"}
+{"id": "nemotron|contrastive learning|1|A<10", "attempt": 1, "utc": "2026-11-13T16:42:56+00:00", "outcome": "ok"}
+{"id": "nemotron|contrastive learning|1|A10", "attempt": 1, "utc": "2026-11-13T16:42:59+00:00", "outcome": "ok"}
+{"id": "nemotron|differential privacy|1|A10", "attempt": 1, "utc": "2026-11-13T16:43:03+00:00", "outcome": "ok"}
+{"id": "nemotron|differential privacy|1|A<10", "attempt": 1, "utc": "2026-11-13T16:43:07+00:00", "outcome": "ok"}
+{"id": "nemotron|differential privacy|1|P10", "attempt": 1, "utc": "2026-11-13T16:43:09+00:00", "outcome": "ok"}
+{"id": "nemotron|differential privacy|1|P<10", "attempt": 1, "utc": "2026-11-13T16:43:13+00:00", "outcome": "ok"}
+{"id": "nemotron|neural tangent kernel|1|A<10", "attempt": 1, "utc": "2026-11-13T16:43:22+00:00", "outcome": "ok"}
+{"id": "nemotron|neural tangent kernel|1|P10", "attempt": 1, "utc": "2026-11-13T16:43:26+00:00", "outcome": "ok"}
+{"id": "nemotron|neural tangent kernel|1|A10", "attempt": 1, "utc": "2026-11-13T16:43:32+00:00", "outcome": "ok"}
+{"id": "nemotron|neural tangent kernel|1|P<10", "attempt": 1, "utc": "2026-11-13T16:43:38+00:00", "outcome": "ok"}
+{"id": "nemotron|monosemanticity in neural networks|1|P<10", "attempt": 1, "utc": "2026-11-13T16:43:41+00:00", "outcome": "ok"}
+{"id": "nemotron|monosemanticity in neural networks|1|A10", "attempt": 1, "utc": "2026-11-13T16:43:45+00:00", "outcome": "ok"}
+{"id": "nemotron|monosemanticity in neural networks|1|A<10", "attempt": 1, "utc": "2026-11-13T16:43:59+00:00", "outcome": "ok"}
+{"id": "nemotron|monosemanticity in neural networks|1|P10", "attempt": 1, "utc": "2026-11-13T16:44:03+00:00", "outcome": "ok"}
+{"id": "nemotron|circuit discovery in transformers|1|P10", "attempt": 1, "utc": "2026-11-13T16:44:05+00:00", "outcome": "ok"}
+{"id": "nemotron|circuit discovery in transformers|1|A<10", "attempt": 1, "utc": "2026-11-13T16:44:10+00:00", "outcome": "ok"}
+{"id": "nemotron|circuit discovery in transformers|1|A10", "attempt": 1, "utc": "2026-11-13T16:44:17+00:00", "outcome": "ok"}
+{"id": "nemotron|circuit discovery in transformers|1|P<10", "attempt": 1, "utc": "2026-11-13T16:44:20+00:00", "outcome": "ok"}
+{"id": "nemotron|computer graphics|1|A<10", "attempt": 1, "utc": "2026-11-13T16:44:23+00:00", "outcome": "ok"}
+{"id": "nemotron|computer graphics|1|P<10", "attempt": 1, "utc": "2026-11-13T16:44:25+00:00", "outcome": "ok"}
+{"id": "nemotron|computer graphics|1|A10", "attempt": 1, "utc": "2026-11-13T16:44:30+00:00", "outcome": "ok"}
+{"id": "nemotron|computer graphics|1|P10", "attempt": 1, "utc": "2026-11-13T16:44:42+00:00", "outcome": "ok"}
