@@ -1,0 +1,46 @@
+{"id": "gptoss|weight agnostic neural networks|2|A<10", "attempt": 1, "utc": "2026-11-13T17:05:47+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|weight agnostic neural networks|2|A<10", "attempt": 2, "utc": "2026-11-13T17:09:22+00:00", "outcome": "ok"}
+{"id": "gptoss|differential privacy|2|A<10", "attempt": 1, "utc": "2026-11-13T17:09:22+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|2|A<10", "attempt": 2, "utc": "2026-11-13T17:12:28+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|2|A<10", "attempt": 3, "utc": "2026-11-13T17:13:44+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|2|A<10", "attempt": 4, "utc": "2026-11-13T17:14:09+00:00", "outcome": "ok"}
+{"id": "gptoss|differential privacy|2|P<10", "attempt": 1, "utc": "2026-11-13T17:14:09+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|2|P<10", "attempt": 2, "utc": "2026-11-13T17:14:53+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|2|P<10", "attempt": 3, "utc": "2026-11-13T17:16:55+00:00", "outcome": "ok"}
+{"id": "gptoss|speculative decoding|2|A10", "attempt": 1, "utc": "2026-11-13T17:16:55+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speculative decoding|2|A10", "attempt": 2, "utc": "2026-11-13T17:19:20+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speculative decoding|2|A10", "attempt": 3, "utc": "2026-11-13T17:19:26+00:00", "outcome": "ok"}
+{"id": "gptoss|speculative decoding|2|P10", "attempt": 1, "utc": "2026-11-13T17:19:26+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speculative decoding|2|P10", "attempt": 2, "utc": "2026-11-13T17:23:29+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speculative decoding|2|P10", "attempt": 3, "utc": "2026-11-13T17:23:34+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speculative decoding|2|P10", "attempt": 4, "utc": "2026-11-13T17:23:41+00:00", "outcome": "ok"}
+{"id": "gptoss|retrieval augmented generation|2|A<10", "attempt": 1, "utc": "2026-11-13T17:23:41+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|retrieval augmented generation|2|A<10", "attempt": 2, "utc": "2026-11-13T17:27:08+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|retrieval augmented generation|2|A<10", "attempt": 3, "utc": "2026-11-13T17:27:50+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|retrieval augmented generation|2|A<10", "attempt": 4, "utc": "2026-11-13T17:27:58+00:00", "outcome": "ok"}
+{"id": "gptoss|retrieval augmented generation|2|P<10", "attempt": 1, "utc": "2026-11-13T17:27:58+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|retrieval augmented generation|2|P<10", "attempt": 2, "utc": "2026-11-13T17:31:36+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|retrieval augmented generation|2|P<10", "attempt": 3, "utc": "2026-11-13T17:32:17+00:00", "outcome": "ok"}
+{"id": "gptoss|liquid neural networks|1|P10", "attempt": 1, "utc": "2026-11-13T17:32:17+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|liquid neural networks|1|P10", "attempt": 2, "utc": "2026-11-13T17:34:50+00:00", "outcome": "ok"}
+{"id": "gptoss|liquid neural networks|1|P<10", "attempt": 1, "utc": "2026-11-13T17:34:50+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|liquid neural networks|1|P<10", "attempt": 2, "utc": "2026-11-13T17:38:34+00:00", "outcome": "ok"}
+{"id": "gptoss|machine learning|1|P10", "attempt": 1, "utc": "2026-11-13T17:38:34+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|machine learning|1|P10", "attempt": 2, "utc": "2026-11-13T17:40:27+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|machine learning|1|P10", "attempt": 3, "utc": "2026-11-13T17:42:19+00:00", "outcome": "ok"}
+{"id": "gptoss|machine learning|1|A<10", "attempt": 1, "utc": "2026-11-13T17:42:19+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|machine learning|1|A<10", "attempt": 2, "utc": "2026-11-13T17:43:38+00:00", "outcome": "ok"}
+{"id": "gptoss|differential privacy|1|P<10", "attempt": 1, "utc": "2026-11-13T17:43:38+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|1|P<10", "attempt": 2, "utc": "2026-11-13T17:45:08+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|1|P<10", "attempt": 3, "utc": "2026-11-13T17:46:39+00:00", "outcome": "ok"}
+{"id": "gptoss|differential privacy|1|P10", "attempt": 1, "utc": "2026-11-13T17:46:39+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|1|P10", "attempt": 2, "utc": "2026-11-13T17:49:32+00:00", "outcome": "ok"}
+{"id": "gptoss|model compression|2|P10", "attempt": 1, "utc": "2026-11-13T17:49:32+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|model compression|2|P10", "attempt": 2, "utc": "2026-11-13T17:50:12+00:00", "outcome": "ok"}
+{"id": "gptoss|model compression|2|P<10", "attempt": 1, "utc": "2026-11-13T17:50:12+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|model compression|2|P<10", "attempt": 2, "utc": "2026-11-13T17:54:39+00:00", "outcome": "ok"}
+{"id": "gptoss|test-time training transformers|2|P<10", "attempt": 1, "utc": "2026-11-13T17:54:39+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|test-time training transformers|2|P<10", "attempt": 2, "utc": "2026-11-13T17:56:48+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|test-time training transformers|2|P<10", "attempt": 3, "utc": "2026-11-13T17:56:58+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|test-time training transformers|2|P<10", "attempt": 4, "utc": "2026-11-13T17:57:09+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|test-time training transformers|2|P<10", "attempt": 4, "utc": "2026-11-13T17:57:09+00:00", "outcome": "failed"}
