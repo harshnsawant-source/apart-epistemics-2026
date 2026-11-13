@@ -1,0 +1,29 @@
+name: watchdog
+# Every 30 minutes: restart any runner that should be running but is not, and FAIL (GitHub then emails the owner)
+# if progress has stalled, runs keep failing, or a runner is stuck in a restart loop.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Health check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -f FREEZE.md ]; then echo "Plan not frozen; nothing to watch."; exit 0; fi
+          python tools/watchdog.py --heal
