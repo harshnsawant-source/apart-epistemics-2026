@@ -399,5 +399,10 @@ check("window: closed after the cutoff, Sunday 18:00 IST", CFG["collect_cutoff_u
       and run.collection_open(CFG, at("2026-11-15T12:30:00"))[0] is False
       and run.collection_open(CFG, at("2026-11-15T12:29:59"))[0] is True)
 
+rows_dup = [{"id": "x", "utc": "2026-11-13T17:05:00", "v": 2}, {"id": "x", "utc": "2026-11-13T17:01:00", "v": 1},
+            {"id": "y", "utc": "2026-11-13T17:02:00", "v": 3}]
+kept = sorted(run._first_per_id(rows_dup), key=lambda r: r["id"])
+check("dedupe: a call collected twice keeps the earlier reply", [r["v"] for r in kept] == [1, 3])
+
 print(f"\n{'RED' if FAILS else 'GREEN'}: {len(FAILS)} failing")
 sys.exit(1 if FAILS else 0)
