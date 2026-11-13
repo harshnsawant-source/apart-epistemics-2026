@@ -62,13 +62,22 @@ def _all_files(prefix):
     return [f for f in files if "_attempts" not in f.name]
 
 
+def _first_per_id(rows):
+    """If two runners ever collected the same call, keep only the earlier reply (by time collected)."""
+    best = {}
+    for r in rows:
+        if r["id"] not in best or r.get("utc", "") < best[r["id"]].get("utc", ""):
+            best[r["id"]] = r
+    return list(best.values())
+
+
 def arm_rows(arm):
-    """Every saved reply for an arm, from all runners' files."""
-    return [r for f in _all_files(f"generations_{arm}") for r in read_jsonl(f)]
+    """Every saved reply for an arm, from all runners' files, one per call."""
+    return _first_per_id([r for f in _all_files(f"generations_{arm}") for r in read_jsonl(f)])
 
 
 def stage2_rows(arm):
-    return [r for f in _all_files(f"stage2_{arm}") for r in read_jsonl(f)]
+    return _first_per_id([r for f in _all_files(f"stage2_{arm}") for r in read_jsonl(f)])
 
 
 def shard_filter(seq, shard):
