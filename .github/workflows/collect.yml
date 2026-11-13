@@ -28,6 +28,7 @@ jobs:
       - name: Work
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          KEY2: ${{ secrets.GROQ_API_KEY_2 }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           PYTHONIOENCODING: utf-8
         run: |
@@ -45,8 +46,9 @@ jobs:
             done
             echo "SAVE FAILED ($1)"; return 1
           }
-          python src/run.py --arm gptoss --minutes 50 --no-lookup --shard 1/2 || true
-          save "gptoss share 1"
+          SHARD=1/2; if [ -z "$KEY2" ]; then SHARD=1/1; echo "No second key: this runner does all gpt-oss calls"; fi
+          python src/run.py --arm gptoss --minutes 50 --no-lookup --shard $SHARD || true
+          save "gptoss share $SHARD"
       - name: Save anything left (also runs if the job is cancelled or times out)
         if: always()
         run: |
@@ -62,10 +64,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           HAS_KEY: ${{ secrets.GROQ_API_KEY != '' }}
+          HAS_KEY2: ${{ secrets.GROQ_API_KEY_2 != '' }}
         run: |
           if [ "$HAS_KEY" != "true" ]; then echo "No key; not restarting."; exit 0; fi
           git pull -q --rebase || true
-          python tools/status.py gptoss 1/2 | head -1
-          state=$(python tools/status.py gptoss 1/2 | tail -1)
+          SHARD=1/2; if [ "$HAS_KEY2" != "true" ]; then SHARD=1/1; fi
+          python tools/status.py gptoss $SHARD | head -1
+          state=$(python tools/status.py gptoss $SHARD | tail -1)
           if [ "$state" = "WAIT" ]; then echo "Waiting 15 minutes for the other runner"; sleep 900; state=MORE; fi
           if [ "$state" = "MORE" ]; then gh workflow run collect.yml --ref master && echo "NEXT RUN QUEUED"; else echo "DONE OR CLOSED"; fi
