@@ -253,3 +253,5 @@
 {"id": "gptoss|conformal prediction for language models|AA2|BASE", "attempt": 1, "utc": "2026-11-14T08:31:26+00:00", "outcome": "ok"}
 {"id": "gptoss|equivariant message passing networks|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:31:26+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|equivariant message passing networks|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:34:00+00:00", "outcome": "ok"}
+{"id": "gptoss|spiking neural networks|AA2|BASE", "attempt": 1, "utc": "2026-11-14T17:47:28+00:00", "outcome": "ok"}
+{"id": "gptoss|contrastive learning|AA1|BASE", "attempt": 1, "utc": "2026-11-14T17:47:28+00:00", "outcome": "ok"}
