@@ -43,3 +43,38 @@
 {"id": "gptoss|hyperdimensional computing|1|P10|audit", "attempt": 1, "utc": "2026-11-14T02:47:32+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|hyperdimensional computing|1|P10|audit", "attempt": 2, "utc": "2026-11-14T02:50:36+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|hyperdimensional computing|1|P10|audit", "attempt": 3, "utc": "2026-11-14T02:51:09+00:00", "outcome": "ok"}
+{"id": "gptoss|hyperdimensional computing|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T02:51:24+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hyperdimensional computing|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T02:55:47+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hyperdimensional computing|1|P10|receipts", "attempt": 3, "utc": "2026-11-14T02:55:51+00:00", "outcome": "ok"}
+{"id": "gptoss|influence functions for language models|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T02:55:51+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|influence functions for language models|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T02:58:48+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|influence functions for language models|1|P10|neutral", "attempt": 3, "utc": "2026-11-14T02:58:58+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|influence functions for language models|1|P10|neutral", "attempt": 4, "utc": "2026-11-14T02:59:02+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|influence functions for language models|1|P10|neutral", "attempt": 4, "utc": "2026-11-14T02:59:02+00:00", "outcome": "failed"}
+{"id": "gptoss|influence functions for language models|1|P10|audit", "attempt": 1, "utc": "2026-11-14T02:59:02+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|influence functions for language models|1|P10|audit", "attempt": 2, "utc": "2026-11-14T02:59:08+00:00", "outcome": "ok"}
+{"id": "gptoss|influence functions for language models|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T02:59:08+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|influence functions for language models|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T03:00:33+00:00", "outcome": "ok"}
+{"id": "gptoss|lottery ticket hypothesis|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T03:00:33+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|lottery ticket hypothesis|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T03:07:15+00:00", "outcome": "ok"}
+{"id": "gptoss|lottery ticket hypothesis|1|P10|audit", "attempt": 1, "utc": "2026-11-14T03:07:15+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|lottery ticket hypothesis|1|P10|audit", "attempt": 2, "utc": "2026-11-14T03:10:06+00:00", "outcome": "ok"}
+{"id": "gptoss|lottery ticket hypothesis|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T03:10:06+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|lottery ticket hypothesis|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T03:14:32+00:00", "outcome": "ok"}
+{"id": "gptoss|mechanistic interpretability|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T03:14:32+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|mechanistic interpretability|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T03:18:12+00:00", "outcome": "ok"}
+{"id": "gptoss|mechanistic interpretability|1|P10|audit", "attempt": 1, "utc": "2026-11-14T03:18:12+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|mechanistic interpretability|1|P10|audit", "attempt": 2, "utc": "2026-11-14T03:21:42+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|mechanistic interpretability|1|P10|audit", "attempt": 3, "utc": "2026-11-14T03:21:52+00:00", "outcome": "ok"}
+{"id": "gptoss|mechanistic interpretability|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T03:21:53+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|mechanistic interpretability|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T03:26:16+00:00", "outcome": "ok"}
+{"id": "gptoss|model compression|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T03:26:16+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|model compression|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T03:29:20+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|model compression|1|P10|neutral", "attempt": 3, "utc": "2026-11-14T03:34:30+00:00", "outcome": "ok"}
+{"id": "gptoss|model compression|1|P10|audit", "attempt": 1, "utc": "2026-11-14T03:34:31+00:00", "outcome": "ok"}
+{"id": "gptoss|model compression|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T03:34:31+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|model compression|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T03:40:25+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|model compression|1|P10|receipts", "attempt": 3, "utc": "2026-11-14T03:40:55+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|model compression|1|P10|receipts", "attempt": 4, "utc": "2026-11-14T03:40:58+00:00", "outcome": "ok"}
+{"id": "gptoss|neural architecture search|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T03:40:58+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural architecture search|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T03:44:07+00:00", "outcome": "ok"}
