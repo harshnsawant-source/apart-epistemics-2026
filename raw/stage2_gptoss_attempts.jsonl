@@ -32,3 +32,5 @@
 {"id": "gptoss|transfer learning|1|P10|audit", "attempt": 1, "utc": "2026-11-14T05:47:48+00:00", "outcome": "ok"}
 {"id": "gptoss|transfer learning|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:47:48+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|transfer learning|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T05:47:56+00:00", "outcome": "ok"}
+{"id": "gptoss|activation steering|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:49:08+00:00", "outcome": "ok"}
+{"id": "gptoss|hypernetworks for weight generation|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:49:09+00:00", "outcome": "ok"}
