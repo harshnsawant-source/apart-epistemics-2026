@@ -270,3 +270,41 @@
 {"id": "gptoss|influence functions for language models|2|A10", "attempt": 3, "utc": "2026-11-13T23:12:21+00:00", "outcome": "ok"}
 {"id": "gptoss|monosemanticity in neural networks|1|P10", "attempt": 1, "utc": "2026-11-13T23:12:21+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|monosemanticity in neural networks|1|P10", "attempt": 2, "utc": "2026-11-13T23:16:44+00:00", "outcome": "ok"}
+{"id": "gptoss|monosemanticity in neural networks|1|A10", "attempt": 1, "utc": "2026-11-13T23:16:58+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|monosemanticity in neural networks|1|A10", "attempt": 2, "utc": "2026-11-13T23:20:26+00:00", "outcome": "ok"}
+{"id": "gptoss|neural cellular automata|2|P10", "attempt": 1, "utc": "2026-11-13T23:20:26+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural cellular automata|2|P10", "attempt": 2, "utc": "2026-11-13T23:24:18+00:00", "outcome": "ok"}
+{"id": "gptoss|neural cellular automata|2|A10", "attempt": 1, "utc": "2026-11-13T23:24:18+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural cellular automata|2|A10", "attempt": 2, "utc": "2026-11-13T23:28:03+00:00", "outcome": "ok"}
+{"id": "gptoss|computer graphics|1|A<10", "attempt": 1, "utc": "2026-11-13T23:28:03+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|computer graphics|1|A<10", "attempt": 2, "utc": "2026-11-13T23:34:00+00:00", "outcome": "ok"}
+{"id": "gptoss|computer graphics|1|P<10", "attempt": 1, "utc": "2026-11-13T23:34:00+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|computer graphics|1|P<10", "attempt": 2, "utc": "2026-11-13T23:35:27+00:00", "outcome": "ok"}
+{"id": "gptoss|activation steering|1|P10", "attempt": 1, "utc": "2026-11-13T23:35:27+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|activation steering|1|P10", "attempt": 2, "utc": "2026-11-13T23:37:48+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|activation steering|1|P10", "attempt": 3, "utc": "2026-11-13T23:38:25+00:00", "outcome": "ok"}
+{"id": "gptoss|activation steering|1|P<10", "attempt": 1, "utc": "2026-11-13T23:38:25+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|activation steering|1|P<10", "attempt": 2, "utc": "2026-11-13T23:41:20+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|activation steering|1|P<10", "attempt": 3, "utc": "2026-11-13T23:41:44+00:00", "outcome": "ok"}
+{"id": "gptoss|hypernetworks for weight generation|2|P10", "attempt": 1, "utc": "2026-11-13T23:41:45+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hypernetworks for weight generation|2|P10", "attempt": 2, "utc": "2026-11-13T23:43:54+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hypernetworks for weight generation|2|P10", "attempt": 3, "utc": "2026-11-13T23:44:11+00:00", "outcome": "ok"}
+{"id": "gptoss|hypernetworks for weight generation|2|A10", "attempt": 1, "utc": "2026-11-13T23:44:12+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hypernetworks for weight generation|2|A10", "attempt": 2, "utc": "2026-11-13T23:47:07+00:00", "outcome": "ok"}
+{"id": "gptoss|activation steering|2|A10", "attempt": 1, "utc": "2026-11-13T23:47:07+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|activation steering|2|A10", "attempt": 2, "utc": "2026-11-13T23:50:11+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|activation steering|2|A10", "attempt": 3, "utc": "2026-11-13T23:50:45+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|activation steering|2|A10", "attempt": 4, "utc": "2026-11-13T23:57:22+00:00", "outcome": "ok"}
+{"id": "gptoss|activation steering|2|A<10", "attempt": 1, "utc": "2026-11-13T23:57:23+00:00", "outcome": "ok"}
+{"id": "gptoss|lottery ticket hypothesis|1|A<10", "attempt": 1, "utc": "2026-11-13T23:57:23+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|lottery ticket hypothesis|1|A<10", "attempt": 2, "utc": "2026-11-13T23:59:03+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|lottery ticket hypothesis|1|A<10", "attempt": 3, "utc": "2026-11-13T23:59:17+00:00", "outcome": "ok"}
+{"id": "gptoss|lottery ticket hypothesis|1|P<10", "attempt": 1, "utc": "2026-11-13T23:59:17+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|lottery ticket hypothesis|1|P<10", "attempt": 2, "utc": "2026-11-14T00:02:30+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|lottery ticket hypothesis|1|P<10", "attempt": 3, "utc": "2026-11-14T00:02:56+00:00", "outcome": "ok"}
+{"id": "gptoss|transfer learning|2|A<10", "attempt": 1, "utc": "2026-11-14T00:02:56+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|transfer learning|2|A<10", "attempt": 2, "utc": "2026-11-14T00:05:59+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|transfer learning|2|A<10", "attempt": 3, "utc": "2026-11-14T00:06:14+00:00", "outcome": "ok"}
+{"id": "gptoss|transfer learning|2|P<10", "attempt": 1, "utc": "2026-11-14T00:06:15+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|transfer learning|2|P<10", "attempt": 2, "utc": "2026-11-14T00:09:04+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|transfer learning|2|P<10", "attempt": 3, "utc": "2026-11-14T00:09:06+00:00", "outcome": "ok"}
