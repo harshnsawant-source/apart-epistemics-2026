@@ -433,5 +433,11 @@ check("stage2: a repeated seed title or empty item gets no receipt, and does not
       rc_seed is not None and "Item 4:" in rc_seed[-1]["content"] and "Item 7:" in rc_seed[-1]["content"]
       and "Item 5:" not in rc_seed[-1]["content"] and "Item 6:" not in rc_seed[-1]["content"])
 
+_ac = {c: {"unres_n": 30, "unres_real": 0, "match_n": 30, "match_fake": 0} for c in ("P10", "A10", "P<10", "A<10")}
+_cfg2arm = dict(cfg2, arms={"gptoss": cfg2["arms"]["gptoss"], "llama": dict(CFG["arms"]["llama"], stage2=False)})
+_res2 = analysis.analyse(_cfg2arm, {"gptoss": rows, "llama": rows}, lo, audit_counts=_ac)["arms"]
+check("audit: correction applies to the primary arm only (the audit sampled its titles)",
+      _res2["gptoss"]["primary_U_corrected"] is not None and _res2["llama"]["primary_U_corrected"] is None)
+
 print(f"\n{'RED' if FAILS else 'GREEN'}: {len(FAILS)} failing")
 sys.exit(1 if FAILS else 0)

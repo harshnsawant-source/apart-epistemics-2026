@@ -158,7 +158,7 @@ def analyse(cfg, rows_by_arm, label_of, audit_counts=None):
                 aa.setdefault(topic, {})[pair] = s["U"]
         aa_diff = {t: abs(v["AA1"] - v["AA2"]) for t, v in aa.items() if "AA1" in v and "AA2" in v}
         corrected = None
-        if audit_counts:
+        if audit_counts and arm == cfg["primary_arm"]:   # the audit sampled the primary arm only (FREEZE 12)
             rates = audit_rates(audit_counts, conditions=list(design.CONDITIONS) + ["BASE"])
             cscores = {k: dict(s, Uc=corrected_U(s, rates[k[3]])) for k, s in scores.items() if k[0] == arm}
             corrected = summary(topic_contrast(cscores, arm, "A10", "P10", "Uc"), cfg)

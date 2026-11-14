@@ -1,0 +1,442 @@
+{
+ "counts": {
+  "gptoss": {
+   "collected": 400,
+   "scored": 384
+  },
+  "llama": {
+   "collected": 160,
+   "scored": 160
+  },
+  "qwen": {
+   "collected": 160,
+   "scored": 160
+  },
+  "nemotron": {
+   "collected": 160,
+   "scored": 160
+  }
+ },
+ "arms": {
+  "gptoss": {
+   "primary_U_A10_minus_P10": {
+    "topics": 40,
+    "mean": -0.6375,
+    "ci": [
+     -1.3625,
+     0.0375
+    ]
+   },
+   "primary_U_90": {
+    "topics": 40,
+    "mean": -0.6375,
+    "ci": [
+     -1.25,
+     -0.0625
+    ]
+   },
+   "guardrail_V_A10_minus_P10": {
+    "topics": 40,
+    "mean": 0.6375,
+    "ci": [
+     0.125,
+     1.1875
+    ]
+   },
+   "primary_U_corrected": {
+    "topics": 40,
+    "mean": -1.3085,
+    "ci": [
+     -1.9629999999999999,
+     -0.6884999999999999
+    ]
+   },
+   "verdict": "inconclusive",
+   "U_Afewer_minus_Pfewer": {
+    "topics": 40,
+    "mean": -0.575,
+    "ci": [
+     -1.0,
+     -0.1625
+    ]
+   },
+   "V_Afewer_minus_Pfewer": {
+    "topics": 40,
+    "mean": -0.2,
+    "ci": [
+     -0.9,
+     0.525
+    ]
+   },
+   "U_permission_Pfewer_minus_P10": {
+    "topics": 40,
+    "mean": -1.8,
+    "ci": [
+     -2.5375,
+     -1.0875
+    ]
+   },
+   "U_interaction": {
+    "topics": 40,
+    "mean": 0.0625,
+    "ci": [
+     -0.625,
+     0.75
+    ]
+   },
+   "given_A10_minus_P10": {
+    "topics": 40,
+    "mean": 0.0,
+    "ci": [
+     -0.625,
+     0.625
+    ]
+   },
+   "aa_mean_abs_U_diff": 2.7037037037037037,
+   "cell_means": {
+    "P10": {
+     "U": 3.7125,
+     "V": 5.75,
+     "given": 9.4625
+    },
+    "A10": {
+     "U": 3.075,
+     "V": 6.3875,
+     "given": 9.4625
+    },
+    "P<10": {
+     "U": 1.9125,
+     "V": 4.275,
+     "given": 6.2
+    },
+    "A<10": {
+     "U": 1.3375,
+     "V": 4.075,
+     "given": 5.4125
+    },
+    "BASE": {
+     "U": 5.484375,
+     "V": 4.453125,
+     "given": 9.953125
+    }
+   },
+   "stage2": {
+    "neutral": {
+     "lists": 40,
+     "unres": 146,
+     "unres_withdrawn": 7,
+     "ver": 212,
+     "ver_withdrawn": 4,
+     "undecided": 0,
+     "random_deletion_expected_unres_withdrawn": 4.4860335195530725
+    },
+    "audit": {
+     "lists": 40,
+     "unres": 146,
+     "unres_withdrawn": 104,
+     "ver": 212,
+     "ver_withdrawn": 67,
+     "undecided": 0,
+     "random_deletion_expected_unres_withdrawn": 69.73743016759776
+    },
+    "receipts": {
+     "lists": 40,
+     "unres": 146,
+     "unres_withdrawn": 146,
+     "ver": 212,
+     "ver_withdrawn": 0,
+     "undecided": 0,
+     "random_deletion_expected_unres_withdrawn": 59.54189944134078
+    }
+   }
+  },
+  "llama": {
+   "primary_U_A10_minus_P10": {
+    "topics": 40,
+    "mean": -0.425,
+    "ci": [
+     -1.1,
+     0.225
+    ]
+   },
+   "primary_U_90": {
+    "topics": 40,
+    "mean": -0.425,
+    "ci": [
+     -0.975,
+     0.125
+    ]
+   },
+   "guardrail_V_A10_minus_P10": {
+    "topics": 40,
+    "mean": 0.475,
+    "ci": [
+     -0.15,
+     1.1
+    ]
+   },
+   "primary_U_corrected": null,
+   "verdict": "inconclusive",
+   "U_Afewer_minus_Pfewer": {
+    "topics": 40,
+    "mean": -0.075,
+    "ci": [
+     -0.775,
+     0.625
+    ]
+   },
+   "V_Afewer_minus_Pfewer": {
+    "topics": 40,
+    "mean": -0.15,
+    "ci": [
+     -0.8,
+     0.45
+    ]
+   },
+   "U_permission_Pfewer_minus_P10": {
+    "topics": 40,
+    "mean": -0.15,
+    "ci": [
+     -0.75,
+     0.45
+    ]
+   },
+   "U_interaction": {
+    "topics": 40,
+    "mean": 0.35,
+    "ci": [
+     -0.6,
+     1.325
+    ]
+   },
+   "given_A10_minus_P10": {
+    "topics": 40,
+    "mean": 0.05,
+    "ci": [
+     -0.325,
+     0.4
+    ]
+   },
+   "aa_mean_abs_U_diff": null,
+   "cell_means": {
+    "P10": {
+     "U": 4.8,
+     "V": 2.35,
+     "given": 7.15
+    },
+    "A10": {
+     "U": 4.375,
+     "V": 2.825,
+     "given": 7.2
+    },
+    "P<10": {
+     "U": 4.65,
+     "V": 2.475,
+     "given": 7.125
+    },
+    "A<10": {
+     "U": 4.575,
+     "V": 2.325,
+     "given": 6.9
+    },
+    "BASE": {
+     "U": null,
+     "V": null,
+     "given": null
+    }
+   }
+  },
+  "qwen": {
+   "primary_U_A10_minus_P10": {
+    "topics": 40,
+    "mean": -0.625,
+    "ci": [
+     -1.65,
+     0.325
+    ]
+   },
+   "primary_U_90": {
+    "topics": 40,
+    "mean": -0.625,
+    "ci": [
+     -1.475,
+     0.2
+    ]
+   },
+   "guardrail_V_A10_minus_P10": {
+    "topics": 40,
+    "mean": 0.6,
+    "ci": [
+     -0.35,
+     1.6
+    ]
+   },
+   "primary_U_corrected": null,
+   "verdict": "inconclusive",
+   "U_Afewer_minus_Pfewer": {
+    "topics": 40,
+    "mean": -1.825,
+    "ci": [
+     -3.175,
+     -0.475
+    ]
+   },
+   "V_Afewer_minus_Pfewer": {
+    "topics": 40,
+    "mean": -0.55,
+    "ci": [
+     -1.85,
+     0.775
+    ]
+   },
+   "U_permission_Pfewer_minus_P10": {
+    "topics": 40,
+    "mean": -0.825,
+    "ci": [
+     -1.975,
+     0.3
+    ]
+   },
+   "U_interaction": {
+    "topics": 40,
+    "mean": -1.2,
+    "ci": [
+     -2.925,
+     0.525
+    ]
+   },
+   "given_A10_minus_P10": {
+    "topics": 40,
+    "mean": -0.05,
+    "ci": [
+     -0.525,
+     0.275
+    ]
+   },
+   "aa_mean_abs_U_diff": null,
+   "cell_means": {
+    "P10": {
+     "U": 4.85,
+     "V": 4.85,
+     "given": 9.775
+    },
+    "A10": {
+     "U": 4.225,
+     "V": 5.45,
+     "given": 9.725
+    },
+    "P<10": {
+     "U": 4.025,
+     "V": 4.35,
+     "given": 8.375
+    },
+    "A<10": {
+     "U": 2.2,
+     "V": 3.8,
+     "given": 6.0
+    },
+    "BASE": {
+     "U": null,
+     "V": null,
+     "given": null
+    }
+   }
+  },
+  "nemotron": {
+   "primary_U_A10_minus_P10": {
+    "topics": 40,
+    "mean": -0.2,
+    "ci": [
+     -0.95,
+     0.575
+    ]
+   },
+   "primary_U_90": {
+    "topics": 40,
+    "mean": -0.2,
+    "ci": [
+     -0.825,
+     0.45
+    ]
+   },
+   "guardrail_V_A10_minus_P10": {
+    "topics": 40,
+    "mean": 1.275,
+    "ci": [
+     0.375,
+     2.225
+    ]
+   },
+   "primary_U_corrected": null,
+   "verdict": "inconclusive",
+   "U_Afewer_minus_Pfewer": {
+    "topics": 40,
+    "mean": -0.05,
+    "ci": [
+     -0.625,
+     0.525
+    ]
+   },
+   "V_Afewer_minus_Pfewer": {
+    "topics": 40,
+    "mean": -0.075,
+    "ci": [
+     -0.85,
+     0.725
+    ]
+   },
+   "U_permission_Pfewer_minus_P10": {
+    "topics": 40,
+    "mean": 0.175,
+    "ci": [
+     -0.55,
+     0.875
+    ]
+   },
+   "U_interaction": {
+    "topics": 40,
+    "mean": 0.15,
+    "ci": [
+     -0.825,
+     1.05
+    ]
+   },
+   "given_A10_minus_P10": {
+    "topics": 40,
+    "mean": 1.075,
+    "ci": [
+     0.25,
+     2.1
+    ]
+   },
+   "aa_mean_abs_U_diff": null,
+   "cell_means": {
+    "P10": {
+     "U": 2.75,
+     "V": 6.075,
+     "given": 8.85
+    },
+    "A10": {
+     "U": 2.55,
+     "V": 7.35,
+     "given": 9.925
+    },
+    "P<10": {
+     "U": 2.925,
+     "V": 6.525,
+     "given": 9.45
+    },
+    "A<10": {
+     "U": 2.875,
+     "V": 6.45,
+     "given": 9.375
+    },
+    "BASE": {
+     "U": null,
+     "V": null,
+     "given": null
+    }
+   }
+  }
+ }
+}

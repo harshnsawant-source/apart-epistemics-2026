@@ -1,0 +1,35 @@
+{
+ "per_condition": {
+  "A<10": {
+   "unres_n": 25,
+   "unres_real": 2,
+   "match_n": 25,
+   "match_fake": 1
+  },
+  "P10": {
+   "unres_n": 25,
+   "unres_real": 0,
+   "match_n": 25,
+   "match_fake": 3
+  },
+  "A10": {
+   "unres_n": 25,
+   "unres_real": 4,
+   "match_n": 25,
+   "match_fake": 2
+  },
+  "P<10": {
+   "unres_n": 25,
+   "unres_real": 2,
+   "match_n": 25,
+   "match_fake": 2
+  }
+ },
+ "audited": 200,
+ "agree": 184,
+ "agreement": 0.92,
+ "relevance": {
+  "on": 0,
+  "off": 0
+ }
+}
