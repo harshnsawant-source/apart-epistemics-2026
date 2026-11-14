@@ -1,3 +1,45 @@
 {"id": "gptoss|activation steering|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T01:49:20+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|activation steering|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T01:51:12+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|activation steering|1|P10|neutral", "attempt": 3, "utc": "2026-11-14T01:58:36+00:00", "outcome": "ok"}
+{"id": "gptoss|activation steering|1|P10|audit", "attempt": 1, "utc": "2026-11-14T01:58:55+00:00", "outcome": "ok"}
+{"id": "gptoss|circuit discovery in transformers|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T01:58:55+00:00", "outcome": "ok"}
+{"id": "gptoss|circuit discovery in transformers|1|P10|audit", "attempt": 1, "utc": "2026-11-14T01:58:55+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|circuit discovery in transformers|1|P10|audit", "attempt": 2, "utc": "2026-11-14T02:00:28+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|circuit discovery in transformers|1|P10|audit", "attempt": 3, "utc": "2026-11-14T02:00:39+00:00", "outcome": "ok"}
+{"id": "gptoss|circuit discovery in transformers|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T02:00:39+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|circuit discovery in transformers|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T02:04:56+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|circuit discovery in transformers|1|P10|receipts", "attempt": 3, "utc": "2026-11-14T02:06:25+00:00", "outcome": "ok"}
+{"id": "gptoss|conformal prediction for language models|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T02:06:25+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|conformal prediction for language models|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T02:06:36+00:00", "outcome": "ok"}
+{"id": "gptoss|conformal prediction for language models|1|P10|audit", "attempt": 1, "utc": "2026-11-14T02:06:36+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|conformal prediction for language models|1|P10|audit", "attempt": 2, "utc": "2026-11-14T02:09:47+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|conformal prediction for language models|1|P10|audit", "attempt": 3, "utc": "2026-11-14T02:09:50+00:00", "outcome": "ok"}
+{"id": "gptoss|conformal prediction for language models|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T02:09:50+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|conformal prediction for language models|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T02:13:51+00:00", "outcome": "ok"}
+{"id": "gptoss|database systems|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T02:13:51+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T02:17:41+00:00", "outcome": "ok"}
+{"id": "gptoss|database systems|1|P10|audit", "attempt": 1, "utc": "2026-11-14T02:17:41+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|1|P10|audit", "attempt": 2, "utc": "2026-11-14T02:19:52+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|1|P10|audit", "attempt": 3, "utc": "2026-11-14T02:19:56+00:00", "outcome": "ok"}
+{"id": "gptoss|database systems|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T02:19:56+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T02:22:04+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|1|P10|receipts", "attempt": 3, "utc": "2026-11-14T02:22:43+00:00", "outcome": "ok"}
+{"id": "gptoss|differential privacy|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T02:22:43+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T02:23:45+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|1|P10|neutral", "attempt": 3, "utc": "2026-11-14T02:25:46+00:00", "outcome": "ok"}
+{"id": "gptoss|differential privacy|1|P10|audit", "attempt": 1, "utc": "2026-11-14T02:25:46+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|1|P10|audit", "attempt": 2, "utc": "2026-11-14T02:29:22+00:00", "outcome": "ok"}
+{"id": "gptoss|differential privacy|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T02:29:22+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T02:33:13+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|1|P10|receipts", "attempt": 3, "utc": "2026-11-14T02:33:27+00:00", "outcome": "ok"}
+{"id": "gptoss|graph neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T02:33:27+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|graph neural networks|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T02:36:24+00:00", "outcome": "ok"}
+{"id": "gptoss|graph neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-14T02:36:24+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|graph neural networks|1|P10|audit", "attempt": 2, "utc": "2026-11-14T02:37:40+00:00", "outcome": "ok"}
+{"id": "gptoss|graph neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T02:37:40+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|graph neural networks|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T02:44:58+00:00", "outcome": "ok"}
+{"id": "gptoss|hyperdimensional computing|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T02:44:58+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hyperdimensional computing|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T02:47:32+00:00", "outcome": "ok"}
+{"id": "gptoss|hyperdimensional computing|1|P10|audit", "attempt": 1, "utc": "2026-11-14T02:47:32+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hyperdimensional computing|1|P10|audit", "attempt": 2, "utc": "2026-11-14T02:50:36+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hyperdimensional computing|1|P10|audit", "attempt": 3, "utc": "2026-11-14T02:51:09+00:00", "outcome": "ok"}
