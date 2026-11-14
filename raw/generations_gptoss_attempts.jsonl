@@ -189,3 +189,67 @@
 {"id": "gptoss|retrieval head attention|AA2|BASE", "attempt": 1, "utc": "2026-11-14T07:29:02+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|retrieval head attention|AA2|BASE", "attempt": 2, "utc": "2026-11-14T07:31:30+00:00", "outcome": "HTTP 429"}
 {"id": "gptoss|retrieval head attention|AA2|BASE", "attempt": 3, "utc": "2026-11-14T07:33:15+00:00", "outcome": "ok"}
+{"id": "gptoss|mixture of experts|AA1|BASE", "attempt": 1, "utc": "2026-11-14T07:33:54+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|mixture of experts|AA1|BASE", "attempt": 2, "utc": "2026-11-14T07:35:34+00:00", "outcome": "ok"}
+{"id": "gptoss|neural networks|AA2|BASE", "attempt": 1, "utc": "2026-11-14T07:35:34+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural networks|AA2|BASE", "attempt": 2, "utc": "2026-11-14T07:38:29+00:00", "outcome": "ok"}
+{"id": "gptoss|hypernetworks for weight generation|AA2|BASE", "attempt": 1, "utc": "2026-11-14T07:38:29+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hypernetworks for weight generation|AA2|BASE", "attempt": 2, "utc": "2026-11-14T07:40:39+00:00", "outcome": "ok"}
+{"id": "gptoss|hyperdimensional computing|AA2|BASE", "attempt": 1, "utc": "2026-11-14T07:40:39+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hyperdimensional computing|AA2|BASE", "attempt": 2, "utc": "2026-11-14T07:42:26+00:00", "outcome": "ok"}
+{"id": "gptoss|quantization aware training|AA1|BASE", "attempt": 1, "utc": "2026-11-14T07:42:26+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|quantization aware training|AA1|BASE", "attempt": 2, "utc": "2026-11-14T07:43:37+00:00", "outcome": "ok"}
+{"id": "gptoss|retrieval augmented generation|AA1|BASE", "attempt": 1, "utc": "2026-11-14T07:43:38+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|retrieval augmented generation|AA1|BASE", "attempt": 2, "utc": "2026-11-14T07:46:15+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|retrieval augmented generation|AA1|BASE", "attempt": 3, "utc": "2026-11-14T07:47:36+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|retrieval augmented generation|AA1|BASE", "attempt": 4, "utc": "2026-11-14T07:48:04+00:00", "outcome": "ok"}
+{"id": "gptoss|database systems|AA1|BASE", "attempt": 1, "utc": "2026-11-14T07:48:05+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|AA1|BASE", "attempt": 2, "utc": "2026-11-14T07:48:54+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|AA1|BASE", "attempt": 3, "utc": "2026-11-14T07:50:12+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|AA1|BASE", "attempt": 4, "utc": "2026-11-14T07:50:32+00:00", "outcome": "ok"}
+{"id": "gptoss|sparse autoencoders for interpretability|AA2|BASE", "attempt": 1, "utc": "2026-11-14T07:50:33+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|sparse autoencoders for interpretability|AA2|BASE", "attempt": 2, "utc": "2026-11-14T07:52:40+00:00", "outcome": "ok"}
+{"id": "gptoss|neural architecture search|AA2|BASE", "attempt": 1, "utc": "2026-11-14T07:52:40+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural architecture search|AA2|BASE", "attempt": 2, "utc": "2026-11-14T07:52:43+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural architecture search|AA2|BASE", "attempt": 3, "utc": "2026-11-14T07:53:22+00:00", "outcome": "ok"}
+{"id": "gptoss|weight agnostic neural networks|AA2|BASE", "attempt": 1, "utc": "2026-11-14T07:53:22+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|weight agnostic neural networks|AA2|BASE", "attempt": 2, "utc": "2026-11-14T07:55:04+00:00", "outcome": "ok"}
+{"id": "gptoss|chain of thought prompting|AA2|BASE", "attempt": 1, "utc": "2026-11-14T07:55:04+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|chain of thought prompting|AA2|BASE", "attempt": 2, "utc": "2026-11-14T07:59:27+00:00", "outcome": "ok"}
+{"id": "gptoss|mechanistic interpretability|AA2|BASE", "attempt": 1, "utc": "2026-11-14T07:59:27+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|mechanistic interpretability|AA2|BASE", "attempt": 2, "utc": "2026-11-14T08:01:27+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|mechanistic interpretability|AA2|BASE", "attempt": 3, "utc": "2026-11-14T08:01:31+00:00", "outcome": "ok"}
+{"id": "gptoss|database systems|AA2|BASE", "attempt": 1, "utc": "2026-11-14T08:01:31+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|database systems|AA2|BASE", "attempt": 2, "utc": "2026-11-14T08:03:38+00:00", "outcome": "ok"}
+{"id": "gptoss|model compression|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:03:38+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|model compression|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:04:05+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|model compression|AA1|BASE", "attempt": 3, "utc": "2026-11-14T08:05:54+00:00", "outcome": "ok"}
+{"id": "gptoss|grokking in neural networks|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:05:55+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|grokking in neural networks|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:06:18+00:00", "outcome": "ok"}
+{"id": "gptoss|activation steering|AA2|BASE", "attempt": 1, "utc": "2026-11-14T08:06:18+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|activation steering|AA2|BASE", "attempt": 2, "utc": "2026-11-14T08:10:22+00:00", "outcome": "ok"}
+{"id": "gptoss|speech recognition|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:10:22+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speech recognition|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:12:46+00:00", "outcome": "ok"}
+{"id": "gptoss|neural tangent kernel|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:12:46+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|neural tangent kernel|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:15:11+00:00", "outcome": "ok"}
+{"id": "gptoss|model compression|AA2|BASE", "attempt": 1, "utc": "2026-11-14T08:15:11+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|model compression|AA2|BASE", "attempt": 2, "utc": "2026-11-14T08:17:40+00:00", "outcome": "ok"}
+{"id": "gptoss|machine learning|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:17:41+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|machine learning|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:20:10+00:00", "outcome": "ok"}
+{"id": "gptoss|differential privacy|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:20:10+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:20:31+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|differential privacy|AA1|BASE", "attempt": 3, "utc": "2026-11-14T08:22:34+00:00", "outcome": "ok"}
+{"id": "gptoss|hyperdimensional computing|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:22:34+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hyperdimensional computing|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:22:50+00:00", "outcome": "ok"}
+{"id": "gptoss|monosemanticity in neural networks|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:22:50+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|monosemanticity in neural networks|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:25:18+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|monosemanticity in neural networks|AA1|BASE", "attempt": 3, "utc": "2026-11-14T08:26:53+00:00", "outcome": "ok"}
+{"id": "gptoss|recommender systems|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:26:54+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|recommender systems|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:29:42+00:00", "outcome": "ok"}
+{"id": "gptoss|hypernetworks for weight generation|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:29:42+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hypernetworks for weight generation|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:29:44+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hypernetworks for weight generation|AA1|BASE", "attempt": 3, "utc": "2026-11-14T08:31:15+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|hypernetworks for weight generation|AA1|BASE", "attempt": 4, "utc": "2026-11-14T08:31:25+00:00", "outcome": "ok"}
+{"id": "gptoss|conformal prediction for language models|AA2|BASE", "attempt": 1, "utc": "2026-11-14T08:31:26+00:00", "outcome": "ok"}
+{"id": "gptoss|equivariant message passing networks|AA1|BASE", "attempt": 1, "utc": "2026-11-14T08:31:26+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|equivariant message passing networks|AA1|BASE", "attempt": 2, "utc": "2026-11-14T08:34:00+00:00", "outcome": "ok"}
