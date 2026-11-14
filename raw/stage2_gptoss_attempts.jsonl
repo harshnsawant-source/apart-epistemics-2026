@@ -1,0 +1,34 @@
+{"id": "gptoss|influence functions for language models|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T05:47:07+00:00", "outcome": "ok"}
+{"id": "gptoss|neural architecture search|1|P10|audit", "attempt": 1, "utc": "2026-11-14T05:47:08+00:00", "outcome": "ok"}
+{"id": "gptoss|neural architecture search|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:47:09+00:00", "outcome": "ok"}
+{"id": "gptoss|neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T05:47:10+00:00", "outcome": "ok"}
+{"id": "gptoss|neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-14T05:47:11+00:00", "outcome": "ok"}
+{"id": "gptoss|neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:47:12+00:00", "outcome": "ok"}
+{"id": "gptoss|quantization aware training|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T05:47:13+00:00", "outcome": "ok"}
+{"id": "gptoss|quantization aware training|1|P10|audit", "attempt": 1, "utc": "2026-11-14T05:47:13+00:00", "outcome": "ok"}
+{"id": "gptoss|quantization aware training|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:47:14+00:00", "outcome": "ok"}
+{"id": "gptoss|representation engineering control vectors|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T05:47:15+00:00", "outcome": "ok"}
+{"id": "gptoss|representation engineering control vectors|1|P10|audit", "attempt": 1, "utc": "2026-11-14T05:47:15+00:00", "outcome": "ok"}
+{"id": "gptoss|representation engineering control vectors|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:47:16+00:00", "outcome": "ok"}
+{"id": "gptoss|retrieval head attention|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T05:47:17+00:00", "outcome": "ok"}
+{"id": "gptoss|retrieval head attention|1|P10|audit", "attempt": 1, "utc": "2026-11-14T05:47:18+00:00", "outcome": "ok"}
+{"id": "gptoss|retrieval head attention|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:47:18+00:00", "outcome": "ok"}
+{"id": "gptoss|sharpness aware minimization|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T05:47:19+00:00", "outcome": "ok"}
+{"id": "gptoss|sharpness aware minimization|1|P10|audit", "attempt": 1, "utc": "2026-11-14T05:47:20+00:00", "outcome": "ok"}
+{"id": "gptoss|sharpness aware minimization|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:47:21+00:00", "outcome": "ok"}
+{"id": "gptoss|speculative decoding|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T05:47:22+00:00", "outcome": "ok"}
+{"id": "gptoss|speculative decoding|1|P10|audit", "attempt": 1, "utc": "2026-11-14T05:47:22+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speculative decoding|1|P10|audit", "attempt": 2, "utc": "2026-11-14T05:47:27+00:00", "outcome": "ok"}
+{"id": "gptoss|speculative decoding|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:47:27+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speculative decoding|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T05:47:32+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|speculative decoding|1|P10|receipts", "attempt": 3, "utc": "2026-11-14T05:47:35+00:00", "outcome": "ok"}
+{"id": "gptoss|spiking neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T05:47:36+00:00", "outcome": "ok"}
+{"id": "gptoss|spiking neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-14T05:47:36+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|spiking neural networks|1|P10|audit", "attempt": 2, "utc": "2026-11-14T05:47:40+00:00", "outcome": "ok"}
+{"id": "gptoss|spiking neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:47:40+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|spiking neural networks|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T05:47:43+00:00", "outcome": "ok"}
+{"id": "gptoss|transfer learning|1|P10|neutral", "attempt": 1, "utc": "2026-11-14T05:47:43+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|transfer learning|1|P10|neutral", "attempt": 2, "utc": "2026-11-14T05:47:47+00:00", "outcome": "ok"}
+{"id": "gptoss|transfer learning|1|P10|audit", "attempt": 1, "utc": "2026-11-14T05:47:48+00:00", "outcome": "ok"}
+{"id": "gptoss|transfer learning|1|P10|receipts", "attempt": 1, "utc": "2026-11-14T05:47:48+00:00", "outcome": "HTTP 429"}
+{"id": "gptoss|transfer learning|1|P10|receipts", "attempt": 2, "utc": "2026-11-14T05:47:56+00:00", "outcome": "ok"}
