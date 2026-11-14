@@ -427,5 +427,11 @@ got = _rc.arxiv("Graph Attention Networks", _sleep=_waits.append, _now=lambda: 1
 _rc.urllib.request.urlopen = _orig
 check("dev3b: arXiv calls are spaced at least 3.1 s apart", abs(_waits[0] - 2.1) < 1e-9 and got == ["Graph Attention Networks"])
 
+row_seed = dict(row, text="4. Real Paper A\n5. Adam: A Method for Stochastic Optimization\n6.  \n7. Made Up Paper B")
+rc_seed = run.stage2_messages(PROMPTS, row_seed, "receipts", lab)
+check("stage2: a repeated seed title or empty item gets no receipt, and does not block",
+      rc_seed is not None and "Item 4:" in rc_seed[-1]["content"] and "Item 7:" in rc_seed[-1]["content"]
+      and "Item 5:" not in rc_seed[-1]["content"] and "Item 6:" not in rc_seed[-1]["content"])
+
 print(f"\n{'RED' if FAILS else 'GREEN'}: {len(FAILS)} failing")
 sys.exit(1 if FAILS else 0)

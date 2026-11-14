@@ -216,6 +216,8 @@ def stage2_messages(prompts, row, branch, labeller):
         for n, t in lists.numbered_items(row["text"]):
             if not 4 <= n <= 13:
                 continue
+            if not t.strip() or lists.key(t) in lists._SEED_KEYS:
+                continue        # never scored (empty, or a repeated seed title), so never checked: no receipt line
             lab = labeller.label(t, lookup=False)[0]
             if lab is None:
                 return None
