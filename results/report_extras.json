@@ -1,0 +1,165 @@
+{
+ "_note": "Reporting additions; see DEVIATIONS.md. Intervals: bootstrap over topics, 10000 resamples, seed 20261115.",
+ "stage2": {
+  "neutral": {
+   "topics": 40,
+   "unres": 146,
+   "unres_withdrawn": 7,
+   "share_unres_withdrawn": 0.04794520547945205,
+   "share_unres_withdrawn_ci": [
+    0.0,
+    0.15671641791044777
+   ],
+   "ver": 212,
+   "ver_withdrawn": 4,
+   "share_ver_withdrawn": 0.018867924528301886,
+   "share_ver_withdrawn_ci": [
+    0.0,
+    0.0546448087431694
+   ],
+   "random_deletion_share": 0.030726256983240222,
+   "random_deletion_expected_unres_withdrawn": 4.4860335195530725,
+   "random_deletion_expected_ver_withdrawn": 6.5139664804469275
+  },
+  "audit": {
+   "topics": 40,
+   "unres": 146,
+   "unres_withdrawn": 104,
+   "share_unres_withdrawn": 0.7123287671232876,
+   "share_unres_withdrawn_ci": [
+    0.5365853658536586,
+    0.85
+   ],
+   "ver": 212,
+   "ver_withdrawn": 67,
+   "share_ver_withdrawn": 0.3160377358490566,
+   "share_ver_withdrawn_ci": [
+    0.16939890710382513,
+    0.4826086956521739
+   ],
+   "random_deletion_share": 0.4776536312849162,
+   "random_deletion_expected_unres_withdrawn": 69.73743016759776,
+   "random_deletion_expected_ver_withdrawn": 101.26256983240224
+  },
+  "receipts": {
+   "topics": 40,
+   "unres": 146,
+   "unres_withdrawn": 146,
+   "share_unres_withdrawn": 1.0,
+   "share_unres_withdrawn_ci": [
+    1.0,
+    1.0
+   ],
+   "ver": 212,
+   "ver_withdrawn": 0,
+   "share_ver_withdrawn": 0.0,
+   "share_ver_withdrawn_ci": [
+    0.0,
+    0.0
+   ],
+   "random_deletion_share": 0.40782122905027934,
+   "random_deletion_expected_unres_withdrawn": 59.54189944134078,
+   "random_deletion_expected_ver_withdrawn": 86.45810055865921
+  }
+ },
+ "per_wording": {
+  "gptoss": {
+   "1": {
+    "U_A10_minus_P10": {
+     "topics": 40,
+     "mean": -0.35,
+     "ci": [
+      -1.3,
+      0.55
+     ]
+    },
+    "V_A10_minus_P10": {
+     "topics": 40,
+     "mean": 0.875,
+     "ci": [
+      0.1,
+      1.775
+     ]
+    }
+   },
+   "2": {
+    "U_A10_minus_P10": {
+     "topics": 40,
+     "mean": -0.925,
+     "ci": [
+      -1.9,
+      0.0
+     ]
+    },
+    "V_A10_minus_P10": {
+     "topics": 40,
+     "mean": 0.4,
+     "ci": [
+      -0.575,
+      1.375
+     ]
+    }
+   }
+  },
+  "llama": {
+   "1": {
+    "U_A10_minus_P10": {
+     "topics": 40,
+     "mean": -0.425,
+     "ci": [
+      -1.1,
+      0.225
+     ]
+    },
+    "V_A10_minus_P10": {
+     "topics": 40,
+     "mean": 0.475,
+     "ci": [
+      -0.15,
+      1.1
+     ]
+    }
+   }
+  },
+  "qwen": {
+   "1": {
+    "U_A10_minus_P10": {
+     "topics": 40,
+     "mean": -0.625,
+     "ci": [
+      -1.65,
+      0.325
+     ]
+    },
+    "V_A10_minus_P10": {
+     "topics": 40,
+     "mean": 0.6,
+     "ci": [
+      -0.35,
+      1.6
+     ]
+    }
+   }
+  },
+  "nemotron": {
+   "1": {
+    "U_A10_minus_P10": {
+     "topics": 40,
+     "mean": -0.2,
+     "ci": [
+      -0.95,
+      0.575
+     ]
+    },
+    "V_A10_minus_P10": {
+     "topics": 40,
+     "mean": 1.275,
+     "ci": [
+      0.375,
+      2.225
+     ]
+    }
+   }
+  }
+ }
+}

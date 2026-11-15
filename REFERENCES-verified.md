@@ -62,3 +62,9 @@ Sure? Two Confounds in a Sycophancy Benchmark", Gupta et al., arXiv 2609.32867.
    Hallucinations." arXiv 2410.02707. Title and authors checked only.
 10. **Ferrando et al. 2024.** "Do I Know This Entity? Knowledge Awareness and Hallucinations in Language Models."
     arXiv 2411.14257 (ICLR 2025 per Astra; venue not checked). Title and authors checked only.
+
+## Added 15 Nov 2026 (for the report)
+
+9. **OpenAI 2025.** "gpt-oss-120b & gpt-oss-20b Model Card." arXiv 2508.10925 (v1, 8 Aug 2025), Sandhini
+   Agarwal and 123 other authors, listed as OpenAI. Checked: title, authors, date on the arXiv record.
+   Cite it for the primary model. The arXiv page states no knowledge cutoff, so do not cite it for one.

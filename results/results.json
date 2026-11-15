@@ -2,7 +2,7 @@
  "counts": {
   "gptoss": {
    "collected": 400,
-   "scored": 384
+   "scored": 400
   },
   "llama": {
    "collected": 160,
@@ -92,7 +92,7 @@
      0.625
     ]
    },
-   "aa_mean_abs_U_diff": 2.7037037037037037,
+   "aa_mean_abs_U_diff": 2.275,
    "cell_means": {
     "P10": {
      "U": 3.7125,
@@ -115,9 +115,9 @@
      "given": 5.4125
     },
     "BASE": {
-     "U": 5.484375,
-     "V": 4.453125,
-     "given": 9.953125
+     "U": 5.6625,
+     "V": 4.2625,
+     "given": 9.9375
     }
    },
    "stage2": {
