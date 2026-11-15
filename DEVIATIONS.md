@@ -158,3 +158,17 @@ Effect: only the A/A repeat numbers changed (the main conditions and stage two w
 gpt-oss requests scored 384 to 400; mean absolute A/A difference in unmatched titles 2.70 (27 topics) to 2.275
 (40 topics); A/A cell means updated. The primary result, the corrected result, every secondary contrast and
 stage two are identical to the first run.
+
+
+## 11. Stage two on the three secondary models, after the cutoff (Sun 15 Nov 2026, from about 22:35 IST)
+
+What: the frozen plan ran stage two on gpt-oss-120b only. After submitting, the author decided to run the same
+stage-two procedure on Qwen3.8 27B, Nemotron 3 Ultra and Llama 3.2 3B, to see whether the withdrawal pattern holds
+beyond one model. This is after the frozen collection cutoff (Sun 15 Nov 18:00 IST) and was not pre-registered.
+`tools/stage2_addendum.py` reuses the frozen stage-two code unchanged: the same pair-1 P10 list per topic, the
+same three branches and prompts, receipts from the same cached labels, the same seed scheme and per-model
+settings. It writes to `raw/stage2addendum_<arm>.jsonl` and `results/stage2_addendum.json`, separate from the
+pre-registered files. `src/analysis.py`, `config.json` and `results/results.json` are not touched.
+
+Effect: no frozen number changes. The results are reported as an exploratory addendum, clearly marked as
+collected after the cutoff.

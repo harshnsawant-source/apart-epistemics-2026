@@ -1,0 +1,120 @@
+{"id": "llama|activation steering|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:20+00:00", "outcome": "ok"}
+{"id": "llama|activation steering|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:25+00:00", "outcome": "ok"}
+{"id": "llama|activation steering|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:28+00:00", "outcome": "ok"}
+{"id": "llama|chain of thought prompting|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:33+00:00", "outcome": "ok"}
+{"id": "llama|chain of thought prompting|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:37+00:00", "outcome": "ok"}
+{"id": "llama|chain of thought prompting|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:41+00:00", "outcome": "ok"}
+{"id": "llama|circuit discovery in transformers|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:45+00:00", "outcome": "ok"}
+{"id": "llama|circuit discovery in transformers|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:50+00:00", "outcome": "ok"}
+{"id": "llama|circuit discovery in transformers|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:54+00:00", "outcome": "ok"}
+{"id": "llama|computer graphics|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:59+00:00", "outcome": "ok"}
+{"id": "llama|computer graphics|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:03+00:00", "outcome": "ok"}
+{"id": "llama|computer graphics|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:07+00:00", "outcome": "ok"}
+{"id": "llama|conformal prediction for language models|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:11+00:00", "outcome": "ok"}
+{"id": "llama|conformal prediction for language models|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:15+00:00", "outcome": "ok"}
+{"id": "llama|conformal prediction for language models|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:19+00:00", "outcome": "ok"}
+{"id": "llama|contrastive learning|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:24+00:00", "outcome": "ok"}
+{"id": "llama|contrastive learning|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:28+00:00", "outcome": "ok"}
+{"id": "llama|contrastive learning|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:32+00:00", "outcome": "ok"}
+{"id": "llama|database systems|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:36+00:00", "outcome": "ok"}
+{"id": "llama|database systems|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:40+00:00", "outcome": "ok"}
+{"id": "llama|database systems|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:44+00:00", "outcome": "ok"}
+{"id": "llama|deep learning|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:48+00:00", "outcome": "ok"}
+{"id": "llama|deep learning|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:53+00:00", "outcome": "ok"}
+{"id": "llama|deep learning|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:57+00:00", "outcome": "ok"}
+{"id": "llama|differential privacy|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:01+00:00", "outcome": "ok"}
+{"id": "llama|differential privacy|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:05+00:00", "outcome": "ok"}
+{"id": "llama|differential privacy|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:12:09+00:00", "outcome": "ok"}
+{"id": "llama|equivariant message passing networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:13+00:00", "outcome": "ok"}
+{"id": "llama|equivariant message passing networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:17+00:00", "outcome": "ok"}
+{"id": "llama|equivariant message passing networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:12:21+00:00", "outcome": "ok"}
+{"id": "llama|graph neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:26+00:00", "outcome": "ok"}
+{"id": "llama|graph neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:30+00:00", "outcome": "ok"}
+{"id": "llama|graph neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:12:34+00:00", "outcome": "ok"}
+{"id": "llama|grokking in neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:39+00:00", "outcome": "ok"}
+{"id": "llama|grokking in neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:42+00:00", "outcome": "ok"}
+{"id": "llama|grokking in neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:12:46+00:00", "outcome": "ok"}
+{"id": "llama|hyperdimensional computing|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:52+00:00", "outcome": "ok"}
+{"id": "llama|hyperdimensional computing|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:56+00:00", "outcome": "ok"}
+{"id": "llama|hyperdimensional computing|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:01+00:00", "outcome": "ok"}
+{"id": "llama|hypernetworks for weight generation|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:13:07+00:00", "outcome": "ok"}
+{"id": "llama|hypernetworks for weight generation|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:13:11+00:00", "outcome": "ok"}
+{"id": "llama|hypernetworks for weight generation|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:16+00:00", "outcome": "ok"}
+{"id": "llama|influence functions for language models|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:13:20+00:00", "outcome": "ok"}
+{"id": "llama|influence functions for language models|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:13:23+00:00", "outcome": "ok"}
+{"id": "llama|influence functions for language models|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:28+00:00", "outcome": "ok"}
+{"id": "llama|liquid neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:13:32+00:00", "outcome": "ok"}
+{"id": "llama|liquid neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:13:36+00:00", "outcome": "ok"}
+{"id": "llama|liquid neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:40+00:00", "outcome": "ok"}
+{"id": "llama|lottery ticket hypothesis|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:13:45+00:00", "outcome": "ok"}
+{"id": "llama|lottery ticket hypothesis|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:13:48+00:00", "outcome": "ok"}
+{"id": "llama|lottery ticket hypothesis|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:52+00:00", "outcome": "ok"}
+{"id": "llama|machine learning|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:13:57+00:00", "outcome": "ok"}
+{"id": "llama|machine learning|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:01+00:00", "outcome": "ok"}
+{"id": "llama|machine learning|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:05+00:00", "outcome": "ok"}
+{"id": "llama|mechanistic interpretability|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:14:11+00:00", "outcome": "ok"}
+{"id": "llama|mechanistic interpretability|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:15+00:00", "outcome": "ok"}
+{"id": "llama|mechanistic interpretability|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:19+00:00", "outcome": "ok"}
+{"id": "llama|mixture of experts|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:14:24+00:00", "outcome": "ok"}
+{"id": "llama|mixture of experts|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:27+00:00", "outcome": "ok"}
+{"id": "llama|mixture of experts|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:31+00:00", "outcome": "ok"}
+{"id": "llama|model compression|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:14:35+00:00", "outcome": "ok"}
+{"id": "llama|model compression|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:39+00:00", "outcome": "ok"}
+{"id": "llama|model compression|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:43+00:00", "outcome": "ok"}
+{"id": "llama|monosemanticity in neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:14:47+00:00", "outcome": "ok"}
+{"id": "llama|monosemanticity in neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:51+00:00", "outcome": "ok"}
+{"id": "llama|monosemanticity in neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:56+00:00", "outcome": "ok"}
+{"id": "llama|neural architecture search|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:00+00:00", "outcome": "ok"}
+{"id": "llama|neural architecture search|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:04+00:00", "outcome": "ok"}
+{"id": "llama|neural architecture search|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:15:08+00:00", "outcome": "ok"}
+{"id": "llama|neural cellular automata|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:12+00:00", "outcome": "ok"}
+{"id": "llama|neural cellular automata|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:16+00:00", "outcome": "ok"}
+{"id": "llama|neural cellular automata|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:15:19+00:00", "outcome": "ok"}
+{"id": "llama|neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:24+00:00", "outcome": "ok"}
+{"id": "llama|neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:28+00:00", "outcome": "ok"}
+{"id": "llama|neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:15:32+00:00", "outcome": "ok"}
+{"id": "llama|neural tangent kernel|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:37+00:00", "outcome": "ok"}
+{"id": "llama|neural tangent kernel|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:40+00:00", "outcome": "ok"}
+{"id": "llama|neural tangent kernel|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:15:44+00:00", "outcome": "ok"}
+{"id": "llama|quantization aware training|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:48+00:00", "outcome": "ok"}
+{"id": "llama|quantization aware training|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:52+00:00", "outcome": "ok"}
+{"id": "llama|quantization aware training|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:15:56+00:00", "outcome": "ok"}
+{"id": "llama|recommender systems|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:16:00+00:00", "outcome": "ok"}
+{"id": "llama|recommender systems|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:16:04+00:00", "outcome": "ok"}
+{"id": "llama|recommender systems|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:16:08+00:00", "outcome": "ok"}
+{"id": "llama|representation engineering control vectors|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:16:12+00:00", "outcome": "ok"}
+{"id": "llama|representation engineering control vectors|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:16:16+00:00", "outcome": "ok"}
+{"id": "llama|representation engineering control vectors|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:16:19+00:00", "outcome": "ok"}
+{"id": "llama|retrieval augmented generation|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:16:23+00:00", "outcome": "ok"}
+{"id": "llama|retrieval augmented generation|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:16:27+00:00", "outcome": "ok"}
+{"id": "llama|retrieval augmented generation|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:16:31+00:00", "outcome": "ok"}
+{"id": "llama|retrieval head attention|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:16:36+00:00", "outcome": "ok"}
+{"id": "llama|retrieval head attention|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:16:40+00:00", "outcome": "ok"}
+{"id": "llama|retrieval head attention|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:16:44+00:00", "outcome": "ok"}
+{"id": "llama|semantic segmentation|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:16:50+00:00", "outcome": "ok"}
+{"id": "llama|semantic segmentation|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:16:53+00:00", "outcome": "ok"}
+{"id": "llama|semantic segmentation|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:16:57+00:00", "outcome": "ok"}
+{"id": "llama|sharpness aware minimization|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:17:01+00:00", "outcome": "ok"}
+{"id": "llama|sharpness aware minimization|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:17:05+00:00", "outcome": "ok"}
+{"id": "llama|sharpness aware minimization|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:17:09+00:00", "outcome": "ok"}
+{"id": "llama|sparse autoencoders for interpretability|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:17:14+00:00", "outcome": "ok"}
+{"id": "llama|sparse autoencoders for interpretability|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:17:17+00:00", "outcome": "ok"}
+{"id": "llama|sparse autoencoders for interpretability|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:17:22+00:00", "outcome": "ok"}
+{"id": "llama|speculative decoding|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:17:26+00:00", "outcome": "ok"}
+{"id": "llama|speculative decoding|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:17:30+00:00", "outcome": "ok"}
+{"id": "llama|speculative decoding|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:17:35+00:00", "outcome": "ok"}
+{"id": "llama|speech recognition|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:17:40+00:00", "outcome": "ok"}
+{"id": "llama|speech recognition|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:17:44+00:00", "outcome": "ok"}
+{"id": "llama|speech recognition|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:17:47+00:00", "outcome": "ok"}
+{"id": "llama|spiking neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:17:52+00:00", "outcome": "ok"}
+{"id": "llama|spiking neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:17:55+00:00", "outcome": "ok"}
+{"id": "llama|spiking neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:17:59+00:00", "outcome": "ok"}
+{"id": "llama|test-time training transformers|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:18:04+00:00", "outcome": "ok"}
+{"id": "llama|test-time training transformers|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:18:07+00:00", "outcome": "ok"}
+{"id": "llama|test-time training transformers|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:18:11+00:00", "outcome": "ok"}
+{"id": "llama|transfer learning|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:18:16+00:00", "outcome": "ok"}
+{"id": "llama|transfer learning|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:18:20+00:00", "outcome": "ok"}
+{"id": "llama|transfer learning|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:18:24+00:00", "outcome": "ok"}
+{"id": "llama|weight agnostic neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:18:28+00:00", "outcome": "ok"}
+{"id": "llama|weight agnostic neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:18:32+00:00", "outcome": "ok"}
+{"id": "llama|weight agnostic neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:18:35+00:00", "outcome": "ok"}

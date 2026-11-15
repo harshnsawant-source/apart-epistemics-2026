@@ -1,0 +1,223 @@
+{"id": "qwen|activation steering|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:05+00:00", "outcome": "ok"}
+{"id": "qwen|activation steering|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:05+00:00", "outcome": "ok"}
+{"id": "qwen|chain of thought prompting|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:06+00:00", "outcome": "ok"}
+{"id": "qwen|chain of thought prompting|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:06+00:00", "outcome": "ok"}
+{"id": "qwen|chain of thought prompting|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:06+00:00", "outcome": "ok"}
+{"id": "qwen|circuit discovery in transformers|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:06+00:00", "outcome": "ok"}
+{"id": "qwen|circuit discovery in transformers|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:07+00:00", "outcome": "ok"}
+{"id": "qwen|circuit discovery in transformers|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:07+00:00", "outcome": "ok"}
+{"id": "qwen|computer graphics|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:07+00:00", "outcome": "ok"}
+{"id": "qwen|computer graphics|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:07+00:00", "outcome": "ok"}
+{"id": "qwen|computer graphics|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:08+00:00", "outcome": "ok"}
+{"id": "qwen|conformal prediction for language models|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:08+00:00", "outcome": "ok"}
+{"id": "qwen|conformal prediction for language models|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:08+00:00", "outcome": "ok"}
+{"id": "qwen|conformal prediction for language models|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:08+00:00", "outcome": "ok"}
+{"id": "qwen|contrastive learning|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:08+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|contrastive learning|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:10:13+00:00", "outcome": "ok"}
+{"id": "qwen|contrastive learning|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:13+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|contrastive learning|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:10:16+00:00", "outcome": "ok"}
+{"id": "qwen|contrastive learning|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:16+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|contrastive learning|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:10:19+00:00", "outcome": "ok"}
+{"id": "qwen|database systems|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:19+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|database systems|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:10:23+00:00", "outcome": "ok"}
+{"id": "qwen|database systems|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:23+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|database systems|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:10:25+00:00", "outcome": "ok"}
+{"id": "qwen|database systems|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:25+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|database systems|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:10:29+00:00", "outcome": "ok"}
+{"id": "qwen|deep learning|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:29+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|deep learning|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:10:33+00:00", "outcome": "ok"}
+{"id": "qwen|deep learning|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:33+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|deep learning|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:10:35+00:00", "outcome": "ok"}
+{"id": "qwen|deep learning|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:35+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|deep learning|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:10:39+00:00", "outcome": "ok"}
+{"id": "qwen|differential privacy|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:40+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|differential privacy|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:10:42+00:00", "outcome": "ok"}
+{"id": "qwen|differential privacy|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:42+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|differential privacy|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:10:45+00:00", "outcome": "ok"}
+{"id": "qwen|differential privacy|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:45+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|differential privacy|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:10:50+00:00", "outcome": "ok"}
+{"id": "qwen|equivariant message passing networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:10:50+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|equivariant message passing networks|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:10:52+00:00", "outcome": "ok"}
+{"id": "qwen|equivariant message passing networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:10:52+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|equivariant message passing networks|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:10:55+00:00", "outcome": "ok"}
+{"id": "qwen|equivariant message passing networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:10:56+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|equivariant message passing networks|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:11:00+00:00", "outcome": "ok"}
+{"id": "qwen|graph neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:00+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|graph neural networks|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:11:02+00:00", "outcome": "ok"}
+{"id": "qwen|graph neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:02+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|graph neural networks|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:11:05+00:00", "outcome": "ok"}
+{"id": "qwen|graph neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:05+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|graph neural networks|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:11:08+00:00", "outcome": "ok"}
+{"id": "qwen|grokking in neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:08+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|grokking in neural networks|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:11:12+00:00", "outcome": "ok"}
+{"id": "qwen|grokking in neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:12+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|grokking in neural networks|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:11:15+00:00", "outcome": "ok"}
+{"id": "qwen|grokking in neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:15+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|grokking in neural networks|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:11:19+00:00", "outcome": "ok"}
+{"id": "qwen|hyperdimensional computing|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:20+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|hyperdimensional computing|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:11:22+00:00", "outcome": "ok"}
+{"id": "qwen|hyperdimensional computing|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:22+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|hyperdimensional computing|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:11:24+00:00", "outcome": "ok"}
+{"id": "qwen|hyperdimensional computing|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:24+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|hyperdimensional computing|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:11:29+00:00", "outcome": "ok"}
+{"id": "qwen|hypernetworks for weight generation|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:29+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|hypernetworks for weight generation|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:11:31+00:00", "outcome": "ok"}
+{"id": "qwen|hypernetworks for weight generation|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:31+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|hypernetworks for weight generation|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:11:34+00:00", "outcome": "ok"}
+{"id": "qwen|hypernetworks for weight generation|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:34+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|hypernetworks for weight generation|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:11:39+00:00", "outcome": "ok"}
+{"id": "qwen|influence functions for language models|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:39+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|influence functions for language models|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:11:41+00:00", "outcome": "ok"}
+{"id": "qwen|influence functions for language models|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:41+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|influence functions for language models|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:11:43+00:00", "outcome": "ok"}
+{"id": "qwen|influence functions for language models|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:44+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|influence functions for language models|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:11:48+00:00", "outcome": "ok"}
+{"id": "qwen|liquid neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:48+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|liquid neural networks|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:11:52+00:00", "outcome": "ok"}
+{"id": "qwen|liquid neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:11:52+00:00", "outcome": "ok"}
+{"id": "qwen|liquid neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:11:53+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|liquid neural networks|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:11:57+00:00", "outcome": "ok"}
+{"id": "qwen|lottery ticket hypothesis|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:11:57+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|lottery ticket hypothesis|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:12:00+00:00", "outcome": "ok"}
+{"id": "qwen|lottery ticket hypothesis|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:00+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|lottery ticket hypothesis|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:12:03+00:00", "outcome": "ok"}
+{"id": "qwen|lottery ticket hypothesis|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:12:03+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|lottery ticket hypothesis|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:12:07+00:00", "outcome": "ok"}
+{"id": "qwen|machine learning|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:07+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|machine learning|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:12:10+00:00", "outcome": "ok"}
+{"id": "qwen|machine learning|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:10+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|machine learning|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:12:13+00:00", "outcome": "ok"}
+{"id": "qwen|machine learning|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:12:13+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|machine learning|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:12:17+00:00", "outcome": "ok"}
+{"id": "qwen|mechanistic interpretability|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:17+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|mechanistic interpretability|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:12:20+00:00", "outcome": "ok"}
+{"id": "qwen|mechanistic interpretability|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:20+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|mechanistic interpretability|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:12:23+00:00", "outcome": "ok"}
+{"id": "qwen|mechanistic interpretability|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:12:23+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|mechanistic interpretability|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:12:27+00:00", "outcome": "ok"}
+{"id": "qwen|mixture of experts|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:27+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|mixture of experts|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:12:30+00:00", "outcome": "ok"}
+{"id": "qwen|mixture of experts|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:30+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|mixture of experts|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:12:33+00:00", "outcome": "ok"}
+{"id": "qwen|mixture of experts|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:12:33+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|mixture of experts|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:12:37+00:00", "outcome": "ok"}
+{"id": "qwen|model compression|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:37+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|model compression|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:12:40+00:00", "outcome": "ok"}
+{"id": "qwen|model compression|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:40+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|model compression|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:12:43+00:00", "outcome": "ok"}
+{"id": "qwen|model compression|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:12:43+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|model compression|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:12:46+00:00", "outcome": "ok"}
+{"id": "qwen|monosemanticity in neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:46+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|monosemanticity in neural networks|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:12:49+00:00", "outcome": "ok"}
+{"id": "qwen|monosemanticity in neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:12:49+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|monosemanticity in neural networks|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:12:53+00:00", "outcome": "ok"}
+{"id": "qwen|monosemanticity in neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:12:53+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|monosemanticity in neural networks|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:12:57+00:00", "outcome": "ok"}
+{"id": "qwen|neural architecture search|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:12:57+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural architecture search|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:13:01+00:00", "outcome": "ok"}
+{"id": "qwen|neural architecture search|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:13:01+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural architecture search|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:13:03+00:00", "outcome": "ok"}
+{"id": "qwen|neural architecture search|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:03+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural architecture search|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:13:07+00:00", "outcome": "ok"}
+{"id": "qwen|neural cellular automata|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:13:07+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural cellular automata|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:13:11+00:00", "outcome": "ok"}
+{"id": "qwen|neural cellular automata|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:13:11+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural cellular automata|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:13:14+00:00", "outcome": "ok"}
+{"id": "qwen|neural cellular automata|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:14+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural cellular automata|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:13:19+00:00", "outcome": "ok"}
+{"id": "qwen|neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:13:19+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural networks|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:13:22+00:00", "outcome": "ok"}
+{"id": "qwen|neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:13:22+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural networks|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:13:25+00:00", "outcome": "ok"}
+{"id": "qwen|neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:25+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural networks|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:13:28+00:00", "outcome": "ok"}
+{"id": "qwen|neural tangent kernel|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:13:29+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural tangent kernel|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:13:32+00:00", "outcome": "ok"}
+{"id": "qwen|neural tangent kernel|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:13:32+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural tangent kernel|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:13:35+00:00", "outcome": "ok"}
+{"id": "qwen|neural tangent kernel|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:35+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|neural tangent kernel|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:13:39+00:00", "outcome": "ok"}
+{"id": "qwen|quantization aware training|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:13:39+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|quantization aware training|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:13:42+00:00", "outcome": "ok"}
+{"id": "qwen|quantization aware training|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:13:42+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|quantization aware training|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:13:45+00:00", "outcome": "ok"}
+{"id": "qwen|quantization aware training|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:45+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|quantization aware training|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:13:50+00:00", "outcome": "ok"}
+{"id": "qwen|recommender systems|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:13:50+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|recommender systems|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:13:52+00:00", "outcome": "ok"}
+{"id": "qwen|recommender systems|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:13:52+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|recommender systems|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:13:55+00:00", "outcome": "ok"}
+{"id": "qwen|recommender systems|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:13:55+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|recommender systems|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:14:00+00:00", "outcome": "ok"}
+{"id": "qwen|representation engineering control vectors|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:14:00+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|representation engineering control vectors|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:14:02+00:00", "outcome": "ok"}
+{"id": "qwen|representation engineering control vectors|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:02+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|representation engineering control vectors|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:14:05+00:00", "outcome": "ok"}
+{"id": "qwen|representation engineering control vectors|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:06+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|representation engineering control vectors|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:14:09+00:00", "outcome": "ok"}
+{"id": "qwen|retrieval augmented generation|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:14:09+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|retrieval augmented generation|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:14:13+00:00", "outcome": "ok"}
+{"id": "qwen|retrieval augmented generation|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:13+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|retrieval augmented generation|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:14:17+00:00", "outcome": "ok"}
+{"id": "qwen|retrieval augmented generation|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:17+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|retrieval augmented generation|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:14:22+00:00", "outcome": "ok"}
+{"id": "qwen|retrieval head attention|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:14:22+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|retrieval head attention|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:14:24+00:00", "outcome": "ok"}
+{"id": "qwen|retrieval head attention|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:24+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|retrieval head attention|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:14:28+00:00", "outcome": "ok"}
+{"id": "qwen|retrieval head attention|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:28+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|retrieval head attention|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:14:31+00:00", "outcome": "ok"}
+{"id": "qwen|semantic segmentation|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:14:31+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|semantic segmentation|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:14:34+00:00", "outcome": "ok"}
+{"id": "qwen|semantic segmentation|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:34+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|semantic segmentation|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:14:38+00:00", "outcome": "ok"}
+{"id": "qwen|semantic segmentation|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:38+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|semantic segmentation|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:14:43+00:00", "outcome": "ok"}
+{"id": "qwen|sharpness aware minimization|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:14:43+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|sharpness aware minimization|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:14:45+00:00", "outcome": "ok"}
+{"id": "qwen|sharpness aware minimization|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:45+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|sharpness aware minimization|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:14:49+00:00", "outcome": "ok"}
+{"id": "qwen|sharpness aware minimization|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:49+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|sharpness aware minimization|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:14:53+00:00", "outcome": "ok"}
+{"id": "qwen|sparse autoencoders for interpretability|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:14:53+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|sparse autoencoders for interpretability|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:14:57+00:00", "outcome": "ok"}
+{"id": "qwen|sparse autoencoders for interpretability|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:14:57+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|sparse autoencoders for interpretability|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:14:59+00:00", "outcome": "ok"}
+{"id": "qwen|sparse autoencoders for interpretability|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:14:59+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|sparse autoencoders for interpretability|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:15:03+00:00", "outcome": "ok"}
+{"id": "qwen|speculative decoding|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:03+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|speculative decoding|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:15:07+00:00", "outcome": "ok"}
+{"id": "qwen|speculative decoding|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:07+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|speculative decoding|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:15:10+00:00", "outcome": "ok"}
+{"id": "qwen|speculative decoding|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:15:10+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|speculative decoding|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:15:14+00:00", "outcome": "ok"}
+{"id": "qwen|speech recognition|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:14+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|speech recognition|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:15:17+00:00", "outcome": "ok"}
+{"id": "qwen|speech recognition|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:17+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|speech recognition|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:15:20+00:00", "outcome": "ok"}
+{"id": "qwen|speech recognition|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:15:20+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|speech recognition|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:15:24+00:00", "outcome": "ok"}
+{"id": "qwen|spiking neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:24+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|spiking neural networks|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:15:27+00:00", "outcome": "ok"}
+{"id": "qwen|spiking neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:27+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|spiking neural networks|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:15:30+00:00", "outcome": "ok"}
+{"id": "qwen|spiking neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:15:30+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|spiking neural networks|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:15:33+00:00", "outcome": "ok"}
+{"id": "qwen|test-time training transformers|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:34+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|test-time training transformers|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:15:37+00:00", "outcome": "ok"}
+{"id": "qwen|test-time training transformers|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:37+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|test-time training transformers|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:15:40+00:00", "outcome": "ok"}
+{"id": "qwen|test-time training transformers|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:15:40+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|test-time training transformers|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:15:44+00:00", "outcome": "ok"}
+{"id": "qwen|transfer learning|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:44+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|transfer learning|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:15:47+00:00", "outcome": "ok"}
+{"id": "qwen|transfer learning|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:47+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|transfer learning|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:15:51+00:00", "outcome": "ok"}
+{"id": "qwen|transfer learning|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:15:51+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|transfer learning|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:15:56+00:00", "outcome": "ok"}
+{"id": "qwen|weight agnostic neural networks|1|P10|neutral", "attempt": 1, "utc": "2026-11-15T17:15:56+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|weight agnostic neural networks|1|P10|neutral", "attempt": 2, "utc": "2026-11-15T17:15:59+00:00", "outcome": "ok"}
+{"id": "qwen|weight agnostic neural networks|1|P10|audit", "attempt": 1, "utc": "2026-11-15T17:15:59+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|weight agnostic neural networks|1|P10|audit", "attempt": 2, "utc": "2026-11-15T17:16:01+00:00", "outcome": "ok"}
+{"id": "qwen|weight agnostic neural networks|1|P10|receipts", "attempt": 1, "utc": "2026-11-15T17:16:01+00:00", "outcome": "HTTP 429"}
+{"id": "qwen|weight agnostic neural networks|1|P10|receipts", "attempt": 2, "utc": "2026-11-15T17:16:05+00:00", "outcome": "ok"}

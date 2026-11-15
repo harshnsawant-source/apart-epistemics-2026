@@ -1,0 +1,185 @@
+{
+ "_note": "NOT pre-registered; collected after the frozen cutoff (DEVIATIONS.md item 11). Counting rules identical to the frozen stage-two summary. Intervals: bootstrap over topics, 10000 resamples, seed 20261115.",
+ "arms": {
+  "qwen": {
+   "replies": 119,
+   "replies_with_decisions": 119,
+   "branches": {
+    "neutral": {
+     "topics": 40,
+     "unres": 194,
+     "unres_withdrawn": 121,
+     "ver": 199,
+     "ver_withdrawn": 56,
+     "share_unres_withdrawn": 0.6237113402061856,
+     "share_unres_withdrawn_ci": [
+      0.470873786407767,
+      0.7570093457943925
+     ],
+     "share_ver_withdrawn": 0.2814070351758794,
+     "share_ver_withdrawn_ci": [
+      0.15639810426540285,
+      0.42857142857142855
+     ],
+     "random_deletion_share": 0.45038167938931295
+    },
+    "audit": {
+     "topics": 40,
+     "unres": 194,
+     "unres_withdrawn": 139,
+     "ver": 199,
+     "ver_withdrawn": 61,
+     "share_unres_withdrawn": 0.7164948453608248,
+     "share_unres_withdrawn_ci": [
+      0.5666666666666667,
+      0.8405172413793104
+     ],
+     "share_ver_withdrawn": 0.3065326633165829,
+     "share_ver_withdrawn_ci": [
+      0.1762114537444934,
+      0.4603174603174603
+     ],
+     "random_deletion_share": 0.5089058524173028
+    },
+    "receipts": {
+     "topics": 39,
+     "unres": 188,
+     "unres_withdrawn": 186,
+     "ver": 196,
+     "ver_withdrawn": 0,
+     "share_unres_withdrawn": 0.9893617021276596,
+     "share_unres_withdrawn_ci": [
+      0.9644970414201184,
+      1.0
+     ],
+     "share_ver_withdrawn": 0.0,
+     "share_ver_withdrawn_ci": [
+      0.0,
+      0.0
+     ],
+     "random_deletion_share": 0.484375
+    }
+   }
+  },
+  "nemotron": {
+   "replies": 119,
+   "replies_with_decisions": 118,
+   "branches": {
+    "neutral": {
+     "topics": 40,
+     "unres": 109,
+     "unres_withdrawn": 24,
+     "ver": 246,
+     "ver_withdrawn": 28,
+     "share_unres_withdrawn": 0.22018348623853212,
+     "share_unres_withdrawn_ci": [
+      0.10869565217391304,
+      0.3611111111111111
+     ],
+     "share_ver_withdrawn": 0.11382113821138211,
+     "share_ver_withdrawn_ci": [
+      0.05761316872427984,
+      0.1803921568627451
+     ],
+     "random_deletion_share": 0.14647887323943662
+    },
+    "audit": {
+     "topics": 40,
+     "unres": 109,
+     "unres_withdrawn": 35,
+     "ver": 246,
+     "ver_withdrawn": 29,
+     "share_unres_withdrawn": 0.3211009174311927,
+     "share_unres_withdrawn_ci": [
+      0.16666666666666666,
+      0.48695652173913045
+     ],
+     "share_ver_withdrawn": 0.11788617886178862,
+     "share_ver_withdrawn_ci": [
+      0.0625,
+      0.1829787234042553
+     ],
+     "random_deletion_share": 0.18028169014084508
+    },
+    "receipts": {
+     "topics": 39,
+     "unres": 109,
+     "unres_withdrawn": 106,
+     "ver": 239,
+     "ver_withdrawn": 5,
+     "share_unres_withdrawn": 0.9724770642201835,
+     "share_unres_withdrawn_ci": [
+      0.9076923076923077,
+      1.0
+     ],
+     "share_ver_withdrawn": 0.02092050209205021,
+     "share_ver_withdrawn_ci": [
+      0.0,
+      0.05859375
+     ],
+     "random_deletion_share": 0.31896551724137934
+    }
+   }
+  },
+  "llama": {
+   "replies": 120,
+   "replies_with_decisions": 115,
+   "branches": {
+    "neutral": {
+     "topics": 40,
+     "unres": 168,
+     "unres_withdrawn": 107,
+     "ver": 77,
+     "ver_withdrawn": 46,
+     "share_unres_withdrawn": 0.6369047619047619,
+     "share_unres_withdrawn_ci": [
+      0.5317919075144508,
+      0.7365269461077845
+     ],
+     "share_ver_withdrawn": 0.5974025974025974,
+     "share_ver_withdrawn_ci": [
+      0.46296296296296297,
+      0.725
+     ],
+     "random_deletion_share": 0.6244897959183674
+    },
+    "audit": {
+     "topics": 40,
+     "unres": 179,
+     "unres_withdrawn": 129,
+     "ver": 90,
+     "ver_withdrawn": 49,
+     "share_unres_withdrawn": 0.7206703910614525,
+     "share_unres_withdrawn_ci": [
+      0.6384180790960452,
+      0.7944444444444444
+     ],
+     "share_ver_withdrawn": 0.5444444444444444,
+     "share_ver_withdrawn_ci": [
+      0.43373493975903615,
+      0.6590909090909091
+     ],
+     "random_deletion_share": 0.6617100371747212
+    },
+    "receipts": {
+     "topics": 40,
+     "unres": 191,
+     "unres_withdrawn": 182,
+     "ver": 82,
+     "ver_withdrawn": 7,
+     "share_unres_withdrawn": 0.9528795811518325,
+     "share_unres_withdrawn_ci": [
+      0.8950276243093923,
+      0.9947089947089947
+     ],
+     "share_ver_withdrawn": 0.08536585365853659,
+     "share_ver_withdrawn_ci": [
+      0.019230769230769232,
+      0.1724137931034483
+     ],
+     "random_deletion_share": 0.6923076923076923
+    }
+   }
+  }
+ }
+}

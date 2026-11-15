@@ -31,7 +31,7 @@ LLM_STATEMENT = (
     "plan and carried out the blind audit by hand. Every number in this report was checked against the "
     "analysis outputs in the repository.")
 
-HEAD = re.compile(r"^(ABSTRACT|\d\. [A-Z ]+|\d\.\d [A-Z].*|CODE AND DATA|BIBLIOGRAPHY|APPENDIX [A-C]\..*|LLM USAGE STATEMENT|"
+HEAD = re.compile(r"^(ABSTRACT|\d\. [A-Z ]+|\d\.\d [A-Z].*|CODE AND DATA|BIBLIOGRAPHY|APPENDIX [A-D]\..*|LLM USAGE STATEMENT|"
                   r"Limitations|Dual-use and ethical considerations|Dual-Use/Ethics|Previous Work|AI Tools)$")
 ITEM = re.compile(r"^(- |\d+b?\. |Archival version|Audit version|Archived \(version|Audit \(version)")
 SMALL = Pt(8.5)
@@ -46,8 +46,9 @@ def nice_heading(h):
         return "LLM Usage Statement", 2
     fixed = {"A": "Appendix A. Limitations and Dual-Use/Ethics",
              "B": "Appendix B. Deviations from the Frozen Plan",
-             "C": "Appendix C. Previous Work and AI Tools"}
-    m = re.match(r"^APPENDIX ([A-C])\. ", h)
+             "C": "Appendix C. Previous Work and AI Tools",
+             "D": "Appendix D. Stage Two on the Other Models (Exploratory)"}
+    m = re.match(r"^APPENDIX ([A-D])\. ", h)
     if m:
         return fixed[m.group(1)], 2
     m = re.match(r"^(\d)\. ([A-Z ]+)$", h)
@@ -158,6 +159,28 @@ def table3(doc, x):
               rows, [1.4, 1.75, 1.6, 1.65])
 
 
+def table4(doc, x):
+    """Stage two on all four models: gpt-oss-120b (pre-registered) + the exploratory addendum (item 11)."""
+    add = json.loads((RES / "stage2_addendum.json").read_text("utf-8"))["arms"]
+    src = [("gpt-oss-120b", x["stage2"])] + [(n, add[a]["branches"]) for a, n in
+                                            (("qwen", "Qwen3.8 27B"), ("nemotron", "Nemotron 3 Ultra"),
+                                             ("llama", "Llama 3.2 3B"))]
+    rows = []
+    for name, br in src:
+        for b, n in (("neutral", "Neutral"), ("audit", "Audit Reminder"), ("receipts", "Real Check Results")):
+            s = br[b]
+
+            def cell(k):
+                sh = s[f"share_{k}_withdrawn"] * 100
+                lo, hi = (v * 100 for v in s[f"share_{k}_withdrawn_ci"])
+                iv = "" if round(lo) == round(hi) == round(sh) else f", {lo:.0f} to {hi:.0f}"
+                return f"{s[k + '_withdrawn']} / {s[k]} ({sh:.0f}%{iv})"
+            rows.append([name if b == "neutral" else "", n, cell("unres"), cell("ver"),
+                         f"{s['random_deletion_share'] * 100:.0f}%"])
+    add_table(doc, ["Model", "Branch", "Unmatched Deleted", "Verified Deleted", "Random (Same Number)"],
+              rows, [1.25, 1.3, 1.6, 1.5, 0.9])
+
+
 def para(doc, text, style="normal", size=None, bold_lead=None, italic=False, align=None, after=4):
     p = doc.add_paragraph(style=style)
     p.paragraph_format.space_after = Pt(after)
@@ -250,9 +273,11 @@ def main():
             table2(doc, r)
         elif first.startswith("Branch Unmatched"):
             table3(doc, x)
+        elif first.startswith("Model Branch"):
+            table4(doc, x)
         elif first.startswith("[Insert Figure"):
             n = first[len("[Insert Figure "):][0]
-            img, w = (("fig1_main_contrast.png", 5.0) if n == "1" else ("fig2_stage2.png", 4.7))
+            img, w = (("fig1_main_contrast.png", 4.6) if n == "1" else ("fig2_stage2.png", 4.3))
             doc.add_picture(str(RES / img), width=Inches(w))
             doc.paragraphs[-1].alignment = WD_ALIGN_PARAGRAPH.CENTER
             doc.paragraphs[-1].paragraph_format.keep_with_next = True
