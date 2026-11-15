@@ -2,7 +2,8 @@
 
 Text: Harsh's own file (path given as argv[1]); used as written, apart from the heading case.
 Tables: rebuilt from results/*.json (the plain-text tables lost their columns).
-Run: python tools/build_report.py "<his .txt>" "<template.docx>" "<out.docx>"
+Run: python tools/build_report.py report/epistemics-final-source.txt report/apart-template.docx report/announced-audits-report.docx
+     then: powershell -File tools/topdf.ps1 <full path to .docx> <full path to .pdf>   (needs Word)
 (python-docx is a user-site package, so run without -I.)
 """
 import copy
