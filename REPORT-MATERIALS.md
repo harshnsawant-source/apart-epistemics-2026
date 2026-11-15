@@ -360,17 +360,17 @@ Cite only these unless you tell me first, so I can check any new one.
    Failures in GPT-OSS-20B. arXiv:2510.08624.
 2. Agrawal, A., Suzgun, M., Mackey, L., and Kalai, A. T. (2024). Do Language Models Know When They're
    Hallucinating References? Findings of EACL 2024, pp. 912-928. doi:10.18653/v1/2024.findings-eacl.62.
-3. Knecht, Florin, and Hagendorff (2026). Evaluation Awareness in Language Models Has Limited Effect on
+3. Knecht, A., Florin, L., and Hagendorff, T. (2026). Evaluation Awareness in Language Models Has Limited Effect on
    Behaviour. arXiv:2605.05835.
 4. Mehta, D. P. (2025). Can We Trust AI Explanations? Evidence of Systematic Underreporting in Chain-of-Thought
    Reasoning. arXiv:2601.00830.
 5. Zhao, C., et al. (2026). Do Deployment Constraints Make LLMs Hallucinate Citations? An Empirical Study across
    Four Models and Five Prompting Regimes. arXiv:2603.07287.
-6. Goyal (2026). Towards Verifiable Answers: Reinforcement Learning with a Verifier Reduces Hallucinated
+6. Goyal, R. (2026). Towards Verifiable Answers: Reinforcement Learning with a Verifier Reduces Hallucinated
    References in Literature-Based Question Answering. Proceedings of the 4th Workshop on AI for Scientific
-   Publications (WASP), pp. 199-209.
+   Publications (WASP), pp. 199-209. Association for Computational Linguistics. doi:10.18653/2026.wasp-1.22.
 7. OpenAI (2025). gpt-oss-120b & gpt-oss-20b Model Card. arXiv:2508.10925. (Do not cite it for a knowledge
    cutoff; the record states none.)
 
-Still to fill: the first names or initials for Knecht, Florin, Hagendorff and Goyal, from the papers' own
-records. Ask me and I will look them up.
+Author names checked 15 Nov: Knecht et al. from the arXiv record (Amelie Knecht, Lucas Florin, Thilo Hagendorff);
+Goyal from the Crossref record of the ACL publication (Rushank Goyal, sole author).

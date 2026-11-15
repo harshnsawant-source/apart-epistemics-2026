@@ -19,7 +19,7 @@ reading the sections yourself before you write about them.
    Checked (abstract): asking a model consistency questions (for example about authors) can flag hallucinated
    references without external sources.
 
-3. **Knecht, Florin, Hagendorff 2026.** "Evaluation Awareness in Language Models Has Limited Effect on
+3. **Knecht, Florin, Hagendorff 2026** (Amelie Knecht, Lucas Florin, Thilo Hagendorff; names checked on arXiv 15 Nov). "Evaluation Awareness in Language Models Has Limited Effect on
    Behaviour." arXiv 2605.05835 (7 May 2026).
    Checked: eight open-weight reasoning models including GPT-OSS-120b; evaluation-awareness sentences injected
    into or removed from the chain of thought; benchmarks on safety, alignment, moral reasoning and political
@@ -37,7 +37,7 @@ reading the sections yourself before you write about them.
    training-data access; it is not an audit announcement**, so no collision. They use an Existing / Unresolved /
    Fabricated taxonomy close to ours: cite it for that.
 
-6. **Goyal 2026.** "Towards Verifiable Answers: Reinforcement Learning with a Verifier Reduces Hallucinated
+6. **Goyal 2026** (Rushank Goyal, sole author; ACL, doi:10.18653/2026.wasp-1.22; checked on Crossref 15 Nov). "Towards Verifiable Answers: Reinforcement Learning with a Verifier Reduces Hallucinated
    References in Literature-Based Question Answering." Proceedings of the 4th Workshop on AI for Scientific
    Publications (WASP), pp. 199-209, published 10 Nov 2026.
    Checked: trains Llama-3.1-8B-Instruct and Llama-3.2-3B-Instruct with GRPO against a verifier using Crossref
