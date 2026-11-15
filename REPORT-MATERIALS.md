@@ -208,7 +208,7 @@ What each paper gives you (full entries are in section 11):
 ### Primary result (gpt-oss-120b)
 - Unmatched: 3.71 (archival) to 3.08 (audit); change -0.64 [-1.36, +0.04]. 90% interval [-1.25, -0.06]:
   below zero but not inside +/-0.5, so no rule before 6 applies: inconclusive.
-- Verified papers +0.64 [+0.12, +1.19]. Titles given 9.46 in both cells (change 0.00 [-0.63, +0.63]).
+- Verified papers +0.64 [+0.12, +1.19]. Titles given 9.46 in both cells (change 0.00 [-0.62, +0.62]).
 - Audit-corrected (pre-registered, FREEZE 12): -1.31 [-1.96, -0.69]. Report it beside the primary, not as it.
 - Each wording alone: wording 1 -0.35 [-1.30, +0.55], verified +0.88 [+0.10, +1.78]; wording 2 -0.93
   [-1.90, +0.00], verified +0.40 [-0.58, +1.38]. (Per-wording numbers are a reporting addition, deviation 9.)
