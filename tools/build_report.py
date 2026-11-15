@@ -31,9 +31,9 @@ LLM_STATEMENT = (
     "plan and carried out the blind audit by hand. Every number in this report was checked against the "
     "analysis outputs in the repository.")
 
-HEAD = re.compile(r"^(ABSTRACT|\d\. [A-Z ]+|\d\.\d [A-Z].*|CODE AND DATA|BIBLIOGRAPHY|APPENDIX [A-C]\..*|"
-                  r"Limitations|Dual-use and ethical considerations)$")
-ITEM = re.compile(r"^(- |\d+b?\. |Archival version|Audit version)")
+HEAD = re.compile(r"^(ABSTRACT|\d\. [A-Z ]+|\d\.\d [A-Z].*|CODE AND DATA|BIBLIOGRAPHY|APPENDIX [A-C]\..*|LLM USAGE STATEMENT|"
+                  r"Limitations|Dual-use and ethical considerations|Dual-Use/Ethics|Previous Work|AI Tools)$")
+ITEM = re.compile(r"^(- |\d+b?\. |Archival version|Audit version|Archived \(version|Audit \(version)")
 SMALL = Pt(8.5)
 
 
@@ -42,9 +42,11 @@ def nice_heading(h):
         return "References", 2
     if h == "CODE AND DATA":
         return "Code and Data", 2
-    fixed = {"A": "Appendix A. Limitations and Dual-Use / Ethical Considerations",
+    if h == "LLM USAGE STATEMENT":
+        return "LLM Usage Statement", 2
+    fixed = {"A": "Appendix A. Limitations and Dual-Use/Ethics",
              "B": "Appendix B. Deviations from the Frozen Plan",
-             "C": "Appendix C. Pre-Existing Work and AI Tools"}
+             "C": "Appendix C. Previous Work and AI Tools"}
     m = re.match(r"^APPENDIX ([A-C])\. ", h)
     if m:
         return fixed[m.group(1)], 2
@@ -127,23 +129,23 @@ def table1(doc, r):
         cm = A["cell_means"]
         rows.append([names[a], f"{cm['P10']['U']:.2f}", f"{cm['A10']['U']:.2f}", ci(A["primary_U_A10_minus_P10"]),
                      ci(A["guardrail_V_A10_minus_P10"]), f"{cm['P10']['given']:.2f} / {cm['A10']['given']:.2f}"])
-    add_table(doc, ["Model", "Unmatched, archival", "Unmatched, audit", "Change in unmatched [95% CI]",
-                    "Change in verified [95% CI]", "Titles given, archival / audit"], rows,
+    add_table(doc, ["Model", "Unmatched (Archived)", "Unmatched (Audit)", "Difference in Unmatched Titles [95% CI]",
+                    "Difference in Verified Papers [95% CI]", "Titles Given (Archived/Audit)"], rows,
               [1.15, 0.8, 0.75, 1.35, 1.35, 1.0])
 
 
 def table2(doc, r):
     cm = r["arms"]["gptoss"]["cell_means"]
-    lab = [("P10", "Archival, ten titles (P10)"), ("A10", "Audit, ten titles (A10)"),
-           ("P<10", "Archival, fewer allowed (P<10)"), ("A<10", "Audit, fewer allowed (A<10)"),
-           ("BASE", "Unmodified base prompt (A/A runs)")]
+    lab = [("P10", "Archived (10 titles) (P10)"), ("A10", "Audit (10 titles) (A10)"),
+           ("P<10", "Archived (fewer titles allowed) (P<10)"), ("A<10", "Audit (fewer titles allowed) (A<10)"),
+           ("BASE", "Unmodified base prompt (A/A)")]
     rows = [[n, f"{cm[k]['U']:.2f}", f"{cm[k]['V']:.2f}", f"{cm[k]['given']:.2f}"] for k, n in lab]
-    add_table(doc, ["Cell", "Unmatched", "Verified", "Titles given"], rows, [2.6, 1.0, 1.0, 1.0])
+    add_table(doc, ["Cell", "Unmatched", "Verified", "Titles Given"], rows, [2.6, 1.0, 1.0, 1.0])
 
 
 def table3(doc, x):
     rows = []
-    for b, n in (("neutral", "Neutral"), ("audit", "Audit reminder"), ("receipts", "Real check results")):
+    for b, n in (("neutral", "Neutral"), ("audit", "Audit Reminder"), ("receipts", "Real Check Results")):
         s = x["stage2"][b]
 
         def cell(k):
@@ -152,7 +154,7 @@ def table3(doc, x):
             iv = "" if b == "receipts" else f", {lo:.0f} to {hi:.0f}"
             return f"{s[k + '_withdrawn']} / {s[k]} ({sh:.0f}%{iv})"
         rows.append([n, cell("unres"), cell("ver"), f"{s['random_deletion_share'] * 100:.0f}% of each group"])
-    add_table(doc, ["Branch", "Unmatched withdrawn", "Verified withdrawn", "Random removal of an equivalent count"],
+    add_table(doc, ["Branch", "Unmatched Deleted", "Verified Deleted", "Randomly Deleted (Same Number)"],
               rows, [1.4, 1.75, 1.6, 1.65])
 
 
@@ -177,6 +179,10 @@ def para(doc, text, style="normal", size=None, bold_lead=None, italic=False, ali
 def main():
     src, tpl, out = sys.argv[1], sys.argv[2], sys.argv[3]
     text = Path(src).read_text("utf-8")
+    title = TITLE
+    if text.startswith("TITLE:"):
+        first, text = text.split(chr(10), 1)
+        title = first[len("TITLE:"):].strip()
     r = json.loads((RES / "results.json").read_text("utf-8"))
     x = json.loads((RES / "report_extras.json").read_text("utf-8"))
     doc = docx.Document(tpl)
@@ -187,7 +193,7 @@ def main():
 
     # Title (keep the run that carries the template's footnote).
     tp = [p for p in head_tbl.rows[0].cells[0].paragraphs if p.style.name == "Title"][0]
-    tp.runs[0].text = TITLE
+    tp.runs[0].text = title
     for run in tp.runs[1:]:
         if "footnoteReference" not in run._r.xml:
             run.text = ""
@@ -197,7 +203,7 @@ def main():
     nested = [el for el in cell._tc.iterchildren() if el.tag == qn("w:tbl")]
     auth_tbl, abs_tbl = nested[0], nested[1]
     anchor = auth_tbl
-    for line, bold, ital in (("Harsh Sawant", True, False), ("Independent researcher", False, False),
+    for line, bold, ital in (("Harsh Sawant", True, False), ("Independent Researcher", False, False),
                              ("With Apart Research", False, True)):
         np_ = OxmlElement("w:p")
         anchor.addnext(np_)
@@ -257,7 +263,7 @@ def main():
             lead = re.match(r"^((Table|Figure) \d\.)", first).group(1)
             cp = para(doc, joined, size=Pt(9), bold_lead=lead, after=4)
             cp.paragraph_format.keep_with_next = lead.startswith("Table")
-        elif first.startswith("Frozen verdict"):
+        elif first.startswith(("Frozen verdict", "Inconclusive for all")):
             for ln in lines:
                 para(doc, ln, size=SMALL, after=0)
             doc.add_paragraph().paragraph_format.space_after = Pt(0)
@@ -279,15 +285,16 @@ def main():
                     p.runs[0].text = "• " + it[2:]
         else:
             lead = None
-            for cand in ("References that were invented.", "Evaluation awareness.", "Pre-existing work.",
+            for cand in ("Fake references.", "References that were invented.", "Evaluation awareness.", "Pre-existing work.",
                          "Work that was already in place beforehand.", "AI tools."):
                 if first.startswith(cand):
                     lead = cand
             size = Pt(9.5) if seen_heads and seen_heads[-1] == "References" else None
             para(doc, joined, bold_lead=lead, size=size)
 
-    doc.add_paragraph("LLM Usage Statement", style="Heading 2")
-    para(doc, LLM_STATEMENT)
+    if "LLM Usage Statement" not in seen_heads:
+        doc.add_paragraph("LLM Usage Statement", style="Heading 2")
+        para(doc, LLM_STATEMENT)
     doc.save(out)
     print("headings:", seen_heads)
 
