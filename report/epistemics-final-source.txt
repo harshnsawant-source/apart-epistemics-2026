@@ -233,9 +233,9 @@ When asked neutrally, the model kept nearly all of the titles. However, when rem
 majority of unmatched titles, far more than would be expected from random deletion. However, it also deleted a
 third of its real papers. When given the real results of the check, it followed them exactly.
 
-In an exploratory run after the cutoff (Appendix B, item 11; Appendix D), the other three models, given the real
-check results, removed 95% to 99% of their unmatched titles and 0% to 9% of their real papers. The audit
-reminder changed little for them compared with the neutral request.
+In an exploratory run after the cut-off (Appendix B, item 11; Appendix D), the other three models had a high
+percentage of unmatched titles removed (95-99%) and a low percentage of authentic papers removed (0-9%) when
+given the authentic checking results. The audit reminder had a small impact on the other three models.
 
 4.5 Checker Audit
 
@@ -254,9 +254,8 @@ reliable solution.
 The stage two results give the clearest insight. The model was much more selective with deleting titles when
 reminded that they would be checked. This shows that it does have some level of awareness of which titles it is
 unsure of. This awareness however is quite basic. To delete 71% of unmatched titles, it also deleted 32% of real
-titles. When shown which titles matched a record, it followed this exactly. The exploratory runs on the other
-three models (Appendix D) agree: the real check results worked on every model, while the large effect of the
-audit reminder was specific to gpt-oss-120b. In practice, if a system can verify references, it should tell the
+titles. When shown which titles matched a record, it followed this exactly. Results from the other three models (Appendix D) agree: the authentic checking results had an impact on
+all models, however the audit reminder had a large impact on only gpt-oss-120b. In practice, if a system can verify references, it should tell the
 model the outcome of the checks, not just that there will be some form of checking.
 
 There are two main limitations. Firstly, whilst the "real results" branch demonstrates that the model is
@@ -274,9 +273,8 @@ Telling the model that there would be some checking resulted in a decrease of ap
 per request and more verified papers. However, this was inconclusive under the pre-registered rules. Other models
 moved the same way but without significance. The impact was greater when the model was allowed to give fewer
 titles. When the model could remove titles, a neutral request changed little, while reminding it that there will
-be some checking caused many unmatched titles to be removed but also a third of real papers. Using the actual
-checking results removed exactly the unmatched titles, and in exploratory runs the other three models did
-nearly the same. Giving evidence to the models is a better approach.
+be some checking caused many unmatched titles to be removed but also a third of real papers. Using the authentic checking results removed all unmatched titles and no real papers. In exploratory runs
+the other three models performed very similarly. Giving evidence to the models is a better approach.
 
 CODE AND DATA
 
@@ -328,8 +326,8 @@ titles). Also, the confidence interval does not take into account the sampling e
 - The "real results" branch relies on the checker whose errors we have measured.
 - We cannot compare the absolute unmatched percentages between this study and the previous MSc study, as they come
 from different sources.
-- Stage two on Qwen, Nemotron and Llama was added after the collection cutoff and was not pre-registered
-(Appendix B, item 11). It should be read as exploratory.
+- Stage two was run on Qwen, Nemotron and Llama after the cut-off in collection. This was not pre-registered
+(see Appendix B, point 11).
 - There were several issues when collecting the data (see Appendix B). These did not affect the design, prompts,
 settings or seeds.
 
@@ -367,10 +365,10 @@ confidence intervals, contrasts for each wording, figures and tables. No changes
 10. 15 Nov, 16:10-~16:45 IST: 56 titles from A/A runs with failed lookups were labelled. The frozen analysis was
 run again with no changes. Only A/A figures were affected (a mean difference of 2.70 over 27 topics became 2.275
 over 40 topics).
-11. 15 Nov, from ~22:35 IST: Stage two was run on Qwen3.8 27B, Nemotron 3 Ultra and Llama 3.2 3B with the same
-frozen procedure, prompts, seeds and settings. This was after the collection cutoff and not pre-registered.
-One list each for Qwen and Nemotron was left out of the real results branch because one of its titles had no
-checker label. No changes to frozen numbers (Appendix D).
+11. 15 Nov, ~22:35 IST: Stage two was run on Qwen3.8 27B, Nemotron 3 Ultra and Llama 3.2 3B with the same
+frozen procedure, prompts, seeds and settings. This was done after the cut-off and was not pre-registered. One
+list each from Qwen and Nemotron was excluded from the authentic results branch, as each had one title with no
+checker label. No frozen numbers were changed (Appendix D).
 
 APPENDIX C. PREVIOUS WORK AND AI TOOLS
 
@@ -390,26 +388,27 @@ plan was written by me and the blind audit was done manually.
 
 APPENDIX D. STAGE TWO ON THE OTHER MODELS
 
-This addendum was not pre-registered and was collected after the cutoff (Appendix B, item 11). The procedure,
-prompts, seeds and settings were the same as for gpt-oss-120b. Only items with a readable KEEP or WITHDRAW
-decision are counted: all 119 Qwen replies, 118 of 119 Nemotron replies and 115 of 120 Llama replies could be
-read. Qwen and Nemotron have 39 lists in the real results branch, as one list each had a title without a checker
-label.
+This addendum was not pre-registered and was collected after the cut-off (Appendix B, item 11). The frozen
+procedure, prompts, seeds and settings were identical to those used for gpt-oss-120b. Only the readable
+decisions of KEEP or WITHDRAW were counted. All 119 replies from Qwen were readable, 118 replies from Nemotron
+(118/119) and 115 replies from Llama (115/120). There are 39 lists each from Qwen and Nemotron in the authentic
+results branch.
 
-Table 4. Titles deleted in stage two for all four models (gpt-oss-120b rows repeat Table 3). 95% bootstrap
-confidence intervals by topic. Random shows the share of each group that random deletion of the same number of
-titles would remove.
+Table 4. Titles removed in stage two for all four models. Bootstrap intervals (95%) by topic. Random:
+percentage of titles removed if the same number were removed randomly. The gpt-oss-120b rows are the same as
+Table 3.
 
 Model Branch Unmatched Deleted Verified Deleted Random
 (rebuilt from results/stage2_addendum.json)
 
-Two patterns stand out. The real check results worked on every model: each removed 95% to 100% of its unmatched
-titles and 0% to 9% of its real papers. The audit reminder did not: for the other three models it changed the
-share of unmatched titles removed only slightly compared with the neutral request, and the intervals overlap.
-Qwen and Llama already removed most unmatched titles when asked neutrally, and Llama removed real papers
-almost as often as unmatched ones, close to what random deletion would do. Nemotron was the most cautious,
-removing few titles unless shown the check results. The jump from 5% to 71% seen for gpt-oss-120b is therefore
-specific to that model.
+- All models were impacted by the authentic checking results. All models had a high percentage of unmatched
+titles removed (95-100%) and a low percentage of authentic papers removed (0-9%).
+- The audit reminder had a small impact on the percentage of unmatched titles removed for the other three
+models. The intervals overlap.
+- Qwen and Llama had already removed most unmatched titles with the neutral request.
+- Llama removed a similar share of authentic papers as unmatched titles, almost randomly.
+- Nemotron was the most cautious, removing few titles unless shown the checking results.
+- The increase from 5% to 71% is specific to gpt-oss-120b.
 
 LLM USAGE STATEMENT
 
