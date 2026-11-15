@@ -64,7 +64,7 @@ def main():
 
     sh([GIT, "add", "raw/generations_llama.jsonl", "raw/generations_llama_attempts.jsonl"])
     if sh([GIT, "diff", "--cached", "--quiet"]) != 0:
-        sh([GIT, "-c", "user.name=Harsh Sawant", "-c", "user.email=harshnsawant@gmail.com", "commit", "-m",
+        sh([GIT, "-c", "user.name=Harsh Sawant", "-c", "user.email=281931449+harshnsawant-source@users.noreply.github.com", "commit", "-m",
             "collect: Llama arm (laptop, Ollama)\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n"
             "Claude-Session: https://claude.ai/code/session_01XsfVaNDvdkvWdsH8iuCgyB"])
         for _ in range(3):
